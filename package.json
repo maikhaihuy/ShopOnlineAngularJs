@@ -15,6 +15,16 @@
   ],
   "author": "Mai Huy",
   "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
+    "angular-aria": "^1.4.7",
+    "angular-cookies": "~1.4.7",
+    "angular-material": "~0.11.2",
+    "angular-messages": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-resource": "1.4.x"
+  },
   "bugs": {
     "url": "https://github.com/maikhaihuy/ShopOnlineAngularJs/issues"
   },
