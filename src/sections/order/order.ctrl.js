@@ -1,0 +1,3 @@
+'use trict'
+
+/* Orders Controller */
