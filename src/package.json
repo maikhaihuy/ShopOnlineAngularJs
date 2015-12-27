@@ -1,17 +1,20 @@
 {
-  "name": "shoponline-client",
+  "name": "shoponl-client",
   "version": "1.0.0",
-  "description": "Shop Online about Shoes",
+  "description": "Shop Online client",
   "main": "app.js",
+  "devDependencies": {},
   "scripts": {
+    "start": "http-server",
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maikhaihuy/ShopOnlineAngularJs.git"
+    "url": "git+ssh://git@github.com/maikhaihuy/ShopOnlineAngularJs.git"
   },
   "keywords": [
-    "angulartjs"
+    "shoponline",
+    "angularjs"
   ],
   "author": "Mai Huy",
   "license": "MIT",
@@ -23,7 +26,7 @@
     "angular-material": "~0.11.2",
     "angular-messages": "~1.4.7",
     "angular-route": "~1.4.7",
-    "angular-resource": "1.4.x"
+    "angular-resource": "~1.4.7"
   },
   "bugs": {
     "url": "https://github.com/maikhaihuy/ShopOnlineAngularJs/issues"

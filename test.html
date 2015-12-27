@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Thanh phan Controller trong AngularJS</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+	<h2>Ung dung AngularJS</h2>
+	<div ng-app="ungdungAngularjs" ng-controller="sinhvienController">
+
+		Nhap ho: <input type="text" ng-model="sinhvien.ho"><br><br>
+		Nhap ten: <input type="text" ng-model="sinhvien.ten"><br>
+		<br>
+		Ban dang nhap: {{sinhvien.hoten()}}
+	</div>
+	<script>
+		var ungdungAngularjs = angular.module("ungdungAngularjs", []);
+
+		ungdungAngularjs.controller('sinhvienController', function($scope) {
+			$scope.sinhvien = {
+				ho: "Tran Minh",
+				ten: "Chinh",
+				hoten: function() {
+					var doituongsinhvien;
+					doituongsinhvien = $scope.sinhvien;
+					return doituongsinhvien.ho + " " + doituongsinhvien.ten;
+				}
+			};
+		});
+	</script>
+</body>
+</html>

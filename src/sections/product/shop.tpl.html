@@ -1,4 +1,4 @@
-<div class="master-wrapper">
+<div class="master-wrapper" ng-controller="ShopController as products">
     <!-- Start header -->
     <header id="header">
         <!-- header -->
@@ -14,11 +14,7 @@
                     </div>
                     <div class="span8">
                         <div class="topmost-line">
-                            <div class="higher-line">
-                                <a href="my-account.html" class="gray-link">My account</a> &nbsp; | &nbsp;
-                                <a href="my-account.html" class="gray-link">Wishlist (2)</a> &nbsp; | &nbsp;
-                                <a href="checkout-step-1.html" class="gray-link">Checkout</a>
-                            </div>
+
                             &nbsp;
                         </div>
                     </div>
@@ -29,8 +25,8 @@
         <div class="container">
             <div class="row">
                 <div class="span7">
-                    <a class="brand" href="index.html">
-                        <img src="images/logo.png" alt="Webmarket Logo" width="48" height="48" />
+                    <a class="brand" href="/">
+                        <img src="../../resources/images/logo.png" alt="Webmarket Logo" width="48" height="48" />
                         <span class="pacifico">Shop Online</span>
                         <span class="tagline">Buy and enjoy best services</span>
                     </a>
@@ -64,38 +60,21 @@
 
                         <div class="nav-collapse collapse">
                             <ul class="nav" id="mainNavigation">
-                                <li><a href="index.html"> Home </a></li>
+                                <li><a href="/"> Home </a></li>
                                 <li class="dropdown dropdown-supermenu">
-                                    <a href="#" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
-                                    <ul class="dropdown-menu supermenu accepts-5">
-                                        <li class="row">
-                                            <div class="span2">
-                                                <ul class="nav nav-pills nav-stacked">
-                                                    <li><a href="shop.html">Adidas</a></li>
-                                                    <li><a href="shop.html">Nike</a></li>
-                                                    <li><a href="shop.html">Converse</a></li>
-                                                    <li><a href="shop.html">DnG</a></li>
-                                                    <li><a href="shop.html">Snap</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                    <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="brand in brands"><a href="/products/{brand.brandId}">{{brand.brandName}}</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="features.html" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
+                                    <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="icons.html">Icons</a></li>
-                                        <li class="dropdown">
-                                            <a href="features.html" class="dropdown-toggle"><i class="icon-caret-right pull-right visible-desktop"></i> All Features</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="features.html#headings">Headings</a></li>
-                                                <li><a href="features.html#alertBoxes">Alert Boxes</a></li>
-                                            </ul>
-                                        </li>
+                                        <li ng-repeat="category in categories"><a href="/products/{category.categoryId}">{{category.categoryName}}</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact</a></li>
                             </ul>
 
                             <!-- Search -->
@@ -120,7 +99,7 @@
                             <div class="open-panel">
                                 <div class="item-in-cart clearfix">
                                     <div class="image">
-                                        <img src="images/dummy/cart-items/cart-item-1.jpg" width="124" height="124" alt="cart item" />
+                                        <img src="../../resources/images/dummy/cart-items/cart-item-1.jpg" width="124" height="124" alt="cart item" />
                                     </div>
                                     <div class="desc">
                                         <strong><a href="product.html">Adipiscing Vel Vel Felis</a></strong>
@@ -134,45 +113,8 @@
                                         <strong>$5914</strong>
                                     </div>
                                 </div>
-                                <div class="item-in-cart clearfix">
-                                    <div class="image">
-                                        <img src="images/dummy/cart-items/cart-item-2.jpg" width="124" height="124" alt="cart item" />
-                                    </div>
-                                    <div class="desc">
-                                        <strong><a href="product.html">Adipiscing Sed Ac Felis Ut</a></strong>
-                                        <span class="light-clr qty">
-                                            Qty: 1
-                                            &nbsp;
-                                            <a href="#" class="icon-remove-sign" title="Remove Item"></a>
-                                        </span>
-                                    </div>
-                                    <div class="price">
-                                        <strong>$4644</strong>
-                                    </div>
-                                </div>
-                                <div class="item-in-cart clearfix">
-                                    <div class="image">
-                                        <img src="images/dummy/cart-items/cart-item-3.jpg" width="124" height="124" alt="cart item" />
-                                    </div>
-                                    <div class="desc">
-                                        <strong><a href="product.html">Amet Sed Nisi</a></strong>
-                                        <span class="light-clr qty">
-                                            Qty: 1
-                                            &nbsp;
-                                            <a href="#" class="icon-remove-sign" title="Remove Item"></a>
-                                        </span>
-                                    </div>
-                                    <div class="price">
-                                        <strong>$5059</strong>
-                                    </div>
-                                </div>
+                                
                                 <div class="summary">
-                                    <div class="line">
-                                        <div class="row-fluid">
-                                            <div class="span6">Shipping:</div>
-                                            <div class="span6 align-right">$4.99</div>
-                                        </div>
-                                    </div>
                                     <div class="line">
                                         <div class="row-fluid">
                                             <div class="span6">Subtotal:</div>
@@ -181,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="proceed">
-                                    <a href="checkout-step-1.html" class="btn btn-danger pull-right bold higher">CHECKOUT <i class="icon-shopping-cart"></i></a>
+                                    <a href="/order/checkout-step-1" class="btn btn-danger pull-right bold higher">CHECKOUT <i class="icon-shopping-cart"></i></a>
                                     <small>Shipping costs are calculated based on location. <a href="#">More information</a></small>
                                 </div>
                             </div>
@@ -221,1468 +163,306 @@
             <div class="row">
 
                <!-- Left side -->
-               <aside class="span3 left-sidebar" id="tourStep1">
-                <div class="sidebar-item sidebar-filters" id="sidebarFilters">
-                   <!-- Filter -->
-                   <div class="underlined">
-                    <h3><span class="light">Shop</span> by filters</h3>
-                </div>
-
-                <!-- Categories -->
-                <div class="accordion-group" id="tourStep2">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">Categories <b class="caret"></b></a>
+                <aside class="span3 left-sidebar" id="tourStep1">
+                    <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+                       <!-- Filter -->
+                       <div class="underlined">
+                        <h3><span class="light">Shop</span> by filters</h3>
                     </div>
-                    <div id="filterOne" class="accordion-body collapse in">
-                        <div class="accordion-inner">
-                            <a href="#" data-target=".filter--accessories" class="selectable"><i class="box"></i> Accessories</a>
-                            <a href="#" data-target=".filter--bags, .filter--hats" class="selectable"><i class="box"></i> Bags &amp; Hats</a>
-                            <a href="#" data-target=".filter--polo-shirts" class="selectable"><i class="box"></i> Polo Shirts</a>
-                            <a href="#" data-target=".filter--shirts" class="selectable"><i class="box"></i> Shirts</a>
-                            <a href="#" data-target=".filter--shoes, .filter--boots, .filter--trainers" class="selectable"><i class="box"></i> Shoes, Boots &amp; Trainers</a>
-                            <a href="#" data-target=".filter--shorts" class="selectable"><i class="box"></i> Shorts</a>
-                            <a href="#" data-target=".filter--suits, .filter--blazers" class="selectable"><i class="box"></i> Suits &amp; Blazers</a>
-                            <a href="#" data-target=".filter--sunglasses" class="selectable"><i class="box"></i> Sunglasses</a>
-                            <a href="#" data-target=".filter--swimwear" class="selectable"><i class="box"></i> Swimwear</a>
-                            <a href="#" data-target=".filter--trousers, .filter--chinos" class="selectable"><i class="box"></i> Trousers &amp; Chinos</a>
-                            <a href="#" data-target=".filter--t-shirts, .filter--vests" class="selectable"><i class="box"></i> T-Shirts &amp; Vests</a>
-                            <a href="#" data-target=".filter--bags" class="selectable"><i class="box"></i> Bags</a>
-                            <a href="#" data-target=".filter--underwear, .filter--socks" class="selectable"><i class="box"></i> Underwear &amp; Socks</a>
+
+                    <!-- Categories -->
+                    <div class="accordion-group" id="tourStep2">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle" data-toggle="collapse" href="#filterOne">Categories <b class="caret"></b></div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Price -->
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">Price <b class="caret"></b></a>
-                    </div>
-                    <div id="filterPrices" class="accordion-body in collapse">
-                        <div class="accordion-inner with-slider">
-                            <div class="jqueryui-slider-container">
-                                <div id="pricesRange"></div>
+                        <div id="filterOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div ng-repeat="category in categories" >
+                                    <input class="box" type="checkbox" ng-model="filterCate[category.categoryId]"/> {{category.categoryName}}
+                                </div>
                             </div>
-                            <input type="text" data-initial="432" class="max-val pull-right" disabled />
-                            <input type="text" data-initial="99" class="min-val" disabled />
                         </div>
                     </div>
-                </div>
 
-                <!-- Size -->
-                <div class="accordion-group" id="tourStep3">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">Size <b class="caret"></b></a>
-                    </div>
-                    <div id="filterTwo" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <a href="#" data-target="xs" data-type="size" class="selectable detailed"><i class="box"></i> XS</a>
-                            <a href="#" data-target="s" data-type="size" class="selectable detailed"><i class="box"></i> S</a>
-                            <a href="#" data-target="m" data-type="size" class="selectable detailed"><i class="box"></i> M</a>
-                            <a href="#" data-target="l" data-type="size" class="selectable detailed"><i class="box"></i> L</a>
-                            <a href="#" data-target="xl" data-type="size" class="selectable detailed"><i class="box"></i> XL</a>
-                            <a href="#" data-target="xxl" data-type="size" class="selectable detailed"><i class="box"></i> XXL</a>
+                    <!-- Price -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">Price <b class="caret"></b></a>
+                        </div>
+
+                        <div id="filterPrices" class="accordion-body in collapse">
+                            <div class="accordion-inner with-slider">
+
+                                <input type="text" data-initial="432" class="max-val pull-right" disabled />
+                                <input type="text" data-initial="99" class="min-val" disabled />
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Color -->
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">Color <b class="caret"></b></a>
-                    </div>
-                    <div id="filterThree" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <a href="#" data-target="red" data-type="color" class="selectable detailed"><i class="box"></i> Red</a>
-                            <a href="#" data-target="green" data-type="color" class="selectable detailed"><i class="box"></i> Green</a>
-                            <a href="#" data-target="blue" data-type="color" class="selectable detailed"><i class="box"></i> Blue</a>
-                            <a href="#" data-target="pink" data-type="color" class="selectable detailed"><i class="box"></i> Pink</a>
-                            <a href="#" data-target="purple" data-type="color" class="selectable detailed"><i class="box"></i> Purple</a>
-                            <a href="#" data-target="orange" data-type="color" class="selectable detailed"><i class="box"></i> Orange</a>
+                    <!-- Size -->
+                    <div class="accordion-group" id="tourStep3">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">Size <b class="caret"></b></div>
+                        </div>
+                        <div id="filterTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="size in sizes" >
+                                    <input class="box" type="checkbox" ng-model="filterSize[size.sizeId]"/> {{size.sizeName}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Brand -->
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">Brand <b class="caret"></b></a>
-                    </div>
-                    <div id="filterFour" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <a href="#" data-target="s-oliver" data-type="brand" class="selectable detailed"><i class="box"></i> S. Oliver</a>
-                            <a href="#" data-target="nike" data-type="brand" class="selectable detailed"><i class="box"></i> Nike</a>
-                            <a href="#" data-target="naish" data-type="brand" class="selectable detailed"><i class="box"></i> Naish</a>
-                            <a href="#" data-target="adidas" data-type="brand" class="selectable detailed"><i class="box"></i> Adidas</a>
-                            <a href="#" data-target="puma" data-type="brand" class="selectable detailed"><i class="box"></i> Puma</a>
-                            <a href="#" data-target="shred" data-type="brand" class="selectable detailed"><i class="box"></i> Shred</a>
+                    <!-- Color -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">Color <b class="caret"></b></div>
+                        </div>
+                        <div id="filterThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="color in colors" >
+                                    <input class="box" type="checkbox" ng-model="filterColor[color.colorId]"/> {{color.colorName}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> Remove All Filters</a>
 
-            </aside>
-
-            <!-- Right side -->
-            <section class="span9">
-               <!-- Header right side -->
-               <div class="underlined push-down-20">
-                <div class="row">
-                    <div class="span4">
-                        <h3><span class="light">All</span> Products</h3>
-                    </div>
-                    <div class="span5 align-right sm-align-left">
-                        <div class="form-inline sorting-by" id="tourStep4">
-                            <label for="isotopeSorting" class="black-clr">Sort:</label>
-                            <select id="isotopeSorting" class="span3">
-                                <option value='{"sortBy":"price", "sortAscending":"true"}'>By Price (Low to High) &uarr;</option>
-                                <option value='{"sortBy":"price", "sortAscending":"false"}'>By Price (High to Low) &darr;</option>
-                                <option value='{"sortBy":"name", "sortAscending":"true"}'>By Name (Low to High) &uarr;</option>
-                                <option value='{"sortBy":"name", "sortAscending":"false"}'>By Name (High to Low) &darr;</option>
-                                <option value='{"sortBy":"popularity", "sortAscending":"true"}'>By Popularity (Low to High) &uarr;</option>
-                                <option value='{"sortBy":"popularity", "sortAscending":"false"}'>By Popularity (High to Low) &darr;</option>
-                            </select>
+                    <!-- Brand -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">Brand <b class="caret"></b></div>
+                        </div>
+                        <div id="filterFour" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="brand in brands" >
+                                    <input class="box" type="checkbox" ng-model="filterBrand[brand.brandId]"/> {{brand.brandName}}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> Remove All Filters</a>
+                    </div>
+                </aside>
+
+        <!-- Right side -->
+                <section class="span9">
+                   <!-- Header right side -->
+                   <div class="underlined push-down-20">
+                        <div class="row">
+                            <div class="span4">
+                                <h3><span class="light">All</span> Products</h3>
+                            </div>
+                            <div class="span5 align-right sm-align-left">
+                                <div class="form-inline sorting-by" id="tourStep4">
+                                    <label for="isotopeSorting" class="black-clr">Sort:</label>
+                                    <select id="isotopeSorting" class="span3" ng-model="sortBy">
+                                        <option value="None">-- Select --</option>
+                                        <option value="productPrice">By Price (Low to High) &uarr;</option>
+                                        <option value="-productPrice">By Price (High to Low) &darr;</option>
+                                        <option value="productName">By Name (Low to High) &uarr;</option>
+                                        <option value="-productName">By Name (High to Low) &darr;</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body right side -->
+                    <div class="row popup-products">
+                        <div id="isotopeContainer" class="isotope-container">
+                            <div class="span3 isotope--target filter--boots" ng-repeat="product in filtered=(products.products  | filter:filterByCategory | filter:filterBySize | orderBy:sortBy)">
+                                <div class="product">
+                                    <div class="product-inner">
+                                        <div class="stamp red">Sold</div>
+                                        <div class="product-img">
+                                            <div class="picture">
+                                                <a href="#/ShopOnline/products/{{product.productId}}"><img width="540" height="374" alt="" src="../../resources/images/dummy/products/product-1.jpg" /></a>
+                                                <div class="img-overlay">
+                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.productId}}">More {{product.productId}}</a>
+                                                    <a class="btn buy btn-danger" href="#">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-titles no-margin">
+                                            <h4 class="title">${{product.productPrice}}</h4>
+                                            <h5 class="no-margin isotope--title">{{product.productName}} : {{product.categoryId}} :{{product.sizeId}}</h5>
+                                        </div>
+                                        <div class="row-fluid hidden-line">
+                                            <div class="span6">
+                                                <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
+                                                <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
+                                            </div>
+                                            <div class="span6 align-right">
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star"></span>
+                                                <span class="icon-star"></span>
+                                                <span class="icon-star"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </section>
             </div>
-
-            <!-- Body right side -->
-            <div class="row popup-products">
-                <div id="isotopeContainer" class="isotope-container">
-                    <div class="span3 isotope--target filter--boots" data-price="58" data-popularity="2" data-size="s|m|l" data-color="orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp red">Sold</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-1.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$58</h4>
-                                    <h5 class="no-margin isotope--title">Nisi Eros Feugiat Condimentum</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--bags" data-price="1714" data-popularity="1" data-size="m|l" data-color="green|orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-2.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1714</h4>
-                                    <h5 class="no-margin isotope--title">Dapibus Sit Condimentum</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--sunglasses" data-price="905" data-popularity="3" data-size="xs|m|l|xl" data-color="green|pink" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-3.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$905</h4>
-                                    <h5 class="no-margin isotope--title">Vivamus Felis Est Eros</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--sunglasses" data-price="984" data-popularity="1" data-size="xs|xl" data-color="pink|purple" data-brand="naish">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-4.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$984</h4>
-                                    <h5 class="no-margin isotope--title">Tincidunt Vel Ac Vulputate Felis</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--suits" data-price="1207" data-popularity="5" data-size="xs|s|xxl" data-color="green|orange" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-5.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1207</h4>
-                                    <h5 class="no-margin isotope--title">Lorem Adipiscing Adipiscing Est Ut</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--sunglasses" data-price="1261" data-popularity="5" data-size="xs|s|m" data-color="green|pink" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-6.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1261</h4>
-                                    <h5 class="no-margin isotope--title">Dolor Elit Duis</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--swimwear" data-price="996" data-popularity="5" data-size="s|l|xxl" data-color="orange" data-brand="s-oliver">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-7.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$996</h4>
-                                    <h5 class="no-margin isotope--title">Adipiscing Vivamus Duis</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--sunglasses" data-price="1136" data-popularity="2" data-size="xs|m" data-color="red|green" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp red">Sold</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-8.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1136</h4>
-                                    <h5 class="no-margin isotope--title">Ipsum Felis Dapibus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--swimwear" data-price="232" data-popularity="5" data-size="m|xl|xxl" data-color="orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-9.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$232</h4>
-                                    <h5 class="no-margin isotope--title">Vel Duis Metus Ut</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--bags" data-price="329" data-popularity="2" data-size="l|xxl" data-color="red" data-brand="nike">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp red">Sold</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-10.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$329</h4>
-                                    <h5 class="no-margin isotope--title">Lorem Feugiat</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--trousers" data-price="782" data-popularity="3" data-size="xs|l|xl|xxl" data-color="green" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-11.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$782</h4>
-                                    <h5 class="no-margin isotope--title">Felis Feugiat</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--underwear" data-price="1388" data-popularity="5" data-size="s|m|l|xl" data-color="green|orange" data-brand="naish">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-12.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1388</h4>
-                                    <h5 class="no-margin isotope--title">Elit Tincidunt Adipiscing Metus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--t-shirts" data-price="1200" data-popularity="3" data-size="xs|s|xl" data-color="blue" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-13.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1200</h4>
-                                    <h5 class="no-margin isotope--title">Ipsum Vel Vel Metus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--polo-shirts" data-price="805" data-popularity="5" data-size="m|l" data-color="orange" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-14.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$805</h4>
-                                    <h5 class="no-margin isotope--title">Consectetur Sit</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--trousers" data-price="863" data-popularity="4" data-size="xs|m|l|xl" data-color="red" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-15.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$863</h4>
-                                    <h5 class="no-margin isotope--title">Ipsum Ac Dapibus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--shorts" data-price="278" data-popularity="1" data-size="xs|s|xl" data-color="green|blue" data-brand="naish">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-16.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$278</h4>
-                                    <h5 class="no-margin isotope--title">Sed Ac Ut</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--accessories" data-price="1665" data-popularity="1" data-size="s|l" data-color="pink|orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-17.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1665</h4>
-                                    <h5 class="no-margin isotope--title">Lorem Consectetur Neque Adipiscing Ac</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--socks" data-price="1469" data-popularity="2" data-size="s|l|xl|xxl" data-color="red|orange" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp red">Sold</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-18.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1469</h4>
-                                    <h5 class="no-margin isotope--title">Ipsum Dolor Adipiscing Amet</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--chinos" data-price="939" data-popularity="1" data-size="xs|m|xl" data-color="green|blue" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-19.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$939</h4>
-                                    <h5 class="no-margin isotope--title">Dolor Amet Vel Neque</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--shirts" data-price="282" data-popularity="5" data-size="s|m|l|xxl" data-color="purple|orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-20.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$282</h4>
-                                    <h5 class="no-margin isotope--title">Sit Metus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--trousers" data-price="769" data-popularity="5" data-size="xs|xl" data-color="pink|orange" data-brand="s-oliver">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-21.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$769</h4>
-                                    <h5 class="no-margin isotope--title">Adipiscing Dapibus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--suits" data-price="772" data-popularity="4" data-size="m|l" data-color="orange" data-brand="naish">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-22.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$772</h4>
-                                    <h5 class="no-margin isotope--title">Dolor Consectetur Vulputate Felis Est</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--shorts" data-price="1464" data-popularity="4" data-size="xs|l|xl" data-color="green|orange" data-brand="s-oliver">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-23.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1464</h4>
-                                    <h5 class="no-margin isotope--title">Dolor Consectetur Ac</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--shirts" data-price="1514" data-popularity="2" data-size="xs|l|xl" data-color="pink|orange" data-brand="naish">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp red">Sold</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-24.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1514</h4>
-                                    <h5 class="no-margin isotope--title">Ipsum Dolor Adipiscing Neque Ut</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--t-shirts" data-price="1360" data-popularity="1" data-size="xs|m|l|xl" data-color="red|orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-25.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1360</h4>
-                                    <h5 class="no-margin isotope--title">Ipsum Dolor Amet Metus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--bags" data-price="319" data-popularity="3" data-size="s|l|xl" data-color="orange" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-26.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$319</h4>
-                                    <h5 class="no-margin isotope--title">Duis Feugiat</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--blazers" data-price="1652" data-popularity="4" data-size="l|xl" data-color="blue" data-brand="adidas">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-27.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1652</h4>
-                                    <h5 class="no-margin isotope--title">Nisi Vulputate Dapibus Feugiat</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--shirts" data-price="182" data-popularity="1" data-size="xs|m|xxl" data-color="green" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-28.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$182</h4>
-                                    <h5 class="no-margin isotope--title">Nisi Vulputate Metus</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--blazers" data-price="1556" data-popularity="3" data-size="xs|m|l|xxl" data-color="blue" data-brand="puma">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-29.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1556</h4>
-                                    <h5 class="no-margin isotope--title">Adipiscing Ac Felis Eros Ut</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--shorts" data-price="1480" data-popularity="3" data-size="s|l" data-color="blue|pink" data-brand="nike">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-30.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1480</h4>
-                                    <h5 class="no-margin isotope--title">Dolor Sit Ac</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--accessories" data-price="352" data-popularity="1" data-size="xs|xl|xxl" data-color="blue|purple" data-brand="s-oliver">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-31.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$352</h4>
-                                    <h5 class="no-margin isotope--title">Lorem Dolor Amet Ac Amet</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--socks" data-price="724" data-popularity="1" data-size="xs|s|m|l" data-color="red|green" data-brand="s-oliver">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-32.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$724</h4>
-                                    <h5 class="no-margin isotope--title">Consectetur Adipiscing Vel Dapibus Eros</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--bags" data-price="241" data-popularity="1" data-size="m|xl|xxl" data-color="red|orange" data-brand="nike">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-33.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$241</h4>
-                                    <h5 class="no-margin isotope--title">Dolor Duis Feugiat</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--accessories" data-price="1466" data-popularity="1" data-size="s|m|l" data-color="green" data-brand="shred">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp green">New</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-34.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1466</h4>
-                                    <h5 class="no-margin isotope--title">Lorem Sit Consectetur Vulputate</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="span3 isotope--target filter--suits" data-price="1262" data-popularity="2" data-size="xs|l" data-color="red" data-brand="nike">
-                        <div class="product">
-                            <div class="product-inner">
-                                <div class="stamp red">Sold</div>
-                                <div class="product-img">
-                                    <div class="picture">
-                                        <a href="product.html"><img width="540" height="374" alt="" src="images/dummy/products/product-35.jpg" /></a>
-                                        <div class="img-overlay">
-                                            <a class="btn more btn-primary" href="product.html">More</a>
-                                            <a class="btn buy btn-danger" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="main-titles no-margin">
-                                    <h4 class="title">$1262</h4>
-                                    <h5 class="no-margin isotope--title">Elit Amet</h5>
-                                </div>
-                                <div class="row-fluid hidden-line">
-                                    <div class="span6">
-                                        <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                        <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                    </div>
-                                    <div class="span6 align-right">
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star stars-clr"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                        <span class="icon-star"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr/>
-        </section>
+        </div>
     </div>
-
-
-    <!-- Footer -->
-    <!-- Footer -->
-    <footer>
-        <div class="foot-light">
-            <div class="container">
-                <div class="row">
-                    <div class="span4">
-                        <h2 class="pacifico">Webmarket &nbsp; <img src="images/webmarket.png" alt="Webmarket Cart" class="align-baseline"/></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis </p>
+<!-- Footer -->
+<footer>
+    <div class="foot-light">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h2 class="pacifico">Webmarket &nbsp; <img src="../../resources/images/webmarket.png" alt="Webmarket Cart" class="align-baseline"/></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis </p>
+                </div>
+                <div class="span4">
+                    <div class="main-titles lined">
+                        <h3 class="title">Facebook</h3>
                     </div>
-                    <div class="span4">
-                        <div class="main-titles lined">
-                            <h3 class="title">Facebook</h3>
+                    <div class="bordered">
+                        <div class="fill-iframe">
+                            <div class="fb-like-box" data-href="https://www.facebook.com/ProteusNet" data-width="292" data-height="200" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
                         </div>
-                        <div class="bordered">
-                            <div class="fill-iframe">
-                                <div class="fb-like-box" data-href="https://www.facebook.com/ProteusNet" data-width="292" data-height="200" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="main-titles lined">
+                        <h3 class="title"><span class="light">Newsletters</span> Signup</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida.</p>
+
+                    <div id="mc_embed_signup">
+                        <form action="http://proteusthemes.us4.list-manage1.com/subscribe/post?u=ea0786485977f5ec8c9283d5c&amp;id=5dad3f35e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form form-inline" target="_blank" novalidate>
+                            <div class="mc-field-group">
+                                <input type="email" value="" placeholder="Enter your e-mail address" name="EMAIL" class="required email" id="mce-EMAIL">
+                                <input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
                             </div>
-                        </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="span4">
-                        <div class="main-titles lined">
-                            <h3 class="title"><span class="light">Newsletters</span> Signup</h3>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida.</p>
 
-                        <div id="mc_embed_signup">
-                            <form action="http://proteusthemes.us4.list-manage1.com/subscribe/post?u=ea0786485977f5ec8c9283d5c&amp;id=5dad3f35e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form form-inline" target="_blank" novalidate>
-                                <div class="mc-field-group">
-                                    <input type="email" value="" placeholder="Enter your e-mail address" name="EMAIL" class="required email" id="mce-EMAIL">
-                                    <input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
-                                </div>
-                                <div id="mce-responses" class="clear">
-                                    <div class="response" id="mce-error-response" style="display:none"></div>
-                                    <div class="response" id="mce-success-response" style="display:none"></div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="foot-last">
-            <a href="#" id="toTheTop">
-                <span class="icon-chevron-up"></span>
-            </a>
-            <div class="container">
-                <div class="row">
-                    <div class="span6">
-                        &copy; Copyright 2013. Images of products by <a target="_blank" href="http://www.horsefeathers.eu/">Horsefeathers</a>.
-                    </div>
-                    <div class="span6">
-                        <div class="pull-right">Webmarket HTML Template by <a href="http://www.proteusthemes.com/">ProteusThemes</a></div>
-                    </div>
+    <div class="foot-last">
+        <a href="#" id="toTheTop">
+            <span class="icon-chevron-up"></span>
+        </a>
+        <div class="container">
+            <div class="row">
+                <div class="span6">
+                    &copy; Copyright 2013. Images of products by <a target="_blank" href="http://www.horsefeathers.eu/">Horsefeathers</a>.
+                </div>
+                <div class="span6">
+                    <div class="pull-right">Webmarket HTML Template by <a href="http://www.proteusthemes.com/">ProteusThemes</a></div>
                 </div>
             </div>
         </div>
-    </footer>
-    <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="loginModalLabel"><span class="light">Login</span> To Webmarket</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmail">Username</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputEmail" placeholder="Username" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputPassword">Password</label>
-                    <div class="controls">
-                        <input type="password" class="input-block-level" id="inputPassword" placeholder="Password" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <label class="checkbox">
-                            <input type="checkbox"> Remember me
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary input-block-level bold higher">
-                    SIGN IN
-                </button>
-            </form>
-            <p class="center-align push-down-0">
-                <a data-toggle="modal" role="button" href="#forgotPassModal" data-dismiss="modal">Forgot your password?</a>
-            </p>
-        </div>
     </div>
-
-    <div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="registerModalLabel"><span class="light">Register</span> To Webmarket</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
-                    <div class="controls">
-                        <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputPasswordRegister">Password</label>
-                    <div class="controls">
-                        <input type="password" class="input-block-level" id="inputPasswordRegister" placeholder="Password" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-danger input-block-level bold higher">
-                    REGISTER
-                </button>
-            </form>
-            <p class="center-align push-down-0">
-                <a data-toggle="modal" role="button" href="#loginModal" data-dismiss="modal">Already Registered?</a>
-            </p>
-        </div>
+</footer>
+<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="loginModalLabel"><span class="light">Login</span> To Webmarket</h3>
     </div>
-
-    <div id="forgotPassModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="forgotPassModalLabel"><span class="light">Forgot</span> your password?</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username">
-                    </div>
+    <div class="modal-body">
+        <form method="post" action="#">
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmail">Username</label>
+                <div class="controls">
+                    <input type="text" class="input-block-level" id="inputEmail" placeholder="Username" required>
                 </div>
-                <p class="center-align">OR</p>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
-                    <div class="controls">
-                        <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email">
-                    </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputPassword">Password</label>
+                <div class="controls">
+                    <input type="password" class="input-block-level" id="inputPassword" placeholder="Password" required>
                 </div>
-                <button type="submit" class="btn btn-primary input-block-level bold higher">
-                    SEND ME A NEW PASSWORD
-                </button>
-            </form>
-        </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary input-block-level bold higher">
+                SIGN IN
+            </button>
+        </form>
+        <p class="center-align push-down-0">
+            <a data-toggle="modal" role="button" href="#forgotPassModal" data-dismiss="modal">Forgot your password?</a>
+        </p>
     </div>
+</div>
 
+<div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="registerModalLabel"><span class="light">Register</span> To Webmarket</h3>
+    </div>
+    <div class="modal-body">
+        <form method="post" action="#">
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
+                <div class="controls">
+                    <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username" required>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
+                <div class="controls">
+                    <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email" required>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputPasswordRegister">Password</label>
+                <div class="controls">
+                    <input type="password" class="input-block-level" id="inputPasswordRegister" placeholder="Password" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger input-block-level bold higher">
+                REGISTER
+            </button>
+        </form>
+        <p class="center-align push-down-0">
+            <a data-toggle="modal" role="button" href="#loginModal" data-dismiss="modal">Already Registered?</a>
+        </p>
+    </div>
+</div>
+
+<div id="forgotPassModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="forgotPassModalLabel"><span class="light">Forgot</span> your password?</h3>
+    </div>
+    <div class="modal-body">
+        <form method="post" action="#">
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
+                <div class="controls">
+                    <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username">
+                </div>
+            </div>
+            <p class="center-align">OR</p>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
+                <div class="controls">
+                    <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary input-block-level bold higher">
+                SEND ME A NEW PASSWORD
+            </button>
+        </form>
+    </div>
+</div>
 </div>

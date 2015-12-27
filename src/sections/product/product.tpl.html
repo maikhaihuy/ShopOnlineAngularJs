@@ -1,5 +1,4 @@
-
-<div class="master-wrapper">
+<div class="master-wrapper" ng-controller="DetailProductController as detailproduct">
 
     <!-- Start header -->
     <header id="header">
@@ -16,11 +15,7 @@
                     </div>
                     <div class="span8">
                         <div class="topmost-line">
-                            <div class="higher-line">
-                                <a href="my-account.html" class="gray-link">My account</a> &nbsp; | &nbsp;
-                                <a href="my-account.html" class="gray-link">Wishlist (2)</a> &nbsp; | &nbsp;
-                                <a href="checkout-step-1.html" class="gray-link">Checkout</a>
-                            </div>
+
                             &nbsp;
                         </div>
                     </div>
@@ -31,8 +26,8 @@
         <div class="container">
             <div class="row">
                 <div class="span7">
-                    <a class="brand" href="index.html">
-                        <img src="images/logo.png" alt="Webmarket Logo" width="48" height="48" />
+                    <a class="brand" href="/">
+                        <img src="../../resources/images/logo.png" alt="Webmarket Logo" width="48" height="48" />
                         <span class="pacifico">Shop Online</span>
                         <span class="tagline">Buy and enjoy best services</span>
                     </a>
@@ -51,7 +46,6 @@
             </div>
         </div>
     </header>
-
     <!-- Start menu -->
     <div class="navbar navbar-static-top" id="stickyNavbar">
         <div class="navbar-inner">
@@ -66,38 +60,21 @@
 
                         <div class="nav-collapse collapse">
                             <ul class="nav" id="mainNavigation">
-                                <li><a href="index.html"> Home </a></li>
+                                <li><a href="/"> Home </a></li>
                                 <li class="dropdown dropdown-supermenu">
-                                    <a href="#" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
-                                    <ul class="dropdown-menu supermenu accepts-5">
-                                        <li class="row">
-                                            <div class="span2">
-                                                <ul class="nav nav-pills nav-stacked">
-                                                    <li><a href="shop.html">Adidas</a></li>
-                                                    <li><a href="shop.html">Nike</a></li>
-                                                    <li><a href="shop.html">Converse</a></li>
-                                                    <li><a href="shop.html">DnG</a></li>
-                                                    <li><a href="shop.html">Snap</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                    <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="brand in brands"><a href="/products/{brand.brandId}">{{brand.brandName}}</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="features.html" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
+                                    <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="icons.html">Icons</a></li>
-                                        <li class="dropdown">
-                                            <a href="features.html" class="dropdown-toggle"><i class="icon-caret-right pull-right visible-desktop"></i> All Features</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="features.html#headings">Headings</a></li>
-                                                <li><a href="features.html#alertBoxes">Alert Boxes</a></li>
-                                            </ul>
-                                        </li>
+                                        <li ng-repeat="category in categories"><a href="/products/{category.categoryId}">{{category.categoryName}}</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact</a></li>
                             </ul>
 
                             <!-- Search -->
@@ -122,7 +99,7 @@
                             <div class="open-panel">
                                 <div class="item-in-cart clearfix">
                                     <div class="image">
-                                        <img src="images/dummy/cart-items/cart-item-1.jpg" width="124" height="124" alt="cart item" />
+                                        <img src="../../resources/images/dummy/cart-items/cart-item-1.jpg" width="124" height="124" alt="cart item" />
                                     </div>
                                     <div class="desc">
                                         <strong><a href="product.html">Adipiscing Vel Vel Felis</a></strong>
@@ -136,45 +113,8 @@
                                         <strong>$5914</strong>
                                     </div>
                                 </div>
-                                <div class="item-in-cart clearfix">
-                                    <div class="image">
-                                        <img src="images/dummy/cart-items/cart-item-2.jpg" width="124" height="124" alt="cart item" />
-                                    </div>
-                                    <div class="desc">
-                                        <strong><a href="product.html">Adipiscing Sed Ac Felis Ut</a></strong>
-                                        <span class="light-clr qty">
-                                            Qty: 1
-                                            &nbsp;
-                                            <a href="#" class="icon-remove-sign" title="Remove Item"></a>
-                                        </span>
-                                    </div>
-                                    <div class="price">
-                                        <strong>$4644</strong>
-                                    </div>
-                                </div>
-                                <div class="item-in-cart clearfix">
-                                    <div class="image">
-                                        <img src="images/dummy/cart-items/cart-item-3.jpg" width="124" height="124" alt="cart item" />
-                                    </div>
-                                    <div class="desc">
-                                        <strong><a href="product.html">Amet Sed Nisi</a></strong>
-                                        <span class="light-clr qty">
-                                            Qty: 1
-                                            &nbsp;
-                                            <a href="#" class="icon-remove-sign" title="Remove Item"></a>
-                                        </span>
-                                    </div>
-                                    <div class="price">
-                                        <strong>$5059</strong>
-                                    </div>
-                                </div>
+                                
                                 <div class="summary">
-                                    <div class="line">
-                                        <div class="row-fluid">
-                                            <div class="span6">Shipping:</div>
-                                            <div class="span6 align-right">$4.99</div>
-                                        </div>
-                                    </div>
                                     <div class="line">
                                         <div class="row-fluid">
                                             <div class="span6">Subtotal:</div>
@@ -183,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="proceed">
-                                    <a href="checkout-step-1.html" class="btn btn-danger pull-right bold higher">CHECKOUT <i class="icon-shopping-cart"></i></a>
+                                    <a href="/order/checkout-step-1" class="btn btn-danger pull-right bold higher">CHECKOUT <i class="icon-shopping-cart"></i></a>
                                     <small>Shipping costs are calculated based on location. <a href="#">More information</a></small>
                                 </div>
                             </div>
@@ -219,7 +159,7 @@
             </div>
         </div>
     </div>
-
+    <!-- detail product -->
     <div class="container">
         <div class="push-up top-equal blocks-spacer">
 
@@ -228,23 +168,23 @@
                 <div class="span5">
                     <div class="product-preview">
                         <div class="picture">
-                            <img src="images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
+                            <img src="../../resources/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
                         </div>
                         <div class="thumbs clearfix">
                             <div class="thumb active">
-                                <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
                             </div>
                         </div>
                     </div>
@@ -252,9 +192,9 @@
 
                 <div class="span7">
                     <div class="product-title">
-                        <h1 class="name"><span class="light">Horsefeathers</span> Shot Surfers T-shirt</h1>
+                        <h1 class="name">{{detailproduct.product.productName}}</h1>
                         <div class="meta">
-                            <span class="tag">$ 59.99</span>
+                            <span class="tag">$ {{detailproduct.product.productPrice}}</span>
                             <span class="stock">
                                 <span class="btn btn-success">In Stock</span>
                                 <span class="btn btn-danger">Out of Stock</span>
@@ -263,10 +203,8 @@
                         </div>
                     </div>
                     <div class="product-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dolor tellus, tempor ut ultrices ferme ntum, aliquam consequat metus. In vel turpis dolorin dapibus dui. Aenean at auctor neque. Lorem ipsum dolor sit , consectetur elit. Fusce dolor tellus, tempor ut ultrices fermentum, aliquam consequat metus. In vel turpis dolor, in dapibus dui. Aenean at auctor neque.</p>
+                        <p>{{detailproduct.product.productDescribe}}</p>
                         <hr/>
-
-
 
                         <form action="#" class="form form-inline clearfix">
                             <div class="numbered">
@@ -277,19 +215,13 @@
                             &nbsp;
                             <select name="color" class="span2">
                                 <option value="-1">Select Color</option>
-                                <option value="blue">Blue</option>
-                                <option value="orange">Orange</option>
-                                <option value="black">Black</option>
+                                <option ng-repeat="color in detailproduct.colorOfProduct" value="{{color.colorId}}">{{color.colorName}}</option>
+
                             </select>
                             &nbsp;
                             <select name="size" class="span2">
                                 <option value="-1">Select Size</option>
-                                <option value="XS">Extra Small</option>
-                                <option value="S">Small</option>
-                                <option value="M">Medium</option>
-                                <option value="L">Large</option>
-                                <option value="XL">Extra Large</option>
-                                <option value="XXL">Huge</option>
+                                <option ng-repeat="size in detailproduct.sizeofproduct" value="{{size.sizeId}}">{{size.sizeName}}</option>
                             </select>
                             <button class="btn btn-danger pull-right"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
                         </form>
@@ -300,35 +232,14 @@
 
             <div class="row">
                 <div class="span12">
-                    <ul id="myTab" class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#tab-1" data-toggle="tab">Details</a>
-                        </li>
-                        <li>
-                            <a href="#tab-2" data-toggle="tab">SIZING CHART</a>
-                        </li>
+                    <ul id="myTab" class="nav nav-tabs" ng-cloak>
                         <li>
                             <a href="#tab-3" data-toggle="tab">COMMENTS</a>
                         </li>
-                        <li>
-                            <a href="#tab-4" data-toggle="tab">SHIPPING DETAILS</a>
-                        </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="fade in tab-pane active" id="tab-1">
-                            <h3>Product Description</h3>
-                            <p>Phasellus velit quam, ultrices et hendrerit vitae, suscipit nec dui. Sed at ligula vitae ligula pellentesque dictum. Duis lobortis auctor ipsum vel placerat. Phasellus nisi odio, ornare eget faucibus et, accumsan nec mauris. per conubia nostra, per inceptos himenaeos.</p>
-                        </div>
-                        <div class="fade tab-pane" id="tab-2">
-                            <p>Tab2
-                            </p>
-                        </div>
                         <div class="fade tab-pane" id="tab-3">
                             <p>Tab3
-                            </p>
-                        </div>
-                        <div class="fade tab-pane" id="tab-4">
-                            <p>Tab4
                             </p>
                         </div>
                     </div>
@@ -336,7 +247,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Related product -->
     <div class="boxed-area no-bottom">
         <div class="container">
 
@@ -351,107 +262,23 @@
             <!-- Related product -->
             <div class="row popup-products">
 
-                <div class="span3">
+                <div class="span3" ng-repeat="product in detailproduct.productsByBrand">
                     <div class="product">
                         <div class="product-inner">
                             <div class="product-img">
                                 <div class="picture">
-                                    <a href="product.html"><img src="images/dummy/products/product-1.jpg" alt="" width="540" height="374" /></a>
+                                    <a href="#"><img src="../../resources/images/dummy/products/product-1.jpg" alt="" width="540" height="374" /></a>
                                     <div class="img-overlay">
-                                        <a class="btn more btn-primary" href="product.html">More</a>
+                                        <a class="btn more btn-primary" href="#">More</a>
                                         <a href="#" class="btn buy btn-danger">Add to Cart</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="main-titles no-margin">
-                                <h4 class="title"><span class="striked">$32</span> <span class="red-clr">$29</span></h4>
-                                <h5 class="no-margin">Adidas Converse 552</h5>
+                                <h4 class="title"><span class="striked">${{product.productPrice}}</span> <span class="red-clr">$29</span></h4>
+                                <h5 class="no-margin">{{product.productName}}</h5>
                             </div>
-                            <p class="desc">59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila</p>
-                            <p class="center-align stars">
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span3">
-                    <div class="product">
-                        <div class="product-inner">
-                            <div class="product-img">
-                                <div class="picture">
-                                    <a href="product.html"><img src="images/dummy/products/product-2.jpg" alt="" width="540" height="374" /></a>
-                                    <div class="img-overlay">
-                                        <a class="btn more btn-primary" href="product.html">More</a>
-                                        <a href="#" class="btn buy btn-danger">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="main-titles no-margin">
-                                <h4 class="title"><span class="striked">$32</span> <span class="red-clr">$29</span></h4>
-                                <h5 class="no-margin">Adidas Converse 552</h5>
-                            </div>
-                            <p class="desc">59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila</p>
-                            <p class="center-align stars">
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span3">
-                    <div class="product">
-                        <div class="product-inner">
-                            <div class="product-img">
-                                <div class="picture">
-                                    <a href="product.html"><img src="images/dummy/products/product-3.jpg" alt="" width="540" height="374" /></a>
-                                    <div class="img-overlay">
-                                        <a class="btn more btn-primary" href="product.html">More</a>
-                                        <a href="#" class="btn buy btn-danger">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="main-titles no-margin">
-                                <h4 class="title"><span class="striked">$32</span> <span class="red-clr">$29</span></h4>
-                                <h5 class="no-margin">Adidas Converse 552</h5>
-                            </div>
-                            <p class="desc">59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila</p>
-                            <p class="center-align stars">
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star stars-clr"></span>
-                                <span class="icon-star"></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="span3">
-                    <div class="product">
-                        <div class="product-inner">
-                            <div class="product-img">
-                                <div class="picture">
-                                    <a href="product.html"><img src="images/dummy/products/product-4.jpg" alt="" width="540" height="374" /></a>
-                                    <div class="img-overlay">
-                                        <a class="btn more btn-primary" href="product.html">More</a>
-                                        <a href="#" class="btn buy btn-danger">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="main-titles no-margin">
-                                <h4 class="title"><span class="striked">$32</span> <span class="red-clr">$29</span></h4>
-                                <h5 class="no-margin">Adidas Converse 552</h5>
-                            </div>
-                            <p class="desc">59% Cotton Lorem Ipsum Dolor Sit Amet esed ultrices sapien nunc nam frignila</p>
+                            <p class="desc">{{product.productDescribe}}</p>
                             <p class="center-align stars">
                                 <span class="icon-star stars-clr"></span>
                                 <span class="icon-star stars-clr"></span>
@@ -472,7 +299,7 @@
             <div class="container">
                 <div class="row">
                     <div class="span4">
-                        <h2 class="pacifico">Webmarket &nbsp; <img src="images/webmarket.png" alt="Webmarket Cart" class="align-baseline"/></h2>
+                        <h2 class="pacifico">Webmarket &nbsp; <img src="../../resources/images/webmarket.png" alt="Webmarket Cart" class="align-baseline"/></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis </p>
                     </div>
                     <div class="span4">
