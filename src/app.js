@@ -10,7 +10,8 @@ var shopOnl = angular.module('appShopOnline', [
     'globalServices',
     'mainController',
     'homeController',
-    'productController'
+    'productController',
+    'authenticationController'
 ]);
 
 
@@ -67,3 +68,8 @@ shopOnl.config(['$routeProvider',
         //$httpProvider.interceptors.push('AuthInterceptorService');
         //$locationProvider.html5Mode(true);
     }]);
+
+shopOnl.run(function ($http, AuthenticationService) {
+    AuthenticationService.clientId = '5648048f62bd961100878525';
+    $http.defaults.headers.common.Authorization = 'Basic NTY0ODA0OGY2MmJkOTYxMTAwODc4NTI1OnZlcnkgc2VjdXJl==';
+});

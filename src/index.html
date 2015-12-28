@@ -22,6 +22,8 @@
     })();
   </script>
  <!--  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
+<link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
+
   <link href="resources/stylesheets/bootstrap.css" rel="stylesheet">
   <link href="resources/stylesheets/responsive.css" rel="stylesheet">
   
@@ -48,8 +50,6 @@
   <script src="node_modules/angular-messages/angular-messages.js"></script>
   <script src="node_modules/angular-cookies/angular-cookies.js"></script>
   <script src="node_modules/angular-material/angular-material.js"></script>
-  <script src="node_modules/angular-route/angular-route.js"></script>
-  <script src="node_modules/angular-resource/angular-resource.js"></script>
 
   <script src="app.js"></script>
   <script src="controller.js"></script>
@@ -58,10 +58,25 @@
   <script src="sections/account/account.ctrl.js"></script>
   <script src="sections/order/order.ctrl.js"></script>
   <script src="sections/product/product.ctrl.js"></script>
+  <script src="sections/authentication/authentication.ctrl.js"></script>
 
 </head>
 <body >
-  <div ng-view ng-controller="GlobalController"></div>
+  <div ng-controller="GlobalController">
+    <md-content>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2>
+              <span>Quiz Ground</span>
+            </h2>
+            <span flex></span>
+            <md-button ng-hide="isLoggedIn" ng-click="showLoginSignUpDialog()">Login</md-button>
+            <md-button ng-show="isLoggedIn" ng-click="logout()">Logout</md-button>
+          </div>
+        </md-toolbar>
+      </md-content>
+      <div ng-view ></div>
+  </div>
   
   <div id="fb-root"></div>
   <script>

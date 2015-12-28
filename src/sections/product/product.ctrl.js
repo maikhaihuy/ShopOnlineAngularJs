@@ -1,4 +1,4 @@
-'use trict';
+'use strict';
 
 /* Product Controller */
 
@@ -16,7 +16,7 @@ productController.controller('ShopController', function ($scope) {
     };
 
     $scope.filterBySize = function (product) {
-        return $scope.filterSize[product.sizeId] || noFilter($scope.filterSize);
+        return filterMultiValue($scope.filterSize, product.sizeId) || noFilter($scope.filterSize);
     };
 
     $scope.filterByColor = function (product) {
@@ -42,19 +42,28 @@ productController.controller('ShopController', function ($scope) {
         }
         return true;
     }
-
+    
+    function filterMultiValue(filterObj, arrayValue) {
+        var res = false;
+    	for (var key in arrayValue) {
+    		if (filterObj[arrayValue[key]]){
+    			res = true;
+    		}
+    	};
+    	return res;
+    }
     this.products = [
-		{"productId" : 4, "productName" : "Name4", "productPrice" : 2350000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : 1},
-		{"productId" : 5, "productName" : "Name5", "productPrice" : 1250000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 2, "sizeId" : 1},
-		{"productId" : 6, "productName" : "Name6", "productPrice" : 850000, "productName" : "NAke2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : 2}
+		{"productId" : 4, "productName" : "Name4", "productPrice" : 2350000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : [1,2]},
+		{"productId" : 5, "productName" : "Name5", "productPrice" : 1250000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 2, "sizeId" : [1,3]},
+		{"productId" : 6, "productName" : "Name6", "productPrice" : 850000, "productName" : "NAke2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : [2,3]}
 		];
 });
 
 productController.controller('DetailProductController', [function ($scope, $routeParams) {
 	this.productsByBrand = [
-		{"productId" : 4, "productName" : "Name4", "productPrice" : 2350000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : 1},
-		{"productId" : 5, "productName" : "Name5", "productPrice" : 1250000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 2, "sizeId" : 1},
-		{"productId" : 6, "productName" : "Name6", "productPrice" : 850000, "productName" : "NAke2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : 2}
+		{"productId" : 4, "productName" : "Name4", "productPrice" : 2350000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : [1,2]},
+		{"productId" : 5, "productName" : "Name5", "productPrice" : 1250000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 2, "sizeId" : [1,3]},
+		{"productId" : 6, "productName" : "Name6", "productPrice" : 850000, "productName" : "NAke2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : [2,3]}
 		];
 	this.sizeofproduct = [
 	{"sizeId": 1, "sizeName": "S"},
