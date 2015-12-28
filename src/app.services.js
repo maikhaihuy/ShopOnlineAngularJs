@@ -5,20 +5,34 @@
 
 var globalServices = angular.module('globalServices', []);
 
-/* Factories */
-globalServices.factory('CallBackend', ['$http', function ($http) {
-	var mainUrl = 'localhost:8080/ShopOnline',
-		CallBackend = {};
+// Call back end
+globalServices.service('CallBackend', function ($http) {
+	this.getBackend = function (subUrl) {
+		var url = 'http://localhost:8080/ShopOnline' + subUrl;
+		return $http({
+			method: 'GET',
+			url: url
+		});
+	};
 
-	CallBackend.getQuery = function(query) {
-		return $http.get(mainUrl + query);
-	}
+	this.getBackendParams = function (subUrl, params) {
+		var url = 'http://localhost:8080/ShopOnline' + subUrl;
+		return $http({
+			method: 'GET',
+			url: url,
+			params: params
+		});
+	};
 
-	CallBackend.postQuery = function(query, data) {
-		return $http.post(baseUrl + query, data);
+	this.postBackend = function (subUrl, data) {
+		var url = 'http://localhost:8080/ShopOnline' + subUrl;
+		return $http({
+			method: 'POST',
+			url: url,
+			data: data
+		});
 	}
-	return CallBackend;
-}]);
+});
 
 globalServices.service('Service', [function (CallBackend) {
 	this.getAllBrand = function(query){
@@ -65,27 +79,6 @@ globalServices.service('Service', [function (CallBackend) {
 			"sizeId": 3,
 			"sizeName": "L"
 		}];
-	}
-}]);
-
-globalServices.service('ProductService', [function () {
-	this.getProduct = function (productId) {
-		return {};
-	}
-	this.getProductByBrand = function (brandId) {
-		return {};
-	}
-	this.getProductByCategory = function (categoryId) {
-		return {};
-	}
-	this.getProductBySearch = function (categoryId, nameProduct) {
-		return {};
-	}
-	this.getAllProduct = function () {
-		return {};
-	}
-	this.getDetailProduct = function (productId, sizeId, colorId) {
-		return {};
 	}
 }]);
 

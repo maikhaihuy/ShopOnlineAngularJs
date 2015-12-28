@@ -3,44 +3,9 @@
 /* Main controller */
 var appController = angular.module('mainController', []);
 
-/*
-appController.service('BrandService', [function () {
-	this.getAllBrand = function(){
-		//return CallBackend.getQuery(query);
-		return [{
-			"brandId": 1,
-			"braindName": "Nike"
-		}, {
-			"brandId": 2,
-			"braindName": "Converse"
-		}]
-	};
-}]);*/
-
-appController.controller('GlobalController', function ($scope, $mdDialog, Service, AuthenticationService) {
-	$scope.urlBase = 'http://localhost:8080/ShopOnline/';
-
-	$scope.brands = Service.getAllBrand("");
-	$scope.colors = Service.getAllColor("");
-	$scope.sizes = Service.getAllSize("");
-	$scope.categories = Service.getAllCategory("");
-
-	$scope.logout = function () {
-		if ($scope.isLoggedIn) {
-			AuthenticationService.token = null;
-		}
-	};
-	$scope.showLoginSignUpDialog = function () {
-		$mdDialog.show({
-			controller: AuthenticationController,
-			templateUrl: '/sections/authentication/authentication.tpl.html',
-			parent: angular.element(document.body),
-			clickOutsideToClose: true
-		});
-	};
-});
-
-appController.controller('AuthenticationController', function ($scope, $mdDialog, AuthenticationService){
+appController.controller('GlobalController', GlobalController);
+	
+	function AuthenticationController ($scope, $mdDialog, AuthenticationService){
 	$scope.isLogin = true;
         $scope.hide = function () {
             $mdDialog.hide();
@@ -90,7 +55,30 @@ appController.controller('AuthenticationController', function ($scope, $mdDialog
                     $scope.loginError = 'Error during register.';
                 });
         };
-});
+};
+
+	function GlobalController ($scope, $mdDialog, Service, AuthenticationService) {
+    	$scope.urlBase = 'http://localhost:8080/ShopOnline';
+
+    	$scope.brands = Service.getAllBrand("");
+    	$scope.colors = Service.getAllColor("");
+    	$scope.sizes = Service.getAllSize("");
+    	$scope.categories = Service.getAllCategory("");
+
+    	$scope.logout = function () {
+    		if ($scope.isLoggedIn) {
+    			AuthenticationService.token = null;
+    		}
+    	};
+    	$scope.showLoginSignUpDialog = function () {
+    		$mdDialog.show({
+    			controller: AuthenticationController,
+    			templateUrl: '/sections/authentication/authentication.tpl.html',
+    			parent: angular.element(document.body),
+    			clickOutsideToClose: true
+    		});
+    	};
+};
 
 /*appController.controller('BrandController', function ($scope, BrandService) {
 	$scope.brands = BrandService.getAllBrand("");

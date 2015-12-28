@@ -1,3 +1,0 @@
-'use trict'
-
-/* Product services */
