@@ -57,13 +57,28 @@ appController.controller('GlobalController', GlobalController);
         };
 };
 
-	function GlobalController ($scope, $mdDialog, Service, AuthenticationService) {
+	function GlobalController ($scope, $mdDialog, CallBackend, AuthenticationService) {
     	$scope.urlBase = 'http://localhost:8080/ShopOnline';
 
-    	$scope.brands = Service.getAllBrand("");
-    	$scope.colors = Service.getAllColor("");
-    	$scope.sizes = Service.getAllSize("");
-    	$scope.categories = Service.getAllCategory("");
+        $scope.brands = null;
+        CallBackend.getBackend("/brand/all").then(function(dataResponse){
+            $scope.brands = dataResponse.data;
+        });
+
+        $scope.colors = null;
+        CallBackend.getBackend("/color/all").then(function(dataResponse){
+            $scope.colors = dataResponse.data;
+        });
+
+        $scope.sizes = null;
+        CallBackend.getBackend("/size/all").then(function(dataResponse){
+            $scope.sizes = dataResponse.data;
+        });
+
+        $scope.categories = null;
+        CallBackend.getBackend("/category/all").then(function(dataResponse){
+            $scope.categories = dataResponse.data;
+        });
 
     	$scope.logout = function () {
     		if ($scope.isLoggedIn) {
@@ -79,19 +94,3 @@ appController.controller('GlobalController', GlobalController);
     		});
     	};
 };
-
-/*appController.controller('BrandController', function ($scope, BrandService) {
-	$scope.brands = BrandService.getAllBrand("");
-});
-
-appController.controller('ColorController', function ($scope, ColorService) {
-	$scope.colors = ColorService.getAllColor("");
-});
-
-appController.controller('SizeController', function ($scope, SizeService) {
-	$scope.sizes = SizeService.getAllSize("");
-});
-
-appController.controller('CategoryController', function ($scope, CategoryService) {
-	$scope.categories = CategoryService.getAllCategory("");
-});*/

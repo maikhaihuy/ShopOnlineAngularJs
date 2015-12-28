@@ -15,14 +15,10 @@ homeController.controller('IndexController', function ($scope, CallBackend){
 	CallBackend.getBackend("/product/newproducts").then(function(dataResponse){
 		$scope.lstNewProducts = dataResponse.data;
 	});
-	$scope.lstDiscountProducts = [
-		{"productId" : 4, "productName" : "Name4", "productPrice" : 2350000, "productName" : "Aike2000", "productDescribe" : "Hello"},
-		{"productId" : 5, "productName" : "Name5", "productPrice" : 1250000, "productName" : "Aike2000", "productDescribe" : "Hello"},
-		{"productId" : 6, "productName" : "Name6", "productPrice" : 850000, "productName" : "Nike2000", "productDescribe" : "Hello"}
-		];
-	/*CallBackend.getBackend("/product/discountproducts").then(function(dataResponse){
+	$scope.lstDiscountProducts = null;
+	CallBackend.getBackend("/product/discountproducts").then(function(dataResponse){
 		$scope.lstDiscountProducts = dataResponse.data;
-	});*/
+	});
 	
 	$scope.lstProductSearch = null;
 	$scope.search = function () {

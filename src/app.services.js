@@ -34,54 +34,6 @@ globalServices.service('CallBackend', function ($http) {
 	}
 });
 
-globalServices.service('Service', [function (CallBackend) {
-	this.getAllBrand = function(query){
-		return [{
-			"brandId": 1,
-			"brandName": "Nike"
-		}, {
-			"brandId": 2,
-			"brandName": "Converse"
-		}];
-	};
-
-	this.getAllCategory = function(query){
-		//return CallBackend.getQuery(query);
-		return [{
-			"categoryId": 1,
-			"categoryName": "Nam"
-		}, {
-			"categoryId": 2,
-			"categoryName": "Nu"
-		}];
-	};
-	this.getAllColor = function(query){
-		// return CallBackend.getQuery(query);
-		return [{
-			"colorId": 1,
-			"colorName": "Red"
-		}, {
-			"colorId": 2,
-			"colorName": "Green"
-		}];
-	};
-	this.getAllSize = function(query){
-		// return CallBackend.getQuery(query);
-		return [{
-			"sizeId": 1,
-			"sizeName": "S"
-		},
-		{
-			"sizeId": 2,
-			"sizeName": "M"
-		},
-		{
-			"sizeId": 3,
-			"sizeName": "L"
-		}];
-	}
-}]);
-
 globalServices.factory('AuthenticationService', [function ($http, $cookies) {
 	var loginUrl = 'http://localhost:8080/',
             signupUrl = 'http://localhost:8080/',

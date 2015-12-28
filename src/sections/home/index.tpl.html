@@ -65,13 +65,13 @@
                                 <li class="dropdown dropdown-supermenu" >
                                     <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li ng-repeat="brand in brands"><a href="/products/{brand.brandId}">{{brand.brandName}}</a></li>
+                                        <li ng-repeat="brand in brands"><a href="/products/brand/{{brand.brandId}}">{{brand.brandName}}</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li ng-repeat="category in categories"><a href="/products/{category.categoryId}">{{category.categoryName}}</a></li>
+                                        <li ng-repeat="category in categories"><a href="/products/category/{{category.categoryId}}">{{category.categoryName}}</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">About Us</a></li>
@@ -204,7 +204,7 @@
                         <div class="product-inner">
                             <div class="product-img">
                                 <div class="picture">
-                                    <a href="/products/{{product.productId}}"><img ng-src="{{'../../' + product.productImage" alt="" width="540" height="412" /></a>
+                                    <a href="/products/{{product.productId}}"><img ng-src="{{'../../' + product.productImage}}" alt="" width="540" height="412" /></a>
                                     <div class="img-overlay">
                                         <a href="/products/{{product.productId}}" class="btn more btn-primary">More</a>
                                         <a href="/products/{{product.productId}}" class="btn buy btn-danger">Add to Cart</a>

@@ -34,13 +34,13 @@ shopOnl.config(['$routeProvider',
                 templateUrl: 'sections/product/product.tpl.html',
                 controller: 'DetailProductController'
             })
-            /*.when('/ShopOnline/products/:brandId', {
-                templateUrl: 'sections/product/product.tpl.html',
-                controller: 'ProductController'
+            .when('/ShopOnline//products/brand/:brandId', {
+                templateUrl: 'sections/product/shop.tpl.html',
+                controller: 'ShopController'
             })
-            .when('/ShopOnline/products/:categoryId', {
-                templateUrl: 'sections/product/product.tpl.html',
-                controller: 'ProductController'
+            .when('/ShopOnline//products/category/:categoryId', {
+                templateUrl: 'sections/product/shop.tpl.html',
+                controller: 'ShopController'
             })
             .when('/ShopOnline/account/my-account', {
                 templateUrl: 'sections/account/my-account.tpl.html',
