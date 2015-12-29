@@ -10,8 +10,7 @@ var shopOnl = angular.module('appShopOnline', [
     'globalServices',
     'mainController',
     'homeController',
-    'productController',
-    'authenticationController'
+    'productController'
 ]);
 
 
@@ -72,4 +71,5 @@ shopOnl.config(['$routeProvider',
 shopOnl.run(function ($http, AuthenticationService) {
     AuthenticationService.clientId = '5648048f62bd961100878525';
     $http.defaults.headers.common.Authorization = 'Basic NTY0ODA0OGY2MmJkOTYxMTAwODc4NTI1OnZlcnkgc2VjdXJl==';
+    $http.defaults.headers.post['Content-Type'] = 'application/json';
 });

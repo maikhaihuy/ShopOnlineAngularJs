@@ -16,7 +16,7 @@ auController.controller('AuthenticationController', function ($scope, $mdDialog,
         AuthenticationService.login($scope.user)
         .then(function (response) {
             $scope.loading = false;
-            AuthenticationService.handleResponse(response.data);
+            //AuthenticationService.handleResponse(response.data);
             $mdDialog.hide();
         }, function () {
             $scope.loading = false;
@@ -37,9 +37,9 @@ auController.controller('AuthenticationController', function ($scope, $mdDialog,
             return;
         }
         if ($scope.user.password !== $scope.user.confirmPassword) {
-            $scope.loginError = 'Mật khẩu nhập lại không trùng khớp.';
-            return;
-        }
+                $scope.loginError = 'Mật khẩu nhập lại không trùng khớp.';
+                return;
+            }
         $scope.loading = true;
         AuthenticationService.signup($scope.user)
         .then(function (response) {

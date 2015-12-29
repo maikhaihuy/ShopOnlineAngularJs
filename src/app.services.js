@@ -34,14 +34,14 @@ globalServices.service('CallBackend', function ($http) {
 	}
 });
 
-globalServices.factory('AuthenticationService', [function ($http, $cookies) {
-	var loginUrl = 'http://localhost:8080/',
-            signupUrl = 'http://localhost:8080/',
-            AuthenticationService = {};
+globalServices.factory('AuthenticationService', function ($http, $cookies) {
+	var loginUrl = 'http://localhost:8080/ShopOnline/user/login',
+        signupUrl = 'http://localhost:8080/ShopOnline/user/new',
+        AuthenticationService = {};
 
-        AuthenticationService.token = 'abc';//$cookies.get('access_token');
+        //AuthenticationService.token = 'abc';//$cookies.get('access_token');
 
-        AuthenticationService.getBearerHeader = function () {
+        /*AuthenticationService.getBearerHeader = function () {
             if (AuthenticationService.token) {
                 return {
                     headers: {
@@ -50,33 +50,51 @@ globalServices.factory('AuthenticationService', [function ($http, $cookies) {
                 };
             }
             return null;
-        };
+        };*/
 
         AuthenticationService.login = function (user) {
-            return $http.post(loginUrl, {
-                username:   user.username,
-                password:   user.password,
-                grant_type: 'password',
-                client_id:  AuthenticationService.clientId
-            });
+        	var data = {
+                "userName":   user.username,
+                "userPassword":   user.password
+            };
+            return $http({
+				method: 'POST',
+				url: loginUrl,
+				data: data,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(data) {
+			    return data;
+		 	}).error(function(data) {
+			    alert("error");
+		  	});
         };
 
         AuthenticationService.signup = function (user) {
-            return $http.post(signupUrl, {
-                username:   user.username,
-                password:   user.password,
-                name:       user.name
-            });
+            var data = {
+                "userName":   user.username,
+                "userPassword":   user.password,
+                "userEmail":       user.email
+            };
+		  	return $http({
+				method: 'POST',
+				url: signupUrl,
+				data: data,
+				headers: {'Content-Type': 'application/json'}
+			}).success(function(data) {
+			    return data;
+		 	}).error(function(data) {
+			    alert("error");
+		  	});
         };
 
-        AuthenticationService.handleResponse = function (data) {
+        /*AuthenticationService.handleResponse = function (data) {
             AuthenticationService.token = data.access_token;
             AuthenticationService.expirationDate = new Date(Date.now() + data.expires_in * 1000);
             AuthenticationService.refreshToken = data.refresh_token;
             $cookies.put('access_token', AuthenticationService.token, { expires: AuthenticationService.expirationDate });
-        };
+        };*/
 
-        AuthenticationService.refreshAccessToken = function () {
+        /*AuthenticationService.refreshAccessToken = function () {
             return $http.post(loginUrl, {
                 refresh_token:  AuthenticationService.refreshToken,
                 grant_type:     'refresh_token',
@@ -84,55 +102,7 @@ globalServices.factory('AuthenticationService', [function ($http, $cookies) {
             }).then(function (response) {
                 AuthenticationService.handleResponse(response.data);
             });
-        };
+        };*/
 
         return AuthenticationService;
-}]);
-
-/*globalServices.service('UserService', [function () {
-	this.getAccount = function (username) {
-
-	}
-
-	this.login = function ()
-}])*/
-/*
-globalServices.service('CategoryService', [function (CallBackend) {
-	this.getAllCategory = function(query){
-		//return CallBackend.getQuery(query);
-		return [{
-			"categoryId": 1,
-			"categoryName": "Nam"
-		}, {
-			"categoryId": 2,
-			"categoryName": "Nu"
-		}];
-	}
-}]);
-
-globalServices.service('ColorService', [function (CallBackend) {
-	this.getAllColor = function(query){
-		// return CallBackend.getQuery(query);
-		return [{
-			"colorId": 1,
-			"colorName": "Red"
-		}, {
-			"colorId": 2,
-			"colorName": "Green"
-		}];
-	}
-}]);
-
-globalServices.service('SizeService', [function (CallBackend) {
-	this.getAllSize = function(query){
-		// return CallBackend.getQuery(query);
-		return [{
-			"sizeId": 1,
-			"sizeName": "S"
-		}, {
-			"sizeId": 2,
-			"sizeName": "L"
-		}];
-	}
-}]);
-*/
+});

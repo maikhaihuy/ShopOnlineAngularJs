@@ -16,12 +16,13 @@ appController.controller('GlobalController', GlobalController);
         function login() {
             AuthenticationService.login($scope.user)
                 .then(function (response) {
-                    $scope.loading = false;
-                    AuthenticationService.handleResponse(response.data);
-                    $mdDialog.hide();
+                        $scope.loading = false;
+                        //AuthenticationService.handleResponse(response.data);
+                        $mdDialog.hide();
+                        $scope.isLoggedIn = true;
                 }, function () {
                     $scope.loading = false;
-                    $scope.loginError = 'Login failed.';
+                    $scope.loginError = 'Login failed. Or. Check mail and verify';
                 });
         }
         $scope.login = function () {
@@ -88,7 +89,7 @@ appController.controller('GlobalController', GlobalController);
     	$scope.showLoginSignUpDialog = function () {
     		$mdDialog.show({
     			controller: AuthenticationController,
-    			templateUrl: '/sections/authentication/authentication.tpl.html',
+    			templateUrl: 'authentication.tpl.html',
     			parent: angular.element(document.body),
     			clickOutsideToClose: true
     		});

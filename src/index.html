@@ -70,11 +70,11 @@
         <md-toolbar>
           <div class="md-toolbar-tools">
             <h2>
-              <span>Quiz Ground</span>
+              <span>Shop Online </span>
             </h2>
             <span flex></span>
             <md-button ng-hide="isLoggedIn" ng-click="showLoginSignUpDialog()">Login</md-button>
-            <md-button ng-show="isLoggedIn" ng-click="logout()">Logout</md-button>
+            <md-button ng-show="isLoggedIn" ng-click="logout()">{{user.username}} Logout</md-button>
           </div>
         </md-toolbar>
       </md-content>
