@@ -1,0 +1,371 @@
+<div class="master-wrapper" ng-controller="ShopController">
+    <!-- Start header -->
+    <header id="header">
+        <!-- header -->
+        <div class="darker-row">
+            <div class="container">
+                <div class="row">
+                    <div class="span4">
+                        <div class="higher-line">
+                            Wellcome! Please
+                            <a href="#registerModal" role="button" data-toggle="modal">Register</a> or
+                            <a href="#loginModal" role="button" data-toggle="modal">Login</a>
+                        </div>
+                    </div>
+                    <div class="span8">
+                        <div class="topmost-line">
+
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Quick information site -->
+        <div class="container">
+            <div class="row">
+                <div class="span7">
+                    <a class="brand" href="/">
+                        <img src="../../resources/images/logo.png" alt="Webmarket Logo" width="48" height="48" />
+                        <span class="pacifico">Shop Online</span>
+                        <span class="tagline">Buy and enjoy best services</span>
+                    </a>
+                </div>
+
+                <div class="span5">
+                    <div class="top-right">
+                        <div class="icons">
+                            <a href="http://www.facebook.com/ProteusNet"><span class="zocial-facebook"></span></a>
+                            <a href="skype:heocon1803?call"><span class="zocial-skype"></span></a>
+                            <a href="https://twitter.com/proteusnetcom"><span class="zocial-twitter"></span></a>
+                            <a href="http://eepurl.com/xFPYD"><span class="zocial-rss"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Start menu -->
+    <div class="navbar navbar-static-top" id="stickyNavbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="span9">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div class="nav-collapse collapse">
+                            <ul class="nav" id="mainNavigation">
+                                <li><a href="#/ShopOnline/shop"> Home </a></li>
+                                <li class="dropdown dropdown-supermenu" >
+                                    <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="brand in brands"><a href="/#/ShopOnline/products/brand/{{brand.brandId}}">{{brand.brandName}}</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="category in categories"><a href="/#/ShopOnline/products/category/{{category.categoryId}}">{{category.categoryName}}</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+
+                            <!-- Search -->
+                            <form class="navbar-form pull-right" action="#" method="get">
+                                <button type="submit"><span class="icon-search"></span></button>
+                                <input type="text" class="span1" name="search" id="navSearchInput">
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Cart -->
+                    <div class="span3">
+                        <div class="cart-container" id="cartContainer">
+                            <div class="cart">
+                                <p class="items">CART <span class="dark-clr">(3)</span></p>
+                                <p class="dark-clr hidden-tablet">$1816.90</p>
+                                <a href="checkout-step-1.html" class="btn btn-danger">
+
+                                    <i class="icon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <div class="open-panel">
+                                <div class="item-in-cart clearfix">
+                                    <div class="image">
+                                        <img src="../../resources/images/dummy/cart-items/cart-item-1.jpg" width="124" height="124" alt="cart item" />
+                                    </div>
+                                    <div class="desc">
+                                        <strong><a href="product.html">Adipiscing Vel Vel Felis</a></strong>
+                                        <span class="light-clr qty">
+                                            Qty: 1
+                                            &nbsp;
+                                            <a href="#" class="icon-remove-sign" title="Remove Item"></a>
+                                        </span>
+                                    </div>
+                                    <div class="price">
+                                        <strong>$5914</strong>
+                                    </div>
+                                </div>
+                                
+                                <div class="summary">
+                                    <div class="line">
+                                        <div class="row-fluid">
+                                            <div class="span6">Subtotal:</div>
+                                            <div class="span6 align-right size-16">$357.81</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="proceed">
+                                    <a href="/order/checkout-step-1" class="btn btn-danger pull-right bold higher">CHECKOUT <i class="icon-shopping-cart"></i></a>
+                                    <small>Shipping costs are calculated based on location. <a href="#">More information</a></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracker -->
+    <div class="darker-stripe">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index-2.html">Webmarket</a>
+                        </li>
+                        <li><span class="icon-chevron-right"></span></li>
+                        <li>
+                            <a href="shop.html">Shop</a>
+                        </li>
+                        <li><span class="icon-chevron-right"></span></li>
+                        <li>
+                            <a href="shop.html">Grid View</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="push-up blocks-spacer">
+            <div class="row">
+
+               <!-- Left side -->
+                <aside class="span3 left-sidebar" id="tourStep1">
+                    <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+                       <!-- Filter -->
+                       <div class="underlined">
+                        <h3><span class="light">Shop</span> by filters</h3>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="accordion-group" id="tourStep2">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle" data-toggle="collapse" href="#filterOne">Categories <b class="caret"></b></div>
+                        </div>
+                        <div id="filterOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div ng-repeat="category in categories" >
+                                    <input class="box" type="checkbox" ng-model="filterCate[category.categoryId]"/> {{category.categoryName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">Price <b class="caret"></b></a>
+                        </div>
+
+                        <div id="filterPrices" class="accordion-body in collapse">
+                            <div class="accordion-inner with-slider">
+
+                                <input type="text" data-initial="432" class="max-val pull-right" disabled />
+                                <input type="text" data-initial="99" class="min-val" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="accordion-group" id="tourStep3">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">Size <b class="caret"></b></div>
+                        </div>
+                        <div id="filterTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="size in sizes" >
+                                    <input class="box" type="checkbox" ng-model="filterSize[size.sizeId]"/> {{size.sizeName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Color -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">Color <b class="caret"></b></div>
+                        </div>
+                        <div id="filterThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="color in colors" >
+                                    <input class="box" type="checkbox" ng-model="filterColor[color.colorId]"/> {{color.colorName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">Brand <b class="caret"></b></div>
+                        </div>
+                        <div id="filterFour" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="brand in brands" >
+                                    <input class="box" type="checkbox" ng-model="filterBrand[brand.brandId]"/> {{brand.brandName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> Remove All Filters</a>
+                    </div>
+                </aside>
+
+                <!-- Right side -->
+                <section class="span9" ng-controller="ProductsByBrandController">
+                   <!-- Header right side -->
+                   <div class="underlined push-down-20">
+                        <div class="row">
+                            <div class="span4">
+                                <h3><span class="light">All</span> Products</h3>
+                            </div>
+                            <div class="span5 align-right sm-align-left">
+                                <div class="form-inline sorting-by" id="tourStep4">
+                                    <label for="isotopeSorting" class="black-clr">Sort:</label>
+                                    <select id="isotopeSorting" class="span3" ng-model="sortBy">
+                                        <option value="None">-- Select --</option>
+                                        <option value="productPrice">By Price (Low to High) &uarr;</option>
+                                        <option value="-productPrice">By Price (High to Low) &darr;</option>
+                                        <option value="productName">By Name (Low to High) &uarr;</option>
+                                        <option value="-productName">By Name (High to Low) &darr;</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body right side -->
+                    <div class="row popup-products">
+                        <div id="isotopeContainer" class="isotope-container">
+                            <div class="span3 isotope--target filter--boots" ng-repeat="product in filtered=(lstProductByBrand  | filter:filterByCategory | filter:filterBySize | filter:filterByBrand | filter:filterByColor | orderBy:sortBy)">
+                                <div class="product">
+                                    <div class="product-inner">
+                                        <div class="stamp red">Sold</div>
+                                        <div class="product-img">
+                                            <div class="picture">
+                                                <a href="#/ShopOnline/products/{{product.product.productId}}"><img width="540" height="374" alt="" src="../../{{product.product.productImage}}" /></a>
+                                                <div class="img-overlay">
+                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.product.productId}}">More</a>
+                                                    <a class="btn buy btn-danger" href="#">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-titles no-margin">
+                                            <h4 class="title">${{product.product.productPrice}}</h4>
+                                            <h5 class="no-margin isotope--title">{{product.product.productName}}</h5>
+                                        </div>
+                                        <div class="row-fluid hidden-line">
+                                            <div class="span6">
+                                                <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
+                                                <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
+                                            </div>
+                                            <div class="span6 align-right">
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star stars-clr"></span>
+                                                <span class="icon-star"></span>
+                                                <span class="icon-star"></span>
+                                                <span class="icon-star"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </section>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+<footer>
+    <div class="foot-light">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <h2 class="pacifico">Webmarket &nbsp; <img src="../../resources/images/webmarket.png" alt="Webmarket Cart" class="align-baseline"/></h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis </p>
+                </div>
+                <div class="span4">
+                    <div class="main-titles lined">
+                        <h3 class="title">Facebook</h3>
+                    </div>
+                    <div class="bordered">
+                        <div class="fill-iframe">
+                            <div class="fb-like-box" data-href="https://www.facebook.com/ProteusNet" data-width="292" data-height="200" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="main-titles lined">
+                        <h3 class="title"><span class="light">Newsletters</span> Signup</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida.</p>
+
+                    <div id="mc_embed_signup">
+                        <form action="http://proteusthemes.us4.list-manage1.com/subscribe/post?u=ea0786485977f5ec8c9283d5c&amp;id=5dad3f35e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form form-inline" target="_blank" novalidate>
+                            <div class="mc-field-group">
+                                <input type="email" value="" placeholder="Enter your e-mail address" name="EMAIL" class="required email" id="mce-EMAIL">
+                                <input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="foot-last">
+        <a href="#" id="toTheTop">
+            <span class="icon-chevron-up"></span>
+        </a>
+        <div class="container">
+            <div class="row">
+                <div class="span6">
+                    &copy; Copyright 2013. Images of products by <a target="_blank" href="http://www.horsefeathers.eu/">Horsefeathers</a>.
+                </div>
+                <div class="span6">
+                    <div class="pull-right">Webmarket HTML Template by <a href="http://www.proteusthemes.com/">ProteusThemes</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>

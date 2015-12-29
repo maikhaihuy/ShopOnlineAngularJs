@@ -1,4 +1,4 @@
-<div class="master-wrapper" ng-controller="DetailProductController as detailproduct">
+<div class="master-wrapper" ng-controller="DetailProductController">
 
     <!-- Start header -->
     <header id="header">
@@ -168,23 +168,11 @@
                 <div class="span5">
                     <div class="product-preview">
                         <div class="picture">
-                            <img src="../../resources/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
+                            <img src="../../{{detailProduct.product.productImage}}" alt="" width="940" height="940" id="mainPreviewImg" />
                         </div>
                         <div class="thumbs clearfix">
-                            <div class="thumb active">
-                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
-                            </div>
-                            <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
-                            </div>
-                            <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
-                            </div>
-                            <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
-                            </div>
-                            <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="../../resources/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                            <div class="thumb active" ng-repeat="image in detailProduct.listImages">
+                                <a href="#mainPreviewImg"><img src="../../{{image}}" alt="" width="940" height="940" /></a>
                             </div>
                         </div>
                     </div>
@@ -192,9 +180,9 @@
 
                 <div class="span7">
                     <div class="product-title">
-                        <h1 class="name">{{detailproduct.product.productName}}</h1>
+                        <h1 class="name">{{detailProduct.product.productName}}</h1>
                         <div class="meta">
-                            <span class="tag">$ {{detailproduct.product.productPrice}}</span>
+                            <span class="tag">$ {{detailProduct.product.productPrice}}</span>
                             <span class="stock">
                                 <span class="btn btn-success">In Stock</span>
                                 <span class="btn btn-danger">Out of Stock</span>
@@ -203,7 +191,7 @@
                         </div>
                     </div>
                     <div class="product-description">
-                        <p>{{detailproduct.product.productDescribe}}</p>
+                        <p>{{detailProduct.product.productDescribe}}</p>
                         <hr/>
 
                         <form action="#" class="form form-inline clearfix">
@@ -215,15 +203,15 @@
                             &nbsp;
                             <select name="color" class="span2">
                                 <option value="-1">Select Color</option>
-                                <option ng-repeat="color in detailproduct.colorOfProduct" value="{{color.colorId}}">{{color.colorName}}</option>
+                                <option ng-repeat="color in detailProduct.listColor" value="{{color.colorId}}">{{color.colorName}}</option>
 
                             </select>
                             &nbsp;
                             <select name="size" class="span2">
                                 <option value="-1">Select Size</option>
-                                <option ng-repeat="size in detailproduct.sizeofproduct" value="{{size.sizeId}}">{{size.sizeName}}</option>
+                                <option ng-repeat="size in detailProduct.listSize" value="{{size.sizeId}}">{{size.sizeName}}</option>
                             </select>
-                            <button class="btn btn-danger pull-right"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
+                            <button class="btn btn-danger pull-right" ng-click="addToCart()"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
                         </form>
                         <hr/>
                     </div>
@@ -239,7 +227,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="fade tab-pane" id="tab-3">
-                            <p>Tab3
+                            <p>Empty
                             </p>
                         </div>
                     </div>
@@ -262,12 +250,12 @@
             <!-- Related product -->
             <div class="row popup-products">
 
-                <div class="span3" ng-repeat="product in detailproduct.productsByBrand">
+                <div class="span3" ng-repeat="product in lstProductRelated">
                     <div class="product">
                         <div class="product-inner">
                             <div class="product-img">
                                 <div class="picture">
-                                    <a href="#"><img src="../../resources/images/dummy/products/product-1.jpg" alt="" width="540" height="374" /></a>
+                                    <a href="#"><img src="../../{{product.product.productImage}}" alt="" width="540" height="374" /></a>
                                     <div class="img-overlay">
                                         <a class="btn more btn-primary" href="#">More</a>
                                         <a href="#" class="btn buy btn-danger">Add to Cart</a>
@@ -275,10 +263,10 @@
                                 </div>
                             </div>
                             <div class="main-titles no-margin">
-                                <h4 class="title"><span class="striked">${{product.productPrice}}</span> <span class="red-clr">$29</span></h4>
-                                <h5 class="no-margin">{{product.productName}}</h5>
+                                <h4 class="title"><span class="striked">${{product.product.productPrice}}</span> <span class="red-clr">$29</span></h4>
+                                <h5 class="no-margin">{{product.product.productName}}</h5>
                             </div>
-                            <p class="desc">{{product.productDescribe}}</p>
+                            
                             <p class="center-align stars">
                                 <span class="icon-star stars-clr"></span>
                                 <span class="icon-star stars-clr"></span>
@@ -352,102 +340,4 @@
             </div>
         </div>
     </footer>
-
-    <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="loginModalLabel"><span class="light">Login</span> To Webmarket</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmail">Username</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputEmail" placeholder="Username" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputPassword">Password</label>
-                    <div class="controls">
-                        <input type="password" class="input-block-level" id="inputPassword" placeholder="Password" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <label class="checkbox">
-                            <input type="checkbox"> Remember me
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary input-block-level bold higher">
-                    SIGN IN
-                </button>
-            </form>
-            <p class="center-align push-down-0">
-                <a data-toggle="modal" role="button" href="#forgotPassModal" data-dismiss="modal">Forgot your password?</a>
-            </p>
-        </div>
-    </div>
-
-    <div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="registerModalLabel"><span class="light">Register</span> To Webmarket</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
-                    <div class="controls">
-                        <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputPasswordRegister">Password</label>
-                    <div class="controls">
-                        <input type="password" class="input-block-level" id="inputPasswordRegister" placeholder="Password" required>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-danger input-block-level bold higher">
-                    REGISTER
-                </button>
-            </form>
-            <p class="center-align push-down-0">
-                <a data-toggle="modal" role="button" href="#loginModal" data-dismiss="modal">Already Registered?</a>
-            </p>
-        </div>
-    </div>
-
-    <div id="forgotPassModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="forgotPassModalLabel"><span class="light">Forgot</span> your password?</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post" action="#">
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
-                    <div class="controls">
-                        <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username">
-                    </div>
-                </div>
-                <p class="center-align">OR</p>
-                <div class="control-group">
-                    <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
-                    <div class="controls">
-                        <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary input-block-level bold higher">
-                    SEND ME A NEW PASSWORD
-                </button>
-            </form>
-        </div>
-    </div>
 </div>
