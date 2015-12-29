@@ -1,4 +1,4 @@
-<div class="master-wrapper" ng-controller="ShopController as products">
+<div class="master-wrapper" ng-controller="ShopController">
     <!-- Start header -->
     <header id="header">
         <!-- header -->
@@ -60,17 +60,17 @@
 
                         <div class="nav-collapse collapse">
                             <ul class="nav" id="mainNavigation">
-                                <li><a href="/"> Home </a></li>
-                                <li class="dropdown dropdown-supermenu">
+                                <li><a href="#/ShopOnline/shop"> Home </a></li>
+                                <li class="dropdown dropdown-supermenu" >
                                     <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li ng-repeat="brand in brands"><a href="/products/{brand.brandId}">{{brand.brandName}}</a></li>
+                                        <li ng-repeat="brand in brands"><a href="/#/ShopOnline/products/brand/{{brand.brandId}}">{{brand.brandName}}</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
                                     <ul class="dropdown-menu">
-                                        <li ng-repeat="category in categories"><a href="/products/{category.categoryId}">{{category.categoryName}}</a></li>
+                                        <li ng-repeat="category in categories"><a href="/#/ShopOnline/products/category/{{category.categoryId}}">{{category.categoryName}}</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">About Us</a></li>
@@ -206,6 +206,7 @@
                         </div>
                         <div id="filterTwo" class="accordion-body collapse">
                             <div class="accordion-inner">
+                            {{Size}}
                                 <div ng-repeat="size in sizes" >
                                     <input class="box" type="checkbox" ng-model="filterSize[size.sizeId]"/> {{size.sizeName}}
                                 </div>
@@ -244,8 +245,8 @@
                     </div>
                 </aside>
 
-        <!-- Right side -->
-                <section class="span9">
+                <!-- Right side -->
+                <section class="span9" ng-controller="AllProductsController">
                    <!-- Header right side -->
                    <div class="underlined push-down-20">
                         <div class="row">
@@ -270,38 +271,28 @@
                     <!-- Body right side -->
                     <div class="row popup-products">
                         <div id="isotopeContainer" class="isotope-container">
-                            <div class="span3 isotope--target filter--boots" ng-repeat="product in filtered=(products.products  | filter:filterByCategory | filter:filterBySize | orderBy:sortBy)">
+                            <div class="span3 isotope--target" ng-repeat="product in filtered=(lstAllProduct  | filter:filterByCategory | filter:filterBySize | filter:filterByBrand | filter:filterByColor | orderBy:sortBy)">
                                 <div class="product">
                                     <div class="product-inner">
                                         <div class="stamp red">Sold</div>
                                         <div class="product-img">
                                             <div class="picture">
-                                                <a href="#/ShopOnline/products/{{product.productId}}"><img width="540" height="374" alt="" src="../../resources/images/dummy/products/product-1.jpg" /></a>
+                                                <a href="#/ShopOnline/products/{{product.product.productId}}"><img width="540" height="374" alt="" src="../../{{product.product.productImage}}" /></a>
                                                 <div class="img-overlay">
-                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.productId}}">More {{product.productId}}</a>
+                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.product.productId}}">More {{product.product.productId}}</a>
                                                     <a class="btn buy btn-danger" href="#">Add to Cart</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="main-titles no-margin">
-                                            <h4 class="title">${{product.productPrice}}</h4>
-                                            <h5 class="no-margin isotope--title">{{product.productName}} : {{product.categoryId}}</h5>
-                                        </div>
-                                        <div class="row-fluid hidden-line">
-                                            <div class="span6">
-                                                <a href="#" class="btn btn-small"><i class="icon-heart"></i></a>
-                                                <a href="#" class="btn btn-small"><i class="icon-exchange"></i></a>
-                                            </div>
-                                            <div class="span6 align-right">
-                                                <span class="icon-star stars-clr"></span>
-                                                <span class="icon-star stars-clr"></span>
-                                                <span class="icon-star"></span>
-                                                <span class="icon-star"></span>
-                                                <span class="icon-star"></span>
-                                            </div>
+                                            <h4 class="title">${{product.product.productPrice}}</h4>
+                                            <h5 class="no-margin isotope--title">{{product.product.productName}}</h5>
+                                            <h6>{{product.brand.brandName}}
+                                            {{product.category.categoryName}}</h6>
                                         </div>
                                     </div>
                                 </div>
+<div class="clearfix"><br/><br/></div>
                             </div>
                         </div>
                     </div>  
@@ -368,101 +359,4 @@
         </div>
     </div>
 </footer>
-<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="loginModalLabel"><span class="light">Login</span> To Webmarket</h3>
-    </div>
-    <div class="modal-body">
-        <form method="post" action="#">
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputEmail">Username</label>
-                <div class="controls">
-                    <input type="text" class="input-block-level" id="inputEmail" placeholder="Username" required>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputPassword">Password</label>
-                <div class="controls">
-                    <input type="password" class="input-block-level" id="inputPassword" placeholder="Password" required>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <label class="checkbox">
-                        <input type="checkbox"> Remember me
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary input-block-level bold higher">
-                SIGN IN
-            </button>
-        </form>
-        <p class="center-align push-down-0">
-            <a data-toggle="modal" role="button" href="#forgotPassModal" data-dismiss="modal">Forgot your password?</a>
-        </p>
-    </div>
-</div>
-
-<div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="registerModalLabel"><span class="light">Register</span> To Webmarket</h3>
-    </div>
-    <div class="modal-body">
-        <form method="post" action="#">
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
-                <div class="controls">
-                    <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username" required>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
-                <div class="controls">
-                    <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email" required>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputPasswordRegister">Password</label>
-                <div class="controls">
-                    <input type="password" class="input-block-level" id="inputPasswordRegister" placeholder="Password" required>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-danger input-block-level bold higher">
-                REGISTER
-            </button>
-        </form>
-        <p class="center-align push-down-0">
-            <a data-toggle="modal" role="button" href="#loginModal" data-dismiss="modal">Already Registered?</a>
-        </p>
-    </div>
-</div>
-
-<div id="forgotPassModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="forgotPassModalLabel"><span class="light">Forgot</span> your password?</h3>
-    </div>
-    <div class="modal-body">
-        <form method="post" action="#">
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputUsernameRegister">Username</label>
-                <div class="controls">
-                    <input type="text" class="input-block-level" id="inputUsernameRegister" placeholder="Username">
-                </div>
-            </div>
-            <p class="center-align">OR</p>
-            <div class="control-group">
-                <label class="control-label hidden shown-ie8" for="inputEmailRegister">Email</label>
-                <div class="controls">
-                    <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="Email">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary input-block-level bold higher">
-                SEND ME A NEW PASSWORD
-            </button>
-        </form>
-    </div>
-</div>
 </div>

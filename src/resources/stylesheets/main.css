@@ -2798,7 +2798,8 @@ header .icons a:hover {
 }
 
 .popup-products {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .popup-products .product,

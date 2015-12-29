@@ -28,19 +28,19 @@ shopOnl.config(['$routeProvider',
             })
             .when('/ShopOnline/shop', {
                 templateUrl: 'sections/product/shop.tpl.html',
-                controller: 'ShopController'
+                controller: 'AllProductsController'
+            })
+            .when('/ShopOnline/products/brand/:brandId', {
+                templateUrl: 'sections/product/shopbybrand.tpl.html',
+                controller: 'ProductsByBrandController'
+            })
+            .when('/ShopOnline/products/category/:categoryId', {
+                templateUrl: 'sections/product/shopbycategory.tpl.html',
+                controller: 'ProductsByCategoryController'
             })
             .when('/ShopOnline/products/:productId', {
                 templateUrl: 'sections/product/product.tpl.html',
                 controller: 'DetailProductController'
-            })
-            .when('/ShopOnline//products/brand/:brandId', {
-                templateUrl: 'sections/product/shop.tpl.html',
-                controller: 'ShopController'
-            })
-            .when('/ShopOnline//products/category/:categoryId', {
-                templateUrl: 'sections/product/shop.tpl.html',
-                controller: 'ShopController'
             })
             .when('/ShopOnline/account/my-account', {
                 templateUrl: 'sections/account/my-account.tpl.html',
@@ -61,7 +61,7 @@ shopOnl.config(['$routeProvider',
             .when('/ShopOnline/order/checkout-step-4', {
                 templateUrl: 'sections/order/checkout-step-1.tpl.html',
                 controller: 'OrderController'
-            })*/
+            })
             .otherwise({
                 redirectTo: '/ShopOnline'
             });

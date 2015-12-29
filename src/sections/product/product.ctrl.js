@@ -10,22 +10,25 @@ productController.controller('ShopController', function ($scope, CallBackend) {
 	$scope.filterSize = {};
 	$scope.filterColor = {};
 	$scope.filterBrand = {};
-
+$scope.Size = {};
 	$scope.filterByCategory = function (product) {
-        return $scope.filterCate[product.categoryId] || noFilter($scope.filterCate);
+        return $scope.filterCate[product.category.categoryId] || noFilter($scope.filterCate);
     };
 
     $scope.filterBySize = function (product) {
-        return filterMultiValue($scope.filterSize, product.sizeId) || noFilter($scope.filterSize);
+        $scope.Size = product.listSize;
+        return filterSizeValue($scope.filterSize, product.listSize, "sizeId") || noFilter($scope.filterSize);
     };
 
     $scope.filterByColor = function (product) {
-        return $scope.filterColor[product.colorId] || noFilter($scope.filterColor);
+        return filterColorValue($scope.filterColor, product.listColor, "colorId") || noFilter($scope.filterColor);
     };
 
     $scope.filterByBrand = function (product) {
-        return $scope.filterBrand[product.brandId] || noFilter($scope.filterBrand);
+        return $scope.filterBrand[product.brand.brandId] || noFilter($scope.filterBrand);
     };
+
+
 
     $scope.predicate = 'productPrice';
     $scope.reverse = true;
@@ -43,34 +46,62 @@ productController.controller('ShopController', function ($scope, CallBackend) {
         return true;
     }
     
-    function filterMultiValue(filterObj, arrayValue) {
+    function filterSizeValue(filterObj, arrayValue) {
         var res = false;
     	for (var key in arrayValue) {
-    		if (filterObj[arrayValue[key]]){
+    		if (filterObj[arrayValue[key].sizeId]){
     			res = true;
     		}
     	};
     	return res;
     }
-    this.products = [
-		{"productId" : 4, "productName" : "Name4", "productPrice" : 2350000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : [1,2]},
-		{"productId" : 5, "productName" : "Name5", "productPrice" : 1250000, "productName" : "Aike2000", "productDescribe" : "Hello", "categoryId" : 2, "sizeId" : [1,3]},
-		{"productId" : 6, "productName" : "Name6", "productPrice" : 850000, "productName" : "NAke2000", "productDescribe" : "Hello", "categoryId" : 1, "sizeId" : [2,3]}
-		];
-    /*$scope.lstAllProduct = null;
-    CallBackend.getBackend("").then(function(dataResponse){
+
+    function filterColorValue(filterObj, arrayValue) {
+        var res = false;
+        for (var key in arrayValue) {
+            if (filterObj[arrayValue[key].colorId]){
+                res = true;
+            }
+        };
+        return res;
+    }
+
+/*   // $scope.lstProductByBrand = null;
+    $scope.getProductByBrand = function (brandId) {
+        CallBackend.getBackend("/product/brand/" + brandId + "/session/1").then(function(dataResponse){
+            $scope.lstAllProduct = dataResponse.data;
+        }); 
+    }
+
+    //$scope.lstProductByCategtory = null;
+    $scope.getProductByCategory = function (categoryId) {
+        CallBackend.getBackend("/product/category/" + categoryId + "/session/1").then(function(dataResponse){
+            $scope.lstAllProduct = dataResponse.data;
+        });
+    }*/
+});
+
+productController.controller('AllProductsController', function ($scope, CallBackend) {
+    $scope.lstAllProduct = null;
+    CallBackend.getBackend("/product/getAllProduct/session/1").then(function(dataResponse){
         $scope.lstAllProduct = dataResponse.data;
     });
-    $scope.lstProductByBrand = null;
-    CallBackend.getBackendParams("").then(function(dataResponse){
-        $scope.lstProductByBrand = dataResponse.data;
-    });
-
-    $scope.lstProductByCategtory = null;
-    CallBackend.getBackendParams("").then(function(dataResponse){
-        $scope.lstProductByCategtory = dataResponse.data;
-    });*/
 });
+
+productController.controller('ProductsByBrandController', ['$scope', '$routeParams', 'CallBackend' , function ($scope, $routeParams, CallBackend) {
+    $scope.lstProductByBrand = null;
+    CallBackend.getBackend("/product/brand/" + $routeParams.brandId + "/session/1").then(function(dataResponse){
+            $scope.lstProductByBrand = dataResponse.data;
+        });
+}]);
+
+productController.controller('ProductsByCategoryController', ['$scope', '$routeParams', 'CallBackend' , function ($scope, $routeParams, CallBackend) {
+    $scope.lstProductByCategtory = null;
+    CallBackend.getBackend("/product/category/" + $routeParams.categoryId + "/session/1").then(function(dataResponse){
+        $scope.lstProductByCategtory = dataResponse.data;
+    });
+}]);
+
 
 productController.controller('DetailProductController', function ($scope, CallBackend) {
 	this.productsByBrand = [
@@ -104,9 +135,9 @@ productController.controller('DetailProductController', function ($scope, CallBa
     $scope.colorOfProduct = null;
     CallBackend.getBackendParams("").then(function(dataResponse){
         $scope.colorOfProduct = dataResponse.data;
-    });
+    });*/
     $scope.detailProduct = null;
     CallBackend.getBackendParams("").then(function(dataResponse){
         $scope.detailProduct = dataResponse.data;
-    });*/
+    });
 });
