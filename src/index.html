@@ -21,8 +21,8 @@
       s.parentNode.insertBefore(wf, s);
     })();
   </script>
- <!--  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
-<link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
+  <!--  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
+  <link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
 
   <link href="resources/stylesheets/bootstrap.css" rel="stylesheet">
   <link href="resources/stylesheets/responsive.css" rel="stylesheet">
@@ -67,58 +67,253 @@
 <body >
   <div ng-controller="GlobalController">
     <md-content>
-        <md-toolbar>
-          <div class="md-toolbar-tools">
-            <h2>
-              <span>Shop Online </span>
-            </h2>
-            <span flex></span>
-            <md-button ng-hide="isLoggedIn" ng-click="showLoginSignUpDialog()">Login</md-button>
-            <md-button ng-show="isLoggedIn" ng-click="logout()">{{user.username}} Logout</md-button>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>
+        <span>Shop Online </span>
+      </h2>
+      <span flex></span>
+      <md-button ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">Login</md-button>
+      <span ng-show="checkCookiesLogined()">{{user.userName}}, </span>
+      <md-button ng-show="checkCookiesLogined()" ng-click="logout()"> Logout</md-button>
+    </div>
+  </md-toolbar>
+</md-content>
+<!-- Start header -->
+<header id="header">
+  <!-- header -->
+  <div class="darker-row">
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <div class="higher-line">
+            <span ng-hide="checkCookiesLogined()">Wellcome! Please</span>
+            <span ng-show="checkCookiesLogined()">{{user.userName}}, </span>
+            <a role="button" href="#registerModal" ng-show="checkCookiesLogined()" ng-click="logout()"> Logout</a>
+            <a role="button" href="#loginModal" data-toggle="modal" ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">Login</a>
           </div>
-        </md-toolbar>
-      </md-content>
-      <div ng-view ></div>
+        </div>
+        <div class="span8">
+          <div class="topmost-line">
+
+            &nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div id="fb-root"></div>
-  <script>
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-  <script type="text/javascript">
-    if (typeof jQuery == 'undefined') {
-      document.write('<script src="resources/js/jquery.min.js"><\/script>');
-    }
-  </script>
+  <!-- Quick information site -->
+  <div class="container">
+    <div class="row">
+      <div class="span7">
+        <a class="brand" href="/">
+          <img src="../../resources/images/logo.png" alt="Webmarket Logo" width="48" height="48" />
+          <span class="pacifico">Shop Online</span>
+          <span class="tagline">Buy and enjoy best services</span>
+        </a>
+      </div>
 
-  <script src="resources/js/underscore/underscore-min.js" type="text/javascript"></script>
+      <div class="span5">
+        <div class="top-right">
+          <div class="icons">
+            <a href="http://www.facebook.com/ProteusNet"><span class="zocial-facebook"></span></a>
+            <a href="skype:heocon1803?call"><span class="zocial-skype"></span></a>
+            <a href="https://twitter.com/proteusnetcom"><span class="zocial-twitter"></span></a>
+            <a href="http://eepurl.com/xFPYD"><span class="zocial-rss"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Start menu -->
+<div class="navbar navbar-static-top" id="stickyNavbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span9">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-  <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+          <div class="nav-collapse collapse">
+            <ul class="nav" id="mainNavigation">
+              <li><a href="#/ShopOnline/shop"> Home </a></li>
+              <li class="dropdown dropdown-supermenu" >
+                <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="brand in brands"><a href="/#/ShopOnline/products/brand/{{brand.brandId}}">{{brand.brandName}}</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="category in categories"><a href="/#/ShopOnline/products/category/{{category.categoryId}}">{{category.categoryName}}</a></li>
+                </ul>
+              </li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
 
-  <script src="resources/js/rs-plugin/js/jquery.themepunch.plugins.min.js" type="text/javascript"></script>
-  <script src="resources/js/rs-plugin/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+            <!-- Search -->
+            <form class="navbar-form pull-right" action="#" method="get">
+              <button type="submit"><span class="icon-search"></span></button>
+              <input type="text" class="span1" name="search" id="navSearchInput">
+            </form>
+          </div>
+        </div>
 
-  <script src="resources/js/jquery.carouFredSel-6.2.1-packed.js" type="text/javascript"></script>
+        <!-- Cart -->
+        <div class="span3">
+          <div class="cart-container" id="cartContainer">
+            <div class="cart">
+              <p class="items">CART <span class="dark-clr">(3)</span></p>
+              <p class="dark-clr hidden-tablet">$1816.90</p>
+              <a href="checkout-step-1.html" class="btn btn-danger">
 
-  <script src="resources/js/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-  <script src="resources/js/jquery-ui-1.10.3/touch-fix.min.js" type="text/javascript"></script>
+                <i class="icon-shopping-cart"></i>
+              </a>
+            </div>
+            <div class="open-panel">
+              <div class="item-in-cart clearfix">
+                <div class="image">
+                  <img src="../../resources/images/dummy/cart-items/cart-item-1.jpg" width="124" height="124" alt="cart item" />
+                </div>
+                <div class="desc">
+                  <strong><a href="product.html">Adipiscing Vel Vel Felis</a></strong>
+                  <span class="light-clr qty">
+                    Qty: 1
+                    &nbsp;
+                    <a href="#" class="icon-remove-sign" title="Remove Item"></a>
+                  </span>
+                </div>
+                <div class="price">
+                  <strong>$5914</strong>
+                </div>
+              </div>
 
-  <script src="resources/js/isotope/jquery.isotope.min.js" type="text/javascript"></script>
+              <div class="summary">
+                <div class="line">
+                  <div class="row-fluid">
+                    <div class="span6">Subtotal:</div>
+                    <div class="span6 align-right size-16">$357.81</div>
+                  </div>
+                </div>
+              </div>
+              <div class="proceed">
+                <a href="/order/checkout-step-1" class="btn btn-danger pull-right bold higher">CHECKOUT <i class="icon-shopping-cart"></i></a>
+                <small>Shipping costs are calculated based on location. <a href="#">More information</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-view class="master-wrapper"></div>
+<!-- Footer -->
+<footer>
 
-  <script src="resources/js/bootstrap-tour/build/js/bootstrap-tour.min.js" type="text/javascript"></script>
+  <div class="foot-light">
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <h2 class="pacifico">Webmarket &nbsp; <img src="../../resources/images/webmarket.png" alt="Webmarket Cart" class="align-baseline"/></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida. Etiam vel augue ligula, blandit malesuada nisi. Quisque a augue nisi. Nullam interdum convallis </p>
+        </div>
+        <div class="span4">
+          <div class="main-titles lined">
+            <h3 class="title">Facebook</h3>
+          </div>
+          <div class="bordered">
+            <div class="fill-iframe">
+              <div class="fb-like-box" data-href="https://www.facebook.com/ProteusNet" data-width="292" data-height="200" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+            </div>
+          </div>
+        </div>
+        <div class="span4">
+          <div class="main-titles lined">
+            <h3 class="title"><span class="light">Newsletters</span> Signup</h3>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt vestibulum risus et gravida.</p>
 
-  <script src="resources/js/prettyphoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+          <div id="mc_embed_signup">
+            <form action="http://proteusthemes.us4.list-manage1.com/subscribe/post?u=ea0786485977f5ec8c9283d5c&amp;id=5dad3f35e9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form form-inline" target="_blank" novalidate>
+              <div class="mc-field-group">
+                <input type="email" value="" placeholder="Enter your e-mail address" name="EMAIL" class="required email" id="mce-EMAIL">
+                <input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+              </div>
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+              </div>
+            </form>
+          </div>
 
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDvMjN1g49P1MA2Onsj-GulDkmDuuH6aoU&amp;sensor=false"></script>
-  <script type="text/javascript" src="resources/js/goMap/js/jquery.gomap-1.3.2.min.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <script src="resources/js/custom.js" type="text/javascript"></script>
+  <div class="foot-last">
+    <a href="" id="toTheTop">
+      <span class="icon-chevron-up"></span>
+    </a>
+    <div class="container">
+      <div class="row">
+        <div class="span6">
+          &copy; Copyright 2013. Images of products by <a target="_blank" href="http://www.horsefeathers.eu/">Horsefeathers</a>.
+        </div>
+        <div class="span6">
+          <div class="pull-right">Webmarket HTML Template by <a href="http://www.proteusthemes.com/">ProteusThemes</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div id="fb-root"></div>
+<script>
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+  if (typeof jQuery == 'undefined') {
+    document.write('<script src="resources/js/jquery.min.js"><\/script>');
+  }
+</script>
+
+<script src="resources/js/underscore/underscore-min.js" type="text/javascript"></script>
+
+<script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+
+<script src="resources/js/rs-plugin/js/jquery.themepunch.plugins.min.js" type="text/javascript"></script>
+<script src="resources/js/rs-plugin/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+
+<script src="resources/js/jquery.carouFredSel-6.2.1-packed.js" type="text/javascript"></script>
+
+<script src="resources/js/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery-ui-1.10.3/touch-fix.min.js" type="text/javascript"></script>
+
+<script src="resources/js/isotope/jquery.isotope.min.js" type="text/javascript"></script>
+
+<script src="resources/js/bootstrap-tour/build/js/bootstrap-tour.min.js" type="text/javascript"></script>
+
+<script src="resources/js/prettyphoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDvMjN1g49P1MA2Onsj-GulDkmDuuH6aoU&amp;sensor=false"></script>
+<script type="text/javascript" src="resources/js/goMap/js/jquery.gomap-1.3.2.min.js"></script>
+
+<script src="resources/js/custom.js" type="text/javascript"></script>
 </body>
 </html>

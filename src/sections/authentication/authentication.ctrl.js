@@ -4,7 +4,7 @@
 
 var auController = angular.module('authenticationController', []);
 
-auController.controller('AuthenticationController', function ($scope, $mdDialog, AuthenticationService) {
+/*auController.controller('AuthenticationController', function ($scope, $mdDialog, AuthenticationService) {
     $scope.isLogin = true;
     $scope.hide = function () {
         $mdDialog.hide();
@@ -54,4 +54,20 @@ auController.controller('AuthenticationController', function ($scope, $mdDialog,
             $scope.loginError = 'Đã có lỗi xảy ra khi đăng ký tài khoản.';
         });
     };
-});
+});*/
+
+auController.controller('RegistrationController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
+    $scope.messages = "Verify failure.";
+
+    CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/registration/" + $routeParams.username).then(function(dataResponse){
+            $scope.messages = dataResponse.data;
+    });
+}]);
+
+auController.controller('ForgotpasswordController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
+    $scope.messages = "Verify failure.";
+
+    CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/forgotpassword/" + $routeParams.username).then(function(dataResponse){
+            $scope.messages = dataResponse.data;
+    });
+}]);

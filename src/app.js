@@ -10,7 +10,8 @@ var shopOnl = angular.module('appShopOnline', [
     'globalServices',
     'mainController',
     'homeController',
-    'productController'
+    'productController',
+    'authenticationController'
 ]);
 
 
@@ -60,6 +61,14 @@ shopOnl.config(['$routeProvider',
             .when('/ShopOnline/order/checkout-step-4', {
                 templateUrl: 'sections/order/checkout-step-1.tpl.html',
                 controller: 'OrderController'
+            })
+            .when('/ShopOnline/token/:tokenStr/registration/:username', {
+                templateUrl: 'sections/authentication/registration.tpl.html',
+                controller: 'RegistrationController'
+            })
+            .when('/ShopOnline/token/:tokenStr/forgotpassword/:username', {
+                templateUrl: 'sections/authentication/forgotpassword.tpl.html',
+                controller: 'ForgotpasswordController'
             })
             .otherwise({
                 redirectTo: '/ShopOnline'

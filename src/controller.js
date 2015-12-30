@@ -6,7 +6,8 @@ var appController = angular.module('mainController', []);
 appController.controller('GlobalController', GlobalController);
 	
 	function AuthenticationController ($scope, $mdDialog, AuthenticationService){
-	$scope.isLogin = true;
+	    $scope.isLogin = true;
+
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -17,9 +18,9 @@ appController.controller('GlobalController', GlobalController);
             AuthenticationService.login($scope.user)
                 .then(function (response) {
                         $scope.loading = false;
-                        //AuthenticationService.handleResponse(response.data);
+                        AuthenticationService.handleResponse(response.data);
                         $mdDialog.hide();
-                        $scope.isLoggedIn = true;
+                        //$scope.isLoggedIn = true;
                 }, function () {
                     $scope.loading = false;
                     $scope.loginError = 'Login failed. Or. Check mail and verify';
@@ -58,7 +59,7 @@ appController.controller('GlobalController', GlobalController);
         };
 };
 
-	function GlobalController ($scope, $mdDialog, CallBackend, AuthenticationService) {
+	function GlobalController ($scope, $mdDialog, $window, CallBackend, AuthenticationService) {
     	$scope.urlBase = 'http://localhost:8080/ShopOnline';
 
         $scope.brands = null;
@@ -81,17 +82,30 @@ appController.controller('GlobalController', GlobalController);
             $scope.categories = dataResponse.data;
         });
 
+        $scope.isLoggedIn = false;
     	$scope.logout = function () {
-    		if ($scope.isLoggedIn) {
-    			AuthenticationService.token = null;
+    		if ($scope.user) {
+    			//AuthenticationService.token = null;
+                //$cookies.remove('user');
+                delete $window.localStorage.user;
+                alert('logout');
     		}
+            
     	};
     	$scope.showLoginSignUpDialog = function () {
     		$mdDialog.show({
     			controller: AuthenticationController,
-    			templateUrl: 'authentication.tpl.html',
+    			templateUrl: 'sections/authentication/authentication.tpl.html',
     			parent: angular.element(document.body),
-    			clickOutsideToClose: true
+    			clickOutsideToClose: true,
     		});
     	};
+
+        $scope.checkCookiesLogined = function() {
+            $scope.user = angular.fromJson($window.localStorage['user']); 
+            if($scope.user) {
+                return true;
+            }
+            return false;
+        }
 };

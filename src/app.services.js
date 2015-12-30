@@ -34,7 +34,7 @@ globalServices.service('CallBackend', function ($http) {
 	}
 });
 
-globalServices.factory('AuthenticationService', function ($http, $cookies) {
+globalServices.factory('AuthenticationService', function ($http, $cookies, $window) {
 	var loginUrl = 'http://localhost:8080/ShopOnline/user/login',
         signupUrl = 'http://localhost:8080/ShopOnline/user/new',
         AuthenticationService = {};
@@ -87,12 +87,13 @@ globalServices.factory('AuthenticationService', function ($http, $cookies) {
 		  	});
         };
 
-        /*AuthenticationService.handleResponse = function (data) {
-            AuthenticationService.token = data.access_token;
-            AuthenticationService.expirationDate = new Date(Date.now() + data.expires_in * 1000);
-            AuthenticationService.refreshToken = data.refresh_token;
-            $cookies.put('access_token', AuthenticationService.token, { expires: AuthenticationService.expirationDate });
-        };*/
+        AuthenticationService.handleResponse = function (data) {
+            //AuthenticationService.token = data.access_token;
+            //AuthenticationService.expirationDate = new Date(Date.now() + data.expires_in * 1000);
+            //AuthenticationService.refreshToken = data.refresh_token;
+            $window.localStorage['user'] = JSON.stringify(data);
+            //$cookies.put('user', data);
+        };
 
         /*AuthenticationService.refreshAccessToken = function () {
             return $http.post(loginUrl, {
