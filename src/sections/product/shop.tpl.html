@@ -146,7 +146,7 @@
                                                 <a href="#/ShopOnline/products/{{product.product.productId}}"><img width="540" height="374" alt="" src="../../{{product.product.productImage}}" /></a>
                                                 <div class="img-overlay">
                                                     <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.product.productId}}">More {{product.product.productId}}</a>
-                                                    <a class="btn buy btn-danger" href="#">Add to Cart</a>
+                                                    <a class="btn buy btn-danger" ng-click="AddCart(product.product.productId)">Add to Cart</a>
                                                 </div>
                                             </div>
                                         </div>

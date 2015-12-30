@@ -107,5 +107,49 @@ appController.controller('GlobalController', GlobalController);
                 return true;
             }
             return false;
-        }
+        };
+
+        $scope.cart = angular.fromJson($window.localStorage['cart']);
+        $scope.Total = function() {
+            var total = 0;
+            for (var key in $scope.cart) {
+                total += $scope.cart[key].product.productPrice;
+            }
+            return total;
+        };
+        $scope.AddCart = function(productId) {
+            var product = null;
+            CallBackend.getBackend("/product/" + productId).then(function(dataResponse){
+                product = dataResponse.data;
+                if(product != null) {
+                    if($scope.cart) {
+                        /*for (var key in $scope.cart) {
+                            if (key.product.productId === product.product.productId){
+                                $scope.cart[key].product.qty = $scope.cart[key].product.qty + 1;
+                                product = null;
+                                break;
+                            }
+                        }
+                        if (product != null)*/
+                            $scope.cart.push(product);
+                    }
+                    else {
+                        $scope.cart = [];
+                        $scope.cart.push(product);
+                    }
+                    $window.localStorage.cart = JSON.stringify($scope.cart);
+                }
+            });
+        };
+
+        $scope.EditCart = function(productId) {
+            $scope.cart = JSON.parse($window.localStorage.cart);
+            for (var key in $scope.cart) {
+                if ($scope.cart[key].product['productId'] === productId) {
+                    $scope.cart.splice(key, 1);
+                    break;
+                }
+            }
+            $window.localStorage.cart = JSON.stringify($scope.cart);
+        };
 };

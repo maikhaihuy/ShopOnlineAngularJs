@@ -76,7 +76,7 @@
                                 <option value="-1">Select Size</option>
                                 <option ng-repeat="size in detailProduct.listSize" value="{{size.sizeId}}">{{size.sizeName}}</option>
                             </select>
-                            <button class="btn btn-danger pull-right" ng-click="addToCart()"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
+                            <button class="btn btn-danger pull-right" ng-click="AddCart(product.product.productId)"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
                         </form>
                         <hr/>
                     </div>

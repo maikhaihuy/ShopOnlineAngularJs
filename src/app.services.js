@@ -17,6 +17,7 @@ globalServices.service('CallBackend', function ($http) {
 
 	this.getBackendParams = function (subUrl, params) {
 		var url = 'http://localhost:8080/ShopOnline' + subUrl;
+        alert(url);
 		return $http({
 			method: 'GET',
 			url: url,

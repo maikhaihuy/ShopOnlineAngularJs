@@ -7,11 +7,13 @@ var shopOnl = angular.module('appShopOnline', [
     'ngMaterial',
     'ngMessages',
     'ngCookies',
+    'ngMdIcons',
     'globalServices',
     'mainController',
     'homeController',
     'productController',
-    'authenticationController'
+    'authenticationController',
+    'accountController'
 ]);
 
 
@@ -42,7 +44,7 @@ shopOnl.config(['$routeProvider',
                 templateUrl: 'sections/product/product.tpl.html',
                 controller: 'DetailProductController'
             })
-            .when('/ShopOnline/account/my-account', {
+            .when('/ShopOnline/account/:username', {
                 templateUrl: 'sections/account/my-account.tpl.html',
                 controller: 'AccountController'
             })

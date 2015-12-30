@@ -1,4 +1,27 @@
 <div class="master-wrapper">
+
+    <style type="text/css">
+        .tabsdemoDynamicHeight md-content {
+            background-color: transparent !important;
+        }
+
+        .tabsdemoDynamicHeight md-content md-tabs {
+            background: #f6f6f6;
+            border: 1px solid #e1e1e1;
+        }
+
+        .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+            background: black;
+        }
+
+        .tabsdemoDynamicHeight md-content h1:first-child {
+            margin-top: 0;
+        }
+        ng-md-icon svg {
+            transform: translate3d(0, 25%, 0);
+        }
+    </style>
+
     <!-- Tracker -->
     <div class="darker-stripe">
         <div class="container">
@@ -19,109 +42,102 @@
     </div>
 
     <!-- Content -->
-    <div class="container">
+    <div class="container tabsdemoDynamicHeight">
         <div class="push-up blocks-spacer">
             <div class="row">
 
                 <aside class="span3">
-                    <div class="sidebar-item">
-
-                        <div>
-                            <h3><span class="light">My</span> Account</h3>
-                        </div>
-
-                        <div class="row">
-                            <div class="span3">
-                                <div class="widget">
-                                    <ul class="nav nav-pills nav-stacked">
-                                        <li><a href="#">Account Dashboard <i class="icon-caret-right pull-right"></i></a></li>
-                                        <li><a href="#">Account Information <i class="icon-caret-right pull-right"></i></a></li>
-                                        <li><a href="#">My Cart <i class="icon-caret-right pull-right"></i></a></li>
-                                        <li><a href="#">My Orders <i class="icon-caret-right pull-right"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <md-content md-border-bottom>
+                        <md-tabs >
+                            <md-tab label="Profile">
+                                <md-content class="md-padding">
+                                    <md-card>
+                                        <md-card-title>
+                                            <md-card-title-text>
+                                                <span class="md-headline">Card with image</span>
+                                                <span class="md-subhead">Large</span>
+                                            </md-card-title-text>
+                                            <md-card-title-media>
+                                                <div class="md-media-lg card-media"></div>
+                                            </md-card-title-media>
+                                        </md-card-title>
+                                        <md-card-actions layout="row" layout-align="end center">
+                                            <md-button>Action 1</md-button>
+                                            <md-button>Action 2</md-button>
+                                        </md-card-actions>
+                                    </md-card>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
+                    </md-content>
                 </aside>
 
                 <!-- Right side -->
                 <section class="span9">
-
-                    <div class="underlined push-down-20">
-                        <h3><span class="light">My</span> Cart</h3>
-                    </div>
-
-                    <table class="table table-items push-down-50">
-                        <thead>
-                            <tr>
-                                <th colspan="2">Item</th>
-                                <th>
-                                    <div class="align-center">Quantity</div>
-                                </th>
-                                <th>
-                                    <div class="align-right">Price</div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="image"><img src="images/dummy/cart-items/cart-item-1.jpg" alt="" width="124" height="124" /></td>
-                                <td class="desc">Adidas Converse Lorem Ipsum Dolor sit &nbsp;
-                                    <a title="Remove Item" class="icon-remove-sign" data-delete-next="true" href="#"></a>
-                                </td>
-                                <td class="qty">
-                                    <input type="text" class="tiny-size" value="1" />
-                                </td>
-                                <td class="price">
-                                    $59
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="no-border" colspan="4">
-                                    <form action="#" method="post" class="form">
-                                        <div class="three-quarters">
-                                            <input type="text" class="input-block-level" placeholder="You can enter you comment here">
-                                        </div>
-                                        <div class="one-quarter">
-                                            <button class="btn btn-primary btn-block higher bold">SAVE</button>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="image"><img src="images/dummy/cart-items/cart-item-2.jpg" alt="" width="124" height="124" /></td>
-                                <td class="desc">Adidas Converse Lorem Ipsum Dolor sit &nbsp;
-                                    <a title="Remove Item" class="icon-remove-sign" data-delete-next="true" href="#"></a>
-                                </td>
-                                <td class="qty">
-                                    <input type="text" class="tiny-size" value="3" />
-                                </td>
-                                <td class="price">
-                                    $59
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="no-border" colspan="4">
-                                    <form action="#" method="post" class="form">
-                                        <div class="three-quarters">
-                                            <input type="text" class="input-block-level" placeholder="You can enter you comment here">
-                                        </div>
-                                        <div class="one-quarter">
-                                            <button class="btn btn-primary btn-block higher bold">SAVE</button>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="underlined push-down-20">
-                        <h3><span class="light">My</span> Orders</h3>
-                    </div>
-                    <h6>Hello, Luka Komac!</h6>
-                    <p class="push-down-40">
-                        From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.
-                    </p>
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab label="My Account">
+                                <md-content class="md-padding" ng-controller="AccountController">
+                                    <h3><span class="light">My</span> Account</h3>
+                                    <md-button ng-show="isEdit" class="md-raised md-primary" ng-click="acceptInfoUser()">Đồng ý</md-button>
+                                    <md-button ng-show="isEdit" class="md-accent" ng-click="cancelInfoUser()">Hủy</md-button>
+                                    <md-button ng-hide="isEdit" class="md-raised md-warn" ng-click="editInfoUser()">Sửa</md-button>
+                                    <md-list>
+                                        <md-list-item class="secondary-button-padding" ng-click="editInfoUser()">
+                                            <ng-md-icon icon="account_box" ></ng-md-icon>
+                                            <input ng-show="isEdit" ng-model="InfoUser.userEmail">
+                                            <p ng-hide="isEdit">{{InfoUser.userName}}</p>
+                                        </md-list-item>
+                                        <md-list-item class="secondary-button-padding" ng-click="editInfoUser()">
+                                            <ng-md-icon icon="email"></ng-md-icon>
+                                            <input ng-show="isEdit" ng-model="InfoUser.userEmail">
+                                            <span ng-hide="isEdit">{{InfoUser.userEmail}}</span>
+                                        </md-list-item>
+                                        <md-list-item class="secondary-button-padding" ng-click="editInfoUser()">
+                                            <ng-md-icon icon="smartphone"></ng-md-icon>
+                                            <input ng-show="isEdit" ng-model="InfoUser.userEmail">
+                                            <span ng-hide="isEdit">{{InfoUser.userNumberphone}}</span>
+                                        </md-list-item>
+                                    </md-list>
+                                    <md-button ng-show="isEdit" class="md-raised md-primary" ng-click="acceptInfoUser()">Đồng ý</md-button>
+                                    <md-button ng-show="isEdit" class="md-accent" ng-click="cancelInfoUser()">Hủy</md-button>
+                                    <md-button ng-hide="isEdit" class="md-raised md-warn" ng-click="editInfoUser()">Sửa</md-button>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="My Cart">
+                                <md-content class="md-padding">
+                                    <h3><span class="light">My</span> Cart</h3>
+                                    <md-list ng-cloak >
+                                        <md-input-container class="md-block">
+                                            <label>Search</label>
+                                            <input md-maxlength="30" ng-model="project.description">
+                                        </md-input-container>
+                                        <md-list-item ng-repeat="cart in Carts" class="secondary-button-padding">
+                                            <p> {{ cart }} </p>
+                                            <md-checkbox ng-model="cart.wanted"></md-checkbox>
+                                        </md-list-item>
+                                        <md-divider></md-divider>
+                                    </md-list>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="My Order">
+                                <md-content class="md-padding">
+                                    <h3><span class="light">My</span> Orders</h3>
+                                    <md-list ng-controller="ListCtrl" ng-cloak >
+                                        <md-input-container class="md-block">
+                                            <label>Search</label>
+                                            <input md-maxlength="30" ng-model="project.description">
+                                        </md-input-container>
+                                        <md-list-item ng-repeat="topping in toppings" class="secondary-button-padding">
+                                            <p> {{ topping.name }} </p>
+                                            <md-checkbox ng-model="topping.wanted"></md-checkbox>
+                                        </md-list-item>
+                                        <md-divider></md-divider>
+                                    </md-list>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
+                    </md-content>
                 </section>
             </div>
         </div>
