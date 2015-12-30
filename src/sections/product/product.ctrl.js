@@ -10,7 +10,7 @@ productController.controller('ShopController', function ($scope, CallBackend) {
 	$scope.filterSize = {};
 	$scope.filterColor = {};
 	$scope.filterBrand = {};
-$scope.Size = {};
+    $scope.Size = {};
 	$scope.filterByCategory = function (product) {
         return $scope.filterCate[product.category.categoryId] || noFilter($scope.filterCate);
     };
@@ -90,10 +90,18 @@ productController.controller('DetailProductController', ['$scope', '$routeParams
     $scope.detailProduct = null;
     CallBackend.getBackend("/product/" + $routeParams.productId).then(function(dataResponse){
         $scope.detailProduct = dataResponse.data;
+        $scope.selected.color = $scope.detailProduct.listColor[0];
+        $scope.selected.size = $scope.detailProduct.listSize[0]
     });
 
     $scope.lstProductRelated = null;
     CallBackend.getBackend("/product/newproducts").then(function(dataResponse){
         $scope.lstProductRelated = dataResponse.data;
     });
+
+    $scope.selected = {
+        "color" : {},
+        "size" : {}
+    };
+    $scope.qty = 1;
 }]);

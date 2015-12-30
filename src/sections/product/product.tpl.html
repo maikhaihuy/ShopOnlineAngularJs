@@ -59,24 +59,23 @@
                         <p>{{detailProduct.product.productDescribe}}</p>
                         <hr/>
 
-                        <form action="#" class="form form-inline clearfix">
+                        <form class="form form-inline clearfix">
                             <div class="numbered">
-                                <input type="text" name="num" value="1" class="tiny-size" />
-                                <span class="clickable add-one icon-plus-sign-alt"></span>
-                                <span class="clickable remove-one icon-minus-sign-alt"></span>
+                                <input type="text" name="num" class="tiny-size" ng-model="qty" />
+                                <span class="clickable add-one icon-plus-sign-alt" ng-click="qty = qty + 1"></span>
+                                <span class="clickable remove-one icon-minus-sign-alt" ng-click="qty = qty > 1 ? qty - 1 : qty"></span>
                             </div>
                             &nbsp;
-                            <select name="color" class="span2">
+                            <select name="color" class="span2" ng-model="selected.color">
                                 <option value="-1">Select Color</option>
-                                <option ng-repeat="color in detailProduct.listColor" value="{{color.colorId}}">{{color.colorName}}</option>
-
+                                <option ng-repeat="color in detailProduct.listColor"  value="{{color}}">{{color.colorName}}</option>
                             </select>
                             &nbsp;
-                            <select name="size" class="span2">
+                            <select name="size" class="span2" ng-model="selected.size">
                                 <option value="-1">Select Size</option>
-                                <option ng-repeat="size in detailProduct.listSize" value="{{size.sizeId}}">{{size.sizeName}}</option>
+                                <option ng-repeat="size in detailProduct.listSize"  value="{{size}}">{{size.sizeName}}</option>
                             </select>
-                            <button class="btn btn-danger pull-right" ng-click="AddCart(product.product.productId)"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
+                            <button class="btn btn-danger pull-right" ng-click="AddCartDetail(detailProduct.product.productId,selected.size, selected.color, qty)"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
                         </form>
                         <hr/>
                     </div>

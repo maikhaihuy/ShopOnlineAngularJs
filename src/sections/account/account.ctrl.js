@@ -27,11 +27,14 @@ accountController.controller('AccountController', ['$scope', '$routeParams', '$w
 
     function updateUnfoUser() {
     	// Cập nhật lại InfoUser
+      /*CallBackend.getBackend("" + $routeParams.username).then(function(dataResponse){
+           $scope.Orders = dataResponse.data;
+      });*/ 
     }
 
     // Region of Orders
     $scope.Orders = null;
-	CallBackend.getBackend("/order/username/" + $routeParams.username).then(function(dataResponse){
+    CallBackend.getBackend("/order/username/" + $routeParams.username).then(function(dataResponse){
            $scope.Orders = dataResponse.data;
     });
 

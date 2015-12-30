@@ -13,7 +13,8 @@ var shopOnl = angular.module('appShopOnline', [
     'homeController',
     'productController',
     'authenticationController',
-    'accountController'
+    'accountController',
+    'orderController'
 ]);
 
 
@@ -50,19 +51,19 @@ shopOnl.config(['$routeProvider',
             })
             .when('/ShopOnline/order/checkout-step-1', {
                 templateUrl: 'sections/order/checkout-step-1.tpl.html',
-                controller: 'OrderController'
+                controller: 'Checkout1Controller'
             })
             .when('/ShopOnline/order/checkout-step-2', {
-                templateUrl: 'sections/order/checkout-step-1.tpl.html',
-                controller: 'OrderController'
+                templateUrl: 'sections/order/checkout-step-2.tpl.html',
+                controller: 'Checkout1Controller'
             })
             .when('/ShopOnline/order/checkout-step-3', {
-                templateUrl: 'sections/order/checkout-step-1.tpl.html',
-                controller: 'OrderController'
+                templateUrl: 'sections/order/checkout-step-3.tpl.html',
+                controller: 'Checkout1Controller'
             })
             .when('/ShopOnline/order/checkout-step-4', {
-                templateUrl: 'sections/order/checkout-step-1.tpl.html',
-                controller: 'OrderController'
+                templateUrl: 'sections/order/checkout-step-4.tpl.html',
+                controller: 'Checkout1Controller'
             })
             .when('/ShopOnline/token/:tokenStr/registration/:username', {
                 templateUrl: 'sections/authentication/registration.tpl.html',

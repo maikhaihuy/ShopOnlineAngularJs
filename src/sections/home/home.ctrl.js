@@ -23,7 +23,7 @@ homeController.controller('IndexController', function ($scope, CallBackend){
 	$scope.lstProductSearch = null;
 	$scope.search = function () {
 		CallBackend.getBackend("/product/search").then(function(dataResponse){
-		$scope.lstProductSearch = dataResponse.data;
-	});
+			$scope.lstProductSearch = dataResponse.data;
+		});
 	};
 });

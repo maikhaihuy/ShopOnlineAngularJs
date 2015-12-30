@@ -59,7 +59,7 @@ appController.controller('GlobalController', GlobalController);
         };
 };
 
-	function GlobalController ($scope, $mdDialog, $window, CallBackend, AuthenticationService) {
+	function GlobalController ($scope, $mdDialog, $window, $location, CallBackend, AuthenticationService) {
     	$scope.urlBase = 'http://localhost:8080/ShopOnline';
 
         $scope.brands = null;
@@ -131,12 +131,41 @@ appController.controller('GlobalController', GlobalController);
                             }
                         }
                         if (product != null)*/
-                            $scope.cart.push(product);
+                            
                     }
                     else {
                         $scope.cart = [];
-                        $scope.cart.push(product);
                     }
+                    product['qty'] = 1;
+                    $scope.cart.push(product);
+                    $window.localStorage.cart = JSON.stringify($scope.cart);
+                }
+            });
+        };
+
+        $scope.AddCartDetail = function(productId, size, color, qty) {
+            var product = null;
+            CallBackend.getBackend("/product/" + productId).then(function(dataResponse){
+                product = dataResponse.data;
+                if(product != null) {
+                    if($scope.cart) {
+                        /*for (var key in $scope.cart) {
+                            if (key.product.productId === product.product.productId){
+                                $scope.cart[key].product.qty = $scope.cart[key].product.qty + 1;
+                                product = null;
+                                break;
+                            }
+                        }
+                        if (product != null)*/
+                            
+                    }
+                    else {
+                        $scope.cart = [];
+                    }
+                    product.qty = qty;
+                    product.listSize = angular.fromJson("[" + size + "]");
+                    product.listColor = angular.fromJson("[" + color + "]");
+                    $scope.cart.push(product);
                     $window.localStorage.cart = JSON.stringify($scope.cart);
                 }
             });
@@ -152,4 +181,8 @@ appController.controller('GlobalController', GlobalController);
             }
             $window.localStorage.cart = JSON.stringify($scope.cart);
         };
+
+        $scope.goTo = function(path) {
+            $location.path(path);
+        }
 };
