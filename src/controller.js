@@ -230,4 +230,8 @@ appController.controller('GlobalController', GlobalController);
         $scope.goTo = function(path) {
             $location.path(path);
         }
+
+        $scope.search = function(categoryId, nameProduct) {
+            $location.path('/ShopOnline/products/search/category/' + categoryId + '/nameProduct/' + nameProduct);
+        }
 };

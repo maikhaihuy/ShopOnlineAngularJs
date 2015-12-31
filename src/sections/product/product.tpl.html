@@ -47,7 +47,7 @@
                     <div class="product-title">
                         <h1 class="name">{{detailProduct.product.productName}}</h1>
                         <div class="meta">
-                            <span class="tag">$ {{detailProduct.product.productPrice}}</span>
+                            <span class="tag">$ {{detailProduct.product.productPrice  | number:0}}</span>
                             <span class="stock">
                                 <span class="btn btn-success">In Stock</span>
                                 <span class="btn btn-danger">Out of Stock</span>

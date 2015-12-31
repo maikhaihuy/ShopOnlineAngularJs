@@ -140,7 +140,7 @@
               </button>
 
               <div class="nav-collapse collapse">
-                <ul class="nav" id="mainNavigation">
+                <ul class="nav" id="mainNavigation" style="margin-top:10px;">
                   <li><a href="#/ShopOnline/shop"> Home </a></li>
                   <li class="dropdown dropdown-supermenu" >
                     <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
@@ -157,12 +157,20 @@
                   <li><a href="#">About Us</a></li>
                   <li><a href="#">Contact</a></li>
                 </ul>
-
                 <!-- Search -->
-                <form class="navbar-form pull-right" action="#" method="get">
-                  <button type="submit"><span class="icon-search"></span></button>
-                  <input type="text" class="span1" name="search" id="navSearchInput">
-                </form>
+                <div layout="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+            <input ng-model="search.nameProduct" ng-keyup="$event.keyCode == 13 && search(search.categoryId, search.nameProduct)">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+            <md-select ng-model="search.categoryId">
+              <md-option ng-repeat="category in categories" value="{{category.categoryId}}">
+                {{category.categoryName}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+                </div>
               </div>
             </div>
 
@@ -171,8 +179,8 @@
               <div class="cart-container" id="cartContainer">
                 <div class="cart">
                   <p class="items">CART <span class="dark-clr">({{cart.length}})</span></p>
-                  <p class="dark-clr hidden-tablet">$1816.90</p>
-                  <a href="checkout-step-1.html" class="btn btn-danger">
+                  <p class="dark-clr hidden-tablet">${{Total() | number:0}}</p>
+                  <a href="goTo('/ShopOnline/order/checkout-step-1')" class="btn btn-danger">
 
                     <i class="icon-shopping-cart"></i>
                   </a>
@@ -191,7 +199,7 @@
                       </span>
                     </div>
                     <div class="price">
-                      <strong>${{product.product.productPrice}}</strong>
+                      <strong>${{product.product.productPrice | number:0}}</strong>
                     </div>
                   </div>
 
@@ -199,7 +207,7 @@
                     <div class="line">
                       <div class="row-fluid">
                         <div class="span6">Subtotal:</div>
-                        <div class="span6 align-right size-16">${{Total()}}</div>
+                        <div class="span6 align-right size-16">${{Total()  | number:0}}</div>
                       </div>
                     </div>
                   </div>

@@ -72,6 +72,13 @@ productController.controller('AllProductsController', function ($scope, CallBack
     });
 });
 
+productController.controller('SearchProductController', ['$scope', '$routeParams', 'CallBackend' , function ($scope, $routeParams, CallBackend){
+    $scope.lstSearchProduct = null;
+    CallBackend.getBackend("/product/category/" + $routeParams.categoryId + "/name/" + $routeParams.nameProduct + "/session/1").then(function(dataResponse){
+        $scope.lstSearchProduct = dataResponse.data;
+    });
+}]);
+
 productController.controller('ProductsByBrandController', ['$scope', '$routeParams', 'CallBackend' , function ($scope, $routeParams, CallBackend) {
     $scope.lstProductByBrand = null;
     CallBackend.getBackend("/product/brand/" + $routeParams.brandId + "/session/1").then(function(dataResponse){

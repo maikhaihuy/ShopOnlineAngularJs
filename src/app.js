@@ -41,6 +41,10 @@ shopOnl.config(['$routeProvider',
                 templateUrl: 'sections/product/shopbycategory.tpl.html',
                 controller: 'ProductsByCategoryController'
             })
+            .when('/ShopOnline/products/search/category/:categoryId/nameProduct/:nameProduct', {
+                templateUrl: 'sections/product/search.tpl.html',
+                controller: 'SearchProductController'
+            })
             .when('/ShopOnline/products/:productId', {
                 templateUrl: 'sections/product/product.tpl.html',
                 controller: 'DetailProductController'
