@@ -38,6 +38,7 @@ globalServices.service('CallBackend', function ($http) {
 globalServices.factory('AuthenticationService', function ($http, $cookies, $window) {
 	var loginUrl = 'http://localhost:8080/ShopOnline/user/login',
         signupUrl = 'http://localhost:8080/ShopOnline/user/new',
+        resetUrl =  'http://localhost:8080/ShopOnline/user',
         AuthenticationService = {};
 
         //AuthenticationService.token = 'abc';//$cookies.get('access_token');
@@ -95,6 +96,23 @@ globalServices.factory('AuthenticationService', function ($http, $cookies, $wind
             $window.localStorage['user'] = JSON.stringify(data);
             //$cookies.put('user', data);
         };
+
+        AuthenticationService.resetPassword = function (user){
+            var data = {
+                "userName":   user.userName,
+                "userPassword":   user.password
+            };
+            return $http({
+                method: 'PUT',
+                url: resetUrl,
+                data: data,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function(data) {
+                return data;
+            }).error(function(data) {
+                alert("error");
+            });
+        }
 
         /*AuthenticationService.refreshAccessToken = function () {
             return $http.post(loginUrl, {

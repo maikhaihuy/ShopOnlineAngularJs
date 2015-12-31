@@ -22,6 +22,7 @@ orderController.controller('Checkout3Controller', ['', function(){
 
 orderController.controller('Checkout4Controller', ['', function(){
 	
+	
 }]);
 
 orderController.controller('CheckoutController', ['', function(){

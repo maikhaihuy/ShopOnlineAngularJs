@@ -6,7 +6,7 @@
         </div>
         <div class="modal-body">
             <form name="headerFields">
-                <div >
+                <div ng-hide="isResetPassword">
                     <md-input-container flex="80">
                         <label>User</label>
                             <input type="text" placeholder="User" ng-model="user.username" name="username" required>
@@ -15,14 +15,14 @@
                             </div>
                     </md-input-container>
                 </div>
-                <div ng-hide="isLogin">
+                <div ng-hide="isLogin && !isResetPassword">
                     <md-input-container flex="80">
                         <label >Email</label>
                             <input type="email" placeholder="Email" ng-model="user.email" ng-pattern="/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm" required>
 
                     </md-input-container>
                 </div>
-                <div >
+                <div ng-hide="isResetPassword">
                     <md-input-container  flex="80">
                         <label>Password</label>
                             <input type="password" placeholder="Password" ng-model="user.password" name="password" required>
@@ -31,7 +31,7 @@
                             </div>       
                     </md-input-container>
                 </div>
-                <div ng-hide="isLogin">
+                <div ng-hide="isLogin && !isResetPassword">
                     <md-input-container flex="80">
                         <label>Confirm Password</label>
                         <input type="password" ng-model="user.confirmPassword" name="confirmPassword" required>
@@ -43,11 +43,12 @@
                 <div layout-padding>
                     <span>{{ loginError }}</span>
                 </div>
-                <md-button ng-hide="loading" ng-class="{'md-raised md-primary' : isLogin}" ng-click="login()">Login</md-button>
+                <md-button ng-hide="loading || isResetPassword" ng-class="{'md-raised md-primary' : isLogin}" ng-click="login()">Đăng nhập</md-button>
 
-                <md-button ng-hide="loading" ng-class="{'md-raised md-primary' : !isLogin}" ng-click="signup()">Sign Up</md-button>
+                <md-button ng-hide="loading || isResetPassword" ng-class="{'md-raised md-primary' : !isLogin}" ng-click="signup()">Đăng ký</md-button>
+                <md-button ng-hide="!isResetPassword" ng-class="{'md-raised md-primary'}" ng-click="forgotPassword()">Đăng ký</md-button>
                 <br/>
-                <a >Quên mật khẩu?</a>
+                <a role="button" href="#loginModal" ng-lick="forgotPassword()">Quên mật khẩu?</a>
                 <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
             </form>
         </div>

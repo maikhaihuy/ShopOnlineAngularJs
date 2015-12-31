@@ -7,6 +7,7 @@ appController.controller('GlobalController', GlobalController);
 	
 	function AuthenticationController ($scope, $mdDialog, AuthenticationService){
 	    $scope.isLogin = true;
+        $scope.isResetPassword = false;
 
         $scope.hide = function () {
             $mdDialog.hide();
@@ -57,6 +58,13 @@ appController.controller('GlobalController', GlobalController);
                     $scope.loginError = 'Error during register.';
                 });
         };
+        $scope.reset = function () {
+            if (!$scope.isResetPassword){
+                $scope.isResetPassword = true;
+                return;
+            }
+            // 
+        }
 };
 
 	function GlobalController ($scope, $mdDialog, $window, $location, CallBackend, AuthenticationService) {

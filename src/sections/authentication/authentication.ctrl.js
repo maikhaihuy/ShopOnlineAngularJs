@@ -64,10 +64,28 @@ auController.controller('RegistrationController', ['$scope', '$routeParams', 'Ca
     });
 }]);
 
-auController.controller('ForgotpasswordController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
+auController.controller('ForgotpasswordController', ['$scope', '$routeParams', 'CallBackend', 'AuthenticationService', function ($scope, $routeParams, CallBackend, AuthenticationService) {
     $scope.messages = "Verify failure.";
 
     CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/forgotpassword/" + $routeParams.username).then(function(dataResponse){
             $scope.messages = dataResponse.data;
     });
+
+    $scope.resetPassword = function() {
+        $scope.user.userName = $routeParams.username;
+        $scope.user.token = $routeParams.tokenStr;
+        $scope.loading = true;
+        
+        if ($scope.user.password !== $scope.user.confirmPassword) {
+            $scope.loginError = 'Passwords do not match.';
+            return;
+        }
+
+        AuthenticationService.reset($scope.user).then(function (respone) {
+            if (response.data.error) {
+                $scope.loading = false;
+                $scope.loginError = response.data.message;
+            }
+        });
+    };
 }]);
