@@ -67,19 +67,6 @@
 </head>
 <body >
   <div ng-controller="GlobalController">
-    <md-content>
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h2>
-            <span>Shop Online </span>
-          </h2>
-          <span flex></span>
-          <md-button ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">Login</md-button>
-          <span ng-show="checkCookiesLogined()">{{user.userName}}, </span>
-          <md-button ng-show="checkCookiesLogined()" ng-click="logout()"> Logout</md-button>
-        </div>
-      </md-toolbar>
-    </md-content>
   <!-- Start header -->
     <header id="header">
       <!-- header -->

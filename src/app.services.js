@@ -21,7 +21,8 @@ globalServices.service('CallBackend', function ($http) {
 		return $http({
 			method: 'GET',
 			url: url,
-			params: params
+			params: params,
+            headers: {'Content-Type': 'application/json'}
 		});
 	};
 
@@ -30,9 +31,20 @@ globalServices.service('CallBackend', function ($http) {
 		return $http({
 			method: 'POST',
 			url: url,
-			data: data
+			data: data,
+            headers: {'Content-Type': 'application/json'}
 		});
-	}
+	};
+
+    this.putBackend = function (subUrl, data) {
+        var url = 'http://localhost:8080/ShopOnline' + subUrl;
+        return $http({
+            method: 'PUT',
+            url: url,
+            data: data,
+            headers: {'Content-Type': 'application/json'}
+        });
+    }
 });
 
 globalServices.factory('AuthenticationService', function ($http, $cookies, $window) {

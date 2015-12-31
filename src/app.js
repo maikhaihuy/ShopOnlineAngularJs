@@ -53,6 +53,10 @@ shopOnl.config(['$routeProvider',
                 templateUrl: 'sections/account/my-account.tpl.html',
                 controller: 'AccountController'
             })
+            .when('/ShopOnline/resetpassword', {
+                templateUrl: 'sections/authentication/forgotpassword.tpl.html',
+                controller: 'ForgotpasswordController'
+            })
             .when('/ShopOnline/order/checkout-step-1', {
                 templateUrl: 'sections/order/checkout-step-1.tpl.html',
                 controller: 'Checkout1Controller'
@@ -73,9 +77,9 @@ shopOnl.config(['$routeProvider',
                 templateUrl: 'sections/authentication/registration.tpl.html',
                 controller: 'RegistrationController'
             })
-            .when('/ShopOnline/token/:tokenStr/forgotpassword/:username', {
-                templateUrl: 'sections/authentication/forgotpassword.tpl.html',
-                controller: 'ForgotpasswordController'
+            .when('/ShopOnline/token/:tokenStr/reset/:username', {
+                templateUrl: 'sections/authentication/resetpassword.tpl.html',
+                controller: 'ResetpasswordController'
             })
             .otherwise({
                 redirectTo: '/ShopOnline'
@@ -89,3 +93,18 @@ shopOnl.run(function ($http, AuthenticationService) {
     $http.defaults.headers.common.Authorization = 'Basic NTY0ODA0OGY2MmJkOTYxMTAwODc4NTI1OnZlcnkgc2VjdXJl==';
     $http.defaults.headers.post['Content-Type'] = 'application/json';
 });
+
+shopOnl.directive('pwCheck', [function () {
+    return {
+      require: 'ngModel',
+      link: function (scope, elem, attrs, ctrl) {
+        var firstPassword = '#' + attrs.pwCheck;
+        elem.add(firstPassword).on('keyup', function () {
+          scope.$apply(function () {
+            var v = elem.val()===$(firstPassword).val();
+            ctrl.$setValidity('pwmatch', v);
+          });
+        });
+      }
+    }
+  }]);

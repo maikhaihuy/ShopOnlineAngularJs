@@ -5,7 +5,7 @@ var appController = angular.module('mainController', []);
 
 appController.controller('GlobalController', GlobalController);
 	
-	function AuthenticationController ($scope, $mdDialog, AuthenticationService){
+	function AuthenticationController ($scope, $mdDialog, $location, AuthenticationService){
 	    $scope.isLogin = true;
         $scope.isResetPassword = false;
 
@@ -58,12 +58,9 @@ appController.controller('GlobalController', GlobalController);
                     $scope.loginError = 'Error during register.';
                 });
         };
-        $scope.reset = function () {
-            if (!$scope.isResetPassword){
-                $scope.isResetPassword = true;
-                return;
-            }
-            // 
+        $scope.forgotPassword = function() {
+            $mdDialog.hide();
+            $location.path('/ShopOnline/resetpassword');
         }
 };
 

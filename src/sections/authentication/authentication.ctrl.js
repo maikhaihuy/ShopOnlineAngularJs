@@ -64,12 +64,37 @@ auController.controller('RegistrationController', ['$scope', '$routeParams', 'Ca
     });
 }]);
 
-auController.controller('ForgotpasswordController', ['$scope', '$routeParams', 'CallBackend', 'AuthenticationService', function ($scope, $routeParams, CallBackend, AuthenticationService) {
+auController.controller('ForgotpasswordController', ['$scope', 'CallBackend', 'AuthenticationService', function ($scope, CallBackend, AuthenticationService) {
+    $scope.isForgot = true;
+
+    $scope.resetPassword = function () {
+        var data = {
+            "userEmail": $scope.user.userEmail
+        };
+
+        CallBackend.postBackend("/user/forgotpassword", data).then(function(dataResponse){
+                $scope.messages = dataResponse.data;
+                $scope.isForgot = false;
+        });
+    };
+}]);
+
+auController.controller('ResetpasswordController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
     $scope.messages = "Verify failure.";
 
     CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/forgotpassword/" + $routeParams.username).then(function(dataResponse){
             $scope.messages = dataResponse.data;
     });
+
+/*    $scope.forgotPassword = function () {
+        if ($scope.isResetPassword == false){
+            $scope.isResetPassword = true;
+            return;
+        }
+        else {
+            $scope.isResetPassword = false;
+        }
+    };*/
 
     $scope.resetPassword = function() {
         $scope.user.userName = $routeParams.username;
@@ -81,8 +106,12 @@ auController.controller('ForgotpasswordController', ['$scope', '$routeParams', '
             return;
         }
 
-        AuthenticationService.reset($scope.user).then(function (respone) {
-            if (response.data.error) {
+        var data = {
+            "userName" : $scope.user.userName,
+            "userPassword": $scope.user.password
+        };
+        CallBackend.putBackend("/user/update/token/" + $scope.user.token, $scope.user).then(function (respone) {
+            if (response.data) {
                 $scope.loading = false;
                 $scope.loginError = response.data.message;
             }
