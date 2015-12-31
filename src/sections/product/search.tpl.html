@@ -1,0 +1,169 @@
+<div ng-controller="ShopController">
+
+    <!-- Tracker -->
+    <div class="darker-stripe">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="index-2.html">Webmarket</a>
+                        </li>
+                        <li><span class="icon-chevron-right"></span></li>
+                        <li>
+                            <a href="shop.html">Shop</a>
+                        </li>
+                        <li><span class="icon-chevron-right"></span></li>
+                        <li>
+                            <a href="shop.html">Grid View</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="push-up blocks-spacer">
+            <div class="row">
+
+               <!-- Left side -->
+                <aside class="span3 left-sidebar" id="tourStep1">
+                    <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+                       <!-- Filter -->
+                       <div class="underlined">
+                        <h3><span class="light">Shop</span> by filters</h3>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="accordion-group" id="tourStep2">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle" data-toggle="collapse" href="#filterOne">Categories <b class="caret"></b></div>
+                        </div>
+                        <div id="filterOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <div ng-repeat="category in categories" >
+                                    <input class="box" type="checkbox" ng-model="filterCate[category.categoryId]"/> {{category.categoryName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">Price <b class="caret"></b></a>
+                        </div>
+
+                        <div id="filterPrices" class="accordion-body in collapse">
+                            <div class="accordion-inner with-slider">
+
+                                <input type="text" data-initial="432" class="max-val pull-right" disabled />
+                                <input type="text" data-initial="99" class="min-val" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="accordion-group" id="tourStep3">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">Size <b class="caret"></b></div>
+                        </div>
+                        <div id="filterTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                            {{Size}}
+                                <div ng-repeat="size in sizes" >
+                                    <input class="box" type="checkbox" ng-model="filterSize[size.sizeId]"/> {{size.sizeName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Color -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">Color <b class="caret"></b></div>
+                        </div>
+                        <div id="filterThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="color in colors" >
+                                    <input class="box" type="checkbox" ng-model="filterColor[color.colorId]"/> {{color.colorName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">Brand <b class="caret"></b></div>
+                        </div>
+                        <div id="filterFour" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div ng-repeat="brand in brands" >
+                                    <input class="box" type="checkbox" ng-model="filterBrand[brand.brandId]"/> {{brand.brandName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> Remove All Filters</a>
+                    </div>
+                </aside>
+
+                <!-- Right side -->
+                <section class="span9" ng-controller="SearchProductController">
+                   <!-- Header right side -->
+                   <div class="underlined push-down-20">
+                        <div class="row">
+                            <div class="span4">
+                                <h3><span class="light">All</span> Products</h3>
+                            </div>
+                            <div class="span5 align-right sm-align-left">
+                                <div class="form-inline sorting-by" id="tourStep4">
+                                    <label for="isotopeSorting" class="black-clr">Sort:</label>
+                                    <select id="isotopeSorting" class="span3" ng-model="sortBy">
+                                        <option value="None">-- Select --</option>
+                                        <option value="productPrice">By Price (Low to High) &uarr;</option>
+                                        <option value="-productPrice">By Price (High to Low) &darr;</option>
+                                        <option value="productName">By Name (Low to High) &uarr;</option>
+                                        <option value="-productName">By Name (High to Low) &darr;</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Body right side -->
+                    <div class="row popup-products">
+                        <div id="isotopeContainer" class="isotope-container">
+                            <div class="span3 isotope--target" ng-repeat="product in filtered=(lstSearchProduct  | filter:filterByCategory | filter:filterBySize | filter:filterByBrand | filter:filterByColor | orderBy:sortBy)">
+                                <div class="product">
+                                    <div class="product-inner">
+                                        <div class="stamp red">Sold</div>
+                                        <div class="product-img">
+                                            <div class="picture">
+                                                <a href="#/ShopOnline/products/{{product.product.productId}}"><img width="540" height="374" alt="" src="../../{{product.product.productImage}}" /></a>
+                                                <div class="img-overlay">
+                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.product.productId}}">More {{product.product.productId}}</a>
+                                                    <a class="btn buy btn-danger" ng-click="AddCart(product.product.productId)">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-titles no-margin">
+                                            <h4 class="title">${{product.product.productPrice | number:0}}</h4>
+                                            <h5 class="no-margin isotope--title">{{product.product.productName}}</h5>
+                                            <h6>{{product.brand.brandName}}
+                                            {{product.category.categoryName}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"><br/><br/></div>
+                            </div>
+                        </div>
+                    </div>  
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
