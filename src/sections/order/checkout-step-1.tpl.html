@@ -86,7 +86,7 @@
                                         <input type="text" class="tiny-size" value="{{product.qty}}" />
                                     </td>
                                     <td class="price">
-                                        ${{product.product.productPrice}}
+                                        <span data-ng-bind="${{product.discountInfo.discountPercentValue == 0 ? product.product.productPrice * product.discountInfo.discountPercentValue / 100 : product.product.productPrice}} | number:0"></span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -94,7 +94,7 @@
                         <hr/>
                         <p class="right-align">
                             In the next step you will choose your shipping address &nbsp; &nbsp;
-                            <a href="checkout-step-2.html" class="btn btn-primary higher bold">CONTINUE</a>
+                            <a ng-click="goTo('ShopOnline/order/checkout-step-2')" class="btn btn-primary higher bold">Tiếp tục</a>
                         </p>
                     </div>
                 </div>

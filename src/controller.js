@@ -138,6 +138,21 @@ appController.controller('GlobalController', GlobalController);
                     }
                     product['qty'] = 1;
                     $scope.cart.push(product);
+
+                    //check discount Product and add cart
+                    var discountProductId = CheckDiscount(product);
+
+                    if(discountProductId != null && discountProductId != 0) {
+                        var productDiscount = null;
+                        CallBackend.getBackend("/product/" + discountProductId).then(function(dataResponse){
+                            productDiscount = dataResponse.data;
+                            productDiscount.discountInfo.discountInfoId = 0;
+                            productDiscount.discountInfo.discountPercentValue = 0;
+                            productDiscount.product.productPrice = 0;
+                            $scope.cart.push(productDiscount);
+                        });
+                    }
+
                     $window.localStorage.cart = JSON.stringify($scope.cart);
                 }
             });
@@ -166,20 +181,50 @@ appController.controller('GlobalController', GlobalController);
                     product.listSize = angular.fromJson("[" + size + "]");
                     product.listColor = angular.fromJson("[" + color + "]");
                     $scope.cart.push(product);
+
+                    //check discount Product and add cart
+                    var discountProductId = CheckDiscount(product);
+
+                    if(discountProductId != null && discountProductId != 0) {
+                        var productDiscount = null;
+                        CallBackend.getBackend("/product/" + discountProductId).then(function(dataResponse){
+                            productDiscount = dataResponse.data;
+                            productDiscount.discountInfo.discountInfoId = 0;
+                            productDiscount.discountInfo.discountPercentValue = 0;
+                            productDiscount.product.productPrice = 0;
+                            $scope.cart.push(productDiscount);
+                        });
+                    }
+
                     $window.localStorage.cart = JSON.stringify($scope.cart);
                 }
             });
         };
 
         $scope.EditCart = function(productId) {
+            var productIdTemp = productId;
             $scope.cart = JSON.parse($window.localStorage.cart);
             for (var key in $scope.cart) {
-                if ($scope.cart[key].product['productId'] === productId) {
+                if ($scope.cart[key].product['productId'] === productIdTemp) {
+                    
+                    productIdTemp = CheckDiscount($scope.cart[key]);
+                    if (productIdTemp == 0)
+                        break;
+
                     $scope.cart.splice(key, 1);
-                    break;
                 }
             }
             $window.localStorage.cart = JSON.stringify($scope.cart);
+        };
+
+        // parrams is added productId
+        // return { !null: discount ; null: undiscount}
+        function CheckDiscount(product) {
+            var isGetFree = null;
+            if (product.discountInfo.discountInfoId != 0 || product.discountInfo.discountPercentValue != 0) {
+                isGetFree = product.discountInfo.discountInfoId;
+            }
+            return isGetFree;
         };
 
         $scope.goTo = function(path) {
