@@ -75,10 +75,10 @@
           <div class="row">
             <div class="span4">
               <div class="higher-line">
-                <span ng-hide="checkCookiesLogined()">Wellcome! Please</span>
+                <span >Wellcome!</span>
                 <span ng-show="checkCookiesLogined()">{{user.userName}}, </span>
                 <a role="button" href="" ng-show="checkCookiesLogined()" ng-click="logout()"> Logout</a>
-                <a role="button" href="" data-toggle="modal" ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">Login</a>
+                <a role="button" href="" data-toggle="modal" ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">  Please Login</a>
               </div>
             </div>
             <div class="span8">
@@ -147,16 +147,15 @@
                 <!-- Search -->
                 <div layout="row">
                   <md-input-container class="md-block" flex-gt-sm>
-            <input ng-model="search.nameProduct" ng-keyup="$event.keyCode == 13 && search(search.categoryId, search.nameProduct)">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>State</label>
-            <md-select ng-model="search.categoryId">
-              <md-option ng-repeat="category in categories" value="{{category.categoryId}}">
-                {{category.categoryName}}
-              </md-option>
-            </md-select>
-          </md-input-container>
+                    <md-select ng-model="search.categoryId">
+                      <md-option ng-repeat="category in categories" value="{{category.categoryId}}">
+                        {{category.categoryName}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <input ng-model="search.nameProduct" ng-keyup="$event.keyCode == 13 && search(search.categoryId, search.nameProduct)">
+                  </md-input-container>
                 </div>
               </div>
             </div>

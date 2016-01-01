@@ -95,7 +95,6 @@ appController.controller('GlobalController', GlobalController);
     			//AuthenticationService.token = null;
                 //$cookies.remove('user');
                 delete $window.localStorage.user;
-                alert('logout');
     		}
             
     	};

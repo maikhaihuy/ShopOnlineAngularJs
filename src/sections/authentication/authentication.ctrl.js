@@ -122,12 +122,12 @@ auController.controller('ResetpasswordController', ['$scope', '$routeParams', 'C
             $scope.loginError = 'Mật khẩu không khớp';
             return;
         }
-        
+
         var data = {
             "userName" : $scope.user.userName,
             "userPassword": $scope.user.password
         };
-        CallBackend.postBackend("/user/update/token/" + $scope.user.token, data).then(function (respone) {
+        CallBackend.postBackend("/user/update/token/" + $scope.user.token, data).then(function (response) {
             if (response.data) {
                 $scope.loading = false;
                 $scope.messages = "Đặt lại thành công";
