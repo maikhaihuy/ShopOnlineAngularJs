@@ -10,7 +10,7 @@
                             <div class="row">
                                 <div align="center">
                                     <div class="center-align">
-                                        <h1><span class="light">Hóa đơn</span> &amp; địa chỉ nhận hàng</h1>
+                                        <h1><span class="light">Thông</span> &amp; người nhận</h1>
                                     </div>
                                 </div>
                             </div>
@@ -20,39 +20,35 @@
                             <div class="clearfix">
                                 <div class="step done">
                                     <div class="step-badge"><i class="icon-ok"></i></div>
-                                    <a href="" ng-click="goTo('ShopOnline/order/checkout-step-1')">Vỏ hàng</a>
+                                    <a href="" ng-click="goTo('ShopOnline/order/checkout-step-1')">Giỏ hàng</a>
                                 </div>
                                 <div class="step active">
                                     <div class="step-badge">2</div>
-                                    Địa chỉ nhận hàng
+                                    Thông tin người nhận
                                 </div>
                                 <div class="step">
-                                    <div class="step-badge">2</div>
+                                    <div class="step-badge">3</div>
                                     Phương thức thanh toán
                                 </div>
                                 <div class="step">
                                     <div class="step-badge">4</div>
-                                    Xác nhận
+                                    Xác nhận &amp; Thanh toán
                                 </div>
                             </div>
                         </div>
                         
                         <div>
                           <form name="userForm" class="form-horizontal form-checkout">
-                            <div layout-gt-sm="row">
+
                               <md-input-container class="md-block" flex-gt-sm>
-                                <label>Họ người nhận</label>
-                                <input ng-model="user.firstName">
+                                <label>Họ tên người nhận</label>
+                                <input ng-model="reciepient.recipientName">
                               </md-input-container>
-                              <md-input-container class="md-block" flex-gt-sm>
-                                <label>Tên ngườn nhận</label>
-                                <input ng-model="theMax">
-                              </md-input-container>
-                            </div>
+
                             <div>
                                 <md-input-container class="md-block">
                                   <label>Số nhà tên đường</label>
-                                  <input ng-model="user.address" name="address" required>
+                                  <input ng-model="reciepient.recipientAddress" name="address" type="text" >
                                   <div class="hint">Ví dụ: 59/K3 Cộng Hòa</div>
                                     <div ng-messages="userForm.address.$error" role="alert" multiple>
                                         <div ng-message="required" class="my-message">Yêu cầu nhập địa chỉ</div>
@@ -60,7 +56,7 @@
                                 </md-input-container>
                                 <md-input-container class="md-block">
                                   <label>Số điện thoại</label>
-                                  <input ng-model="user.phone" name="phone" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" required>
+                                  <input ng-model="reciepient.recipientPhoneNumber" name="phone" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" required>
                                   <div class="hint">Ví dụ: 0987654321</div>
                                   <div ng-messages="userForm.phone.$error" role="alert" multiple>
                                     <div ng-message="required" class="my-message">Yêu cầu nhập số điện thoại</div>
@@ -70,16 +66,16 @@
                                 </md-input-container>
                                 <md-input-container class="md-block">
                                   <label>Email người nhận</label>
-                                  <div class="hint">Ví dụ: 0987654321</div>
-                                  <input ng-model="user.email" name="email" placeholder="example@abc.df">
+                                  <input ng-model="reciepient.recipientEmail" type="email">
+                                  <div class="hint">Ví dụ: example@abc.df</div>
                                 </md-input-container>
                             </div>
                             
                             <div layout-gt-sm="row">
                               <md-input-container class="md-block" flex-gt-sm>
                                 <label>Tỉnh/Thành phố</label>
-                                <md-select ng-model="user.city" name="city" required>
-                                  <md-option ng-repeat="city in cities" value="{{cities.cityId}}">
+                                <md-select ng-model="cityId" name="city" required>
+                                  <md-option ng-repeat="city in lstCities()" value="{{cities.cityId}}">
                                     {{city.cityName}}
                                   </md-option>
                                 </md-select>
@@ -89,7 +85,7 @@
                               </md-input-container>
                               <md-input-container class="md-block" flex-gt-sm>
                                 <label>Quận/Huyện</label>
-                                <md-select ng-model="user.district"  name="district" required>
+                                <md-select ng-model="reciepient.districtId"  name="district" required>
                                   <md-option ng-repeat="district in districts" value="{{district.districtId}}">
                                     {{district.districtName}}
                                   </md-option>
@@ -103,7 +99,7 @@
                           
                         <p class="right-align">
                             Bạn sẽ chọn phương thức thanh toán bước kế tiếp &nbsp; &nbsp;
-                            <a href="" ng-click="goTo('/ShopOnline/order/checkout-step-3')" class="btn btn-primary higher bold">Tiếp tục</a>
+                            <a href="" ng-click="goTo('/ShopOnline/order/checkout-step-3')" class="btn btn-primary higher bold" ng-show="CheckStep2()">Tiếp tục</a>
                         </p>
                         </form>
                     </div>

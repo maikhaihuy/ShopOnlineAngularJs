@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="main-titles lined">
-                        <h2 class="title"><span class="light">New</span> Products in the Shop</h2>
+                        <h2 class="title"><span class="light">Sản phẩm</span> mới</h2>
                     </div>
                 </div>
             </div>
@@ -13,6 +13,7 @@
                 <div class="span3" ng-repeat="product in lstNewProducts">
                     <div class="product">
                         <div class="product-inner">
+                            <div class="stamp red" ng-hide="product.discountInfo == null">Safe</div>
                             <div class="product-img">
                                 <div class="picture">
                                     <a href="#/ShopOnline/products/{{product.product.productId}}"><img ng-src="{{'../../' +  product.product.productImage}}" imageonload alt="" width="540" height="374" /></a>
@@ -55,7 +56,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="main-titles lined">
-                        <h2 class="title"><span class="light">Most</span> Popular Products</h2>
+                        <h2 class="title"><span class="light">Sản phẩm</span> giảm giá</h2>
                     </div>
                 </div>
             </div>
@@ -63,6 +64,7 @@
                 <div class="span3" ng-repeat="product in lstDiscountProducts">
                     <div class="product">
                         <div class="product-inner">
+                            <div class="stamp red" ng-hide="product.discountInfo == null">Safe</div>
                             <div class="product-img">
                                 <div class="picture">
                                     <a href="/products/{{product.product.productId}}"><img ng-src="{{'../../' + product.product.productImage}}" alt="" width="540" height="412" /></a>
@@ -103,7 +105,7 @@
         <div class="row">
             <div class="span12">
                 <div class="main-titles lined">
-                    <h2 class="title"><span class="light">Our</span> Brands</h2>
+                    <h2 class="title"><span class="light">Thương</span> hiệu</h2>
                     <div class="arrows">
                         <a class="clickable  icon-chevron-left" id="brandsLeft"></a>
                         <a class="clickable  icon-chevron-right" id="brandsRight"></a>

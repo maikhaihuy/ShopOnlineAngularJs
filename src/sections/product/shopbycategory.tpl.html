@@ -6,15 +6,15 @@
                 <div class="span12">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="index-2.html">Webmarket</a>
+                            <a href="#">Webmarket</a>
                         </li>
                         <li><span class="icon-chevron-right"></span></li>
                         <li>
-                            <a href="shop.html">Shop</a>
+                            <a href="#">Shop</a>
                         </li>
                         <li><span class="icon-chevron-right"></span></li>
                         <li>
-                            <a href="shop.html">Grid View</a>
+                            <a href="#">Grid View</a>
                         </li>
                     </ul>
                 </div>
@@ -32,13 +32,13 @@
                     <div class="sidebar-item sidebar-filters" id="sidebarFilters">
                        <!-- Filter -->
                        <div class="underlined">
-                        <h3><span class="light">Shop</span> by filters</h3>
+                        <h3><span class="light">Lọc</span></h3>
                     </div>
 
                     <!-- Categories -->
                     <div class="accordion-group" id="tourStep2">
                         <div class="accordion-heading">
-                            <div class="accordion-toggle" data-toggle="collapse" href="#filterOne">Categories <b class="caret"></b></div>
+                            <div class="accordion-toggle" data-toggle="collapse" href="#filterOne">Phân loại <b class="caret"></b></div>
                         </div>
                         <div id="filterOne" class="accordion-body collapse in">
                             <div class="accordion-inner">
@@ -52,7 +52,7 @@
                     <!-- Price -->
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">Price <b class="caret"></b></a>
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">Giá <b class="caret"></b></a>
                         </div>
 
                         <div id="filterPrices" class="accordion-body in collapse">
@@ -67,7 +67,7 @@
                     <!-- Size -->
                     <div class="accordion-group" id="tourStep3">
                         <div class="accordion-heading">
-                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">Size <b class="caret"></b></div>
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterTwo">Kích cỡ <b class="caret"></b></div>
                         </div>
                         <div id="filterTwo" class="accordion-body collapse">
                             <div class="accordion-inner">
@@ -81,7 +81,7 @@
                     <!-- Color -->
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">Color <b class="caret"></b></div>
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">Màu sắc <b class="caret"></b></div>
                         </div>
                         <div id="filterThree" class="accordion-body collapse">
                             <div class="accordion-inner">
@@ -95,7 +95,7 @@
                     <!-- Brand -->
                     <div class="accordion-group">
                         <div class="accordion-heading">
-                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">Brand <b class="caret"></b></div>
+                            <div class="accordion-toggle collapsed" data-toggle="collapse" href="#filterFour">Thương hiệu <b class="caret"></b></div>
                         </div>
                         <div id="filterFour" class="accordion-body collapse">
                             <div class="accordion-inner">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> Remove All Filters</a>
+                    <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> Bỏ chọn tất cả</a>
                     </div>
                 </aside>
 
@@ -115,17 +115,17 @@
                    <div class="underlined push-down-20">
                         <div class="row">
                             <div class="span4">
-                                <h3><span class="light">All</span> Products</h3>
+                                <h3><span class="light">Tất cả</span> sản phẩm</h3>
                             </div>
                             <div class="span5 align-right sm-align-left">
                                 <div class="form-inline sorting-by" id="tourStep4">
                                     <label for="isotopeSorting" class="black-clr">Sort:</label>
                                     <select id="isotopeSorting" class="span3" ng-model="sortBy">
-                                        <option value="None">-- Select --</option>
-                                        <option value="productPrice">By Price (Low to High) &uarr;</option>
-                                        <option value="-productPrice">By Price (High to Low) &darr;</option>
-                                        <option value="productName">By Name (Low to High) &uarr;</option>
-                                        <option value="-productName">By Name (High to Low) &darr;</option>
+                                        <option value="None">-- Chọn --</option>
+                                        <option value="product.productPrice">Theo giá (Thấp đến Cao) &uarr;</option>
+                                        <option value="-product.productPrice">Theo giá (Cao đến Thấp) &darr;</option>
+                                        <option value="product.productName">Theo tên (Thấp đến Cao) &uarr;</option>
+                                        <option value="-product.productName">Theo tên (Cao đến Thấp) &darr;</option>
                                     </select>
                                 </div>
                             </div>
@@ -138,13 +138,13 @@
                             <div class="span3 isotope--target filter--boots" ng-repeat="product in filtered=(lstProductByCategtory  | filter:filterByCategory | filter:filterBySize | filter:filterByBrand | filter:filterByColor | orderBy:sortBy)">
                                 <div class="product">
                                     <div class="product-inner">
-                                        <div class="stamp red">Sold</div>
+                                        <div class="stamp red" ng-hide="product.discountInfo == null">Safe</div>
                                         <div class="product-img">
                                             <div class="picture">
                                                 <a href="#/ShopOnline/products/{{product.productId}}"><img width="540" height="374" alt="" src="../../{{product.productImage}}" /></a>
                                                 <div class="img-overlay">
-                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.productId}}">More</a>
-                                                    <a class="btn buy btn-danger" ng-click="AddCart(product.product.productId)">Add to Cart</a>
+                                                    <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.productId}}">Chi tiết</a>
+                                                    <a class="btn buy btn-danger" ng-click="AddCart(product.product.productId)">Thêm vào giỏ</a>
                                                 </div>
                                             </div>
                                         </div>

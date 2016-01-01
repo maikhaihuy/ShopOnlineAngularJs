@@ -30,7 +30,7 @@ productController.controller('ShopController', function ($scope, CallBackend) {
 
     $scope.predicate = 'productPrice';
     $scope.reverse = true;
-    $scope.order = function(predicate, reverse) {
+    $scope.orderBy = function(predicate, reverse) {
     	$scope.reverse = reverse;
     	$scope.predicate = predicate;
     };

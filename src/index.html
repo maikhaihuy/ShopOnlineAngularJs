@@ -75,10 +75,10 @@
           <div class="row">
             <div class="span4">
               <div class="higher-line">
-                <span >Wellcome!</span>
+                <span >Xin chào!</span>
                 <span ng-show="checkCookiesLogined()">{{user.userName}}, </span>
-                <a role="button" href="" ng-show="checkCookiesLogined()" ng-click="logout()"> Logout</a>
-                <a role="button" href="" data-toggle="modal" ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">  Please Login</a>
+                <a role="button" href="" ng-show="checkCookiesLogined()" ng-click="logout()"> Đăng xuất</a>
+                <a role="button" href="" data-toggle="modal" ng-hide="checkCookiesLogined()" ng-click="showLoginSignUpDialog()">  Vui lòng, Đăng nhập</a>
               </div>
             </div>
             <div class="span8">
@@ -128,25 +128,26 @@
 
               <div class="nav-collapse collapse">
                 <ul class="nav" id="mainNavigation" style="margin-top:10px;">
-                  <li><a href="#/ShopOnline/shop"> Home </a></li>
+                  <li><a href="#/ShopOnline/shop"> Shop </a></li>
                   <li class="dropdown dropdown-supermenu" >
-                    <a href="" class="dropdown-toggle"> Brains <b class="caret"></b> </a>
+                    <a href="" class="dropdown-toggle"> Thương hiệu <b class="caret"></b> </a>
                     <ul class="dropdown-menu">
                       <li ng-repeat="brand in brands"><a href="/#/ShopOnline/products/brand/{{brand.brandId}}">{{brand.brandName}}</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
-                    <a href="" class="dropdown-toggle"> Categories <b class="caret"></b> </a>
+                    <a href="" class="dropdown-toggle"> Phân loại <b class="caret"></b> </a>
                     <ul class="dropdown-menu">
                       <li ng-repeat="category in categories"><a href="/#/ShopOnline/products/category/{{category.categoryId}}">{{category.categoryName}}</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Thông tin</a></li>
+                  <li><a href="#">Liên hệ</a></li>
                 </ul>
                 <!-- Search -->
                 <div layout="row">
                   <md-input-container class="md-block" flex-gt-sm>
+                  <label>Phân loại</label>
                     <md-select ng-model="search.categoryId">
                       <md-option ng-repeat="category in categories" value="{{category.categoryId}}">
                         {{category.categoryName}}
@@ -154,6 +155,7 @@
                     </md-select>
                   </md-input-container>
                   <md-input-container class="md-block" flex-gt-sm>
+                  <label>Tìm kiếm</label>
                     <input ng-model="search.nameProduct" ng-keyup="$event.keyCode == 13 && search(search.categoryId, search.nameProduct)">
                   </md-input-container>
                 </div>
@@ -164,7 +166,7 @@
             <div class="span3">
               <div class="cart-container" id="cartContainer">
                 <div class="cart">
-                  <p class="items">CART <span class="dark-clr">({{cart.length}})</span></p>
+                  <p class="items">Giỏ <span class="dark-clr">({{cart.length}})</span></p>
                   <p class="dark-clr hidden-tablet">${{Total() | number:0}}</p>
                   <a href="goTo('/ShopOnline/order/checkout-step-1')" class="btn btn-danger">
 
@@ -179,21 +181,21 @@
                     <div class="desc">
                       <strong><a href="#/ShopOnline/products/{{product.product.productId}}">{{product.product.productName}}</a></strong>
                       <span class="light-clr qty">
-                        Qty: 1
+                        Qty: {{product.qty}}
                         &nbsp;
                         <a ng-click="EditCart(product.product.productId)" class="icon-remove-sign" title="Remove Item"></a>
                       </span>
                     </div>
                     <div class="price">
-                      <strong>${{product.product.productPrice | number:0}}</strong>
+                      <strong>${{ product.product.productPrice * product.qty | number:0}}</strong>
                     </div>
                   </div>
 
                   <div class="summary">
                     <div class="line">
                       <div class="row-fluid">
-                        <div class="span6">Subtotal:</div>
-                        <div class="span6 align-right size-16">${{Total()  | number:0}}</div>
+                        <div class="span6">Phí tổng:</div>
+                        <div class="span6 align-right size-16">${{Total() | number:0}}</div>
                       </div>
                     </div>
                   </div>

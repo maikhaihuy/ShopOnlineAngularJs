@@ -119,7 +119,7 @@ appController.controller('GlobalController', GlobalController);
         $scope.Total = function() {
             var total = 0;
             for (var key in $scope.cart) {
-                total += $scope.cart[key].product.productPrice;
+                total += $scope.cart[key].product.productPrice * $scope.cart[key].product.qty;
             }
             return total;
         };
@@ -223,11 +223,24 @@ appController.controller('GlobalController', GlobalController);
             $window.localStorage.cart = JSON.stringify($scope.cart);
         };
 
+        $scope.UpdateCart = function(){
+            /*$scope.cart = JSON.parse($window.localStorage.cart);
+
+            for (var key in $scope.cart) {
+                if ($scope.cart[key].product['productId'] === productId) {
+                    $scope.cart[key].product['productId'].qty = qty;
+                    $scope.cart[key].product['productId'].listSize = angular.fromJson("[" + size + "]");
+                    $scope.cart[key].product['productId'].listColor = angular.fromJson("[" + color + "]");
+                }
+            }*/
+            $window.localStorage.cart = JSON.stringify($scope.cart);
+        }
         // parrams is added productId
         // return { !null: discount ; null: undiscount}
         function CheckDiscount(product) {
             var isGetFree = null;
-            if (product.discountInfo.discountInfoId != 0 || product.discountInfo.discountPercentValue != 0) {
+            if (product.discountInfo != null)
+                if (product.discountInfo.discountInfoId != 0 || product.discountInfo.discountPercentValue != 0) {
                 isGetFree = product.discountInfo.discountInfoId;
             }
             return isGetFree;

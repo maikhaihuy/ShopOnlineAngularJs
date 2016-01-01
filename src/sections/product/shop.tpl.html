@@ -124,10 +124,10 @@
                                     <label for="isotopeSorting" class="black-clr">Sort:</label>
                                     <select id="isotopeSorting" class="span3" ng-model="sortBy">
                                         <option value="None">-- Select --</option>
-                                        <option value="productPrice">By Price (Low to High) &uarr;</option>
-                                        <option value="-productPrice">By Price (High to Low) &darr;</option>
-                                        <option value="productName">By Name (Low to High) &uarr;</option>
-                                        <option value="-productName">By Name (High to Low) &darr;</option>
+                                        <option value="product.productPrice">By Price (Low to High) &uarr;</option>
+                                        <option value="-product.productPrice">By Price (High to Low) &darr;</option>
+                                        <option value="product.productName">By Name (Low to High) &uarr;</option>
+                                        <option value="-product.productName">By Name (High to Low) &darr;</option>
                                     </select>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                             <div class="span3 isotope--target" ng-repeat="product in filtered=(lstAllProduct  | filter:filterByCategory | filter:filterBySize | filter:filterByBrand | filter:filterByColor | orderBy:sortBy)">
                                 <div class="product">
                                     <div class="product-inner">
-                                        <div class="stamp red">Sold</div>
+                                        <div class="stamp red" ng-hide="product.discountInfo == null">Safe</div>
                                         <div class="product-img">
                                             <div class="picture">
                                                 <a href="#/ShopOnline/products/{{product.product.productId}}"><img width="540" height="374" alt="" src="../../{{product.product.productImage}}" /></a>

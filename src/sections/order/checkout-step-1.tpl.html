@@ -8,18 +8,8 @@
 
                         <header>
                             <div class="row">
-                                <div class="span2">
-                                    <a href="index.html"><img src="../../resources/images/logo-bw.png" alt="Webmarket Logo" width="48" height="48" /></a>
-                                </div>
-                                <div class="span6">
-                                    <div class="center-align">
-                                        <h1><span class="light">Review</span> Shopping Cart</h1>
-                                    </div>
-                                </div>
-                                <div class="span2">
-                                    <div class="right-align">
-                                        <img src="../../resources/images/buttons/security.jpg" alt="Security Sign" width="92" height="65" />
-                                    </div>
+                                <div class="center-align">
+                                    <h1><span class="light">Giỏ hàng</span> </h1>
                                 </div>
                             </div>
                         </header>
@@ -28,19 +18,19 @@
                             <div class="clearfix">
                                 <div class="step active">
                                     <div class="step-badge">1</div>
-                                    Shopping Cart
-                                </div>
-                                <div class="step">
-                                    <div class="step-badge">3</div>
-                                    Shipping Address
+                                    Giỏ hàng
                                 </div>
                                 <div class="step">
                                     <div class="step-badge">2</div>
-                                    Payment Method
+                                    Thông tin người nhận
+                                </div>
+                                <div class="step">
+                                    <div class="step-badge">3</div>
+                                    Phương thức thanh toán
                                 </div>
                                 <div class="step">
                                     <div class="step-badge">4</div>
-                                    Confirm &amp; Pay
+                                    Xác nhận &amp; Thanh toán
                                 </div>
                             </div>
                         </div>
@@ -49,20 +39,20 @@
                             <thead>
                                 <tr>
                                     <div class="align-left">
-                                        <th colspan="2">Item</th>
+                                        <th colspan="2">Sản phẩm</th>
                                     </div>
                                     
                                     <th>
-                                        <div class="align-left">Color</div>
+                                        <div> Màu </div>
                                     </th>
                                     <th>
-                                        <div class="align-center">Size</div>
+                                        <div > Kích cỡ </div>
                                     </th>
                                     <th>
-                                        <div class="align-center">Quantity</div>
+                                        <div > Số lượng</div>
                                     </th>
                                     <th>
-                                        <div class="align-right">Price</div>
+                                        <div class="align-right">Giá</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -73,27 +63,27 @@
                                         <a title="Remove Item" class="icon-remove-sign" ng-click="EditCart(product.product.productId)"></a>
                                     </td>
                                     <td >&nbsp;
-                                        <select name="color" class="span2">
+                                        <select name="color" class="span2" ng-model="product.color">
                                             <option ng-repeat="color in product.listColor"  value="{{color}}">{{color.colorName}}</option>
                                         </select>
                                     </td>
                                     <td >&nbsp;
-                                        <select name="size" class="span2">
+                                        <select name="size" class="span2" ng-model="product.size">
                                             <option ng-repeat="size in product.listSize"  value="{{size}}">{{size.sizeName}}</option>
                                         </select>
                                     </td>
                                     <td class="qty">
-                                        <input type="text" class="tiny-size" value="{{product.qty}}" />
+                                        <input type="text" class="tiny-size" ng-change="UpdateCart()" ng-model="product.qty" />
                                     </td>
                                     <td class="price">
-                                        <span data-ng-bind="${{product.discountInfo.discountPercentValue == 0 ? product.product.productPrice * product.discountInfo.discountPercentValue / 100 : product.product.productPrice}} | number:0"></span>
+                                        <span >${{product.product.productPrice * product.qty}}</span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <hr/>
                         <p class="right-align">
-                            In the next step you will choose your shipping address &nbsp; &nbsp;
+                            Bước kế tiếp bạn sẽ nhập địa chỉ người nhận &nbsp; &nbsp;
                             <a ng-click="goTo('ShopOnline/order/checkout-step-2')" class="btn btn-primary higher bold">Tiếp tục</a>
                         </p>
                     </div>
