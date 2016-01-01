@@ -74,8 +74,12 @@ auController.controller('ForgotpasswordController', ['$scope', 'CallBackend', 'A
     $scope.isForgot = true;
 
     $scope.resetPassword = function () {
+        if ($scope.user.email == null){
+            $scope.messages = "email rỗng";
+            return;
+        }
         var data = {
-            "userEmail": $scope.user.userEmail
+            "userEmail": $scope.user.email
         };
 
         CallBackend.postBackend("/user/forgotpassword", data).then(function(dataResponse){
@@ -86,11 +90,18 @@ auController.controller('ForgotpasswordController', ['$scope', 'CallBackend', 'A
 }]);
 
 auController.controller('ResetpasswordController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
-    $scope.messages = "Verify failure.";
+    $scope.verify = false;
+    $scope.messages = "Xác nhận đặt lại mật khẩu";
 
-    CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/forgotpassword/" + $routeParams.username).then(function(dataResponse){
-            $scope.messages = dataResponse.data;
-    });
+    $scope.verifyReset = function() {
+        CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/forgotpassword/" + $routeParams.username).then(function(dataResponse){
+            $scope.messages = "Nhập lại mật khẩu";
+            $scope.verify = true;
+        }, function() {
+            $scope.verify = false;
+            $scope.messages = "Token hết hạn";
+        });
+    }
 
 /*    $scope.forgotPassword = function () {
         if ($scope.isResetPassword == false){
@@ -116,11 +127,13 @@ auController.controller('ResetpasswordController', ['$scope', '$routeParams', 'C
             "userName" : $scope.user.userName,
             "userPassword": $scope.user.password
         };
-        CallBackend.putBackend("/user/update/token/" + $scope.user.token, $scope.user).then(function (respone) {
+        CallBackend.postBackend("/user/update/token/" + $scope.user.token, data).then(function (respone) {
             if (response.data) {
                 $scope.loading = false;
-                $scope.loginError = response.data.message;
+                $scope.messages = "Đặt lại thành công";
             }
+        }, function() {
+            $scope.messages = "Đặt lại thất bại";
         });
     };
 }]);

@@ -77,7 +77,7 @@ shopOnl.config(['$routeProvider',
                 templateUrl: 'sections/authentication/registration.tpl.html',
                 controller: 'RegistrationController'
             })
-            .when('/ShopOnline/token/:tokenStr/reset/:username', {
+            .when('/ShopOnline/token/:tokenStr/forgotpassword/:username', {
                 templateUrl: 'sections/authentication/resetpassword.tpl.html',
                 controller: 'ResetpasswordController'
             })

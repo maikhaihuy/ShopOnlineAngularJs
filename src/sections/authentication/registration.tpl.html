@@ -1,6 +1,7 @@
 <div  class="container" ng-controller="RegistrationController">
 <div class="push-up blocks-spacer">
 		<br/><br/><br/>
+		<h3 id="registerModalLabel" ng-hide="isLogin"><span class="light">Verify</span> your email</h3>
 		<div align="center">
             <md-input-container flex="80">
                 <md-button ng-click="verify()" ng-hide="isVerify" class="md-raised md-primary">{{messages}}</md-button>
