@@ -10,6 +10,18 @@ orderController.controller('Checkout1Controller', function ($scope, $window){
             $scope.a = dataResponse.data;
         });
 	};
+
+	$scope.lstCities = function(){
+		CallBackend.getBackend("/").then(function(dataResponse){
+            return dataResponse.data;
+    	});
+	}
+	
+	$scope.lstDistrict = function(cityId) {
+		CallBackend.getBackend("/").then(function(dataResponse){
+            return = dataResponse.data;
+        });
+	};
 });
 
 /*orderController.controller('Checkout2Controller', ['', function(){
