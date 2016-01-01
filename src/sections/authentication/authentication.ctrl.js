@@ -119,10 +119,10 @@ auController.controller('ResetpasswordController', ['$scope', '$routeParams', 'C
         $scope.loading = true;
         
         if ($scope.user.password !== $scope.user.confirmPassword) {
-            $scope.loginError = 'Passwords do not match.';
+            $scope.loginError = 'Mật khẩu không khớp';
             return;
         }
-
+        
         var data = {
             "userName" : $scope.user.userName,
             "userPassword": $scope.user.password
@@ -133,7 +133,8 @@ auController.controller('ResetpasswordController', ['$scope', '$routeParams', 'C
                 $scope.messages = "Đặt lại thành công";
             }
         }, function() {
-            $scope.messages = "Đặt lại thất bại";
+            $scope.messages
+             = "Đặt lại thất bại";
         });
     };
 }]);

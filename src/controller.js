@@ -24,7 +24,7 @@ appController.controller('GlobalController', GlobalController);
                         //$scope.isLoggedIn = true;
                 }, function () {
                     $scope.loading = false;
-                    $scope.loginError = 'Login failed. Or. Check mail and verify';
+                    $scope.loginError = 'Đăng nhập thất bại: sai tên tài khoản hoặc mật khẩu';
                 });
         }
         $scope.login = function () {
@@ -41,7 +41,7 @@ appController.controller('GlobalController', GlobalController);
                 return;
             }
             if ($scope.user.password !== $scope.user.confirmPassword) {
-                $scope.loginError = 'Passwords do not match.';
+                $scope.loginError = 'Mật khẩu không khớp';
                 return;
             }
             $scope.loading = true;
@@ -52,11 +52,12 @@ appController.controller('GlobalController', GlobalController);
                         $scope.loading = false;
                         $scope.loginError = response.data.message;
                     } else {
-                        login();
+                        $scope.loading = false;
+                        $scope.loginError = "Kiểm tra email và xác thực tài khoản";
                     }
                 }, function () {
                     $scope.loading = false;
-                    $scope.loginError = 'Error during register.';
+                    $scope.loginError = 'Đăng ký thất bại';
                 });
         };
         $scope.forgotPassword = function() {

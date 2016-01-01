@@ -18,7 +18,7 @@
         <div ng-hide="isLogin">
             <md-input-container flex="80">
                 <label >Email</label>
-                <input type="email" ng-model="user.email" name="email" ng-pattern="/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm" required>
+                <input type="email" ng-model="user.email" name="email" required>
                 <div ng-messages="headerFields.email.$error" role="alert">
                   <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                     Vui lòng nhập một địa chỉ có dạng email.
