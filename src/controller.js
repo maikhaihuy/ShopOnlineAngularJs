@@ -5,7 +5,7 @@ var appController = angular.module('mainController', []);
 
 appController.controller('GlobalController', GlobalController);
 	
-	function AuthenticationController ($scope, $mdDialog, $location, AuthenticationService){
+	function AuthenticationController ($scope, $mdDialog, $location, $window, AuthenticationService){
 	    $scope.isLogin = true;
         $scope.isResetPassword = false;
 
@@ -45,6 +45,7 @@ appController.controller('GlobalController', GlobalController);
                 return;
             }
             $scope.loading = true;
+            $window.localStorage.test = JSON.stringify($scope.user);
             AuthenticationService.signup($scope.user)
                 .then(function (response) {
                     if (response.data.error) {

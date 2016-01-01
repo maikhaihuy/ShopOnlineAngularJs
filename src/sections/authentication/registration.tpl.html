@@ -1,3 +1,11 @@
-<div ng-controller="RegistrationController">
-	<p>{{messages}}</p>
+<div  class="container" ng-controller="RegistrationController">
+<div class="push-up blocks-spacer">
+		<br/><br/><br/>
+		<div align="center">
+            <md-input-container flex="80">
+                <md-button ng-click="verify()" ng-hide="isVerify" class="md-raised md-primary">{{messages}}</md-button>
+                <md-button ng-click="showLoginSignUpDialog" ng-show="isVerify" class="md-raised md-primary">{{messages}}</md-button>
+            </md-input-container>
+        </div>
+	</div>
 </div>

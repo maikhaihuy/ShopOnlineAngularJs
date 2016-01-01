@@ -57,11 +57,17 @@ var auController = angular.module('authenticationController', []);
 });*/
 
 auController.controller('RegistrationController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
-    $scope.messages = "Verify failure.";
-
-    CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/registration/" + $routeParams.username).then(function(dataResponse){
-            $scope.messages = dataResponse.data;
-    });
+    $scope.isVerify = false;
+    $scope.messages="Nhấn kích hoạt";
+    $scope.verify = function (){
+        CallBackend.getBackend("/token/" + $routeParams.tokenStr + "/registration/" + $routeParams.username).then(function(dataResponse){
+            $scope.messages = "Vui lòng đăng nhập";
+            $scope.isVerify = true;
+        }, function(){
+            $scope.messages = "Xác thực thất bại hoặc token hết hạn";
+            $scope.isVerify = false;
+        });
+    }
 }]);
 
 auController.controller('ForgotpasswordController', ['$scope', 'CallBackend', 'AuthenticationService', function ($scope, CallBackend, AuthenticationService) {
