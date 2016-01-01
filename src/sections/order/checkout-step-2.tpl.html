@@ -42,13 +42,13 @@
 
                               <md-input-container class="md-block" flex-gt-sm>
                                 <label>Họ tên người nhận</label>
-                                <input ng-model="reciepient.recipientName">
+                                <input ng-model="recipient.recipientName">
                               </md-input-container>
 
                             <div>
                                 <md-input-container class="md-block">
                                   <label>Số nhà tên đường</label>
-                                  <input ng-model="reciepient.recipientAddress" name="address" type="text" >
+                                  <input ng-model="recipient.recipientAddress" name="address" type="text" >
                                   <div class="hint">Ví dụ: 59/K3 Cộng Hòa</div>
                                     <div ng-messages="userForm.address.$error" role="alert" multiple>
                                         <div ng-message="required" class="my-message">Yêu cầu nhập địa chỉ</div>
@@ -56,7 +56,7 @@
                                 </md-input-container>
                                 <md-input-container class="md-block">
                                   <label>Số điện thoại</label>
-                                  <input ng-model="reciepient.recipientPhoneNumber" name="phone" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" required>
+                                  <input ng-model="recipient.recipientPhoneNumber" name="phone" required>
                                   <div class="hint">Ví dụ: 0987654321</div>
                                   <div ng-messages="userForm.phone.$error" role="alert" multiple>
                                     <div ng-message="required" class="my-message">Yêu cầu nhập số điện thoại</div>
@@ -66,7 +66,7 @@
                                 </md-input-container>
                                 <md-input-container class="md-block">
                                   <label>Email người nhận</label>
-                                  <input ng-model="reciepient.recipientEmail" type="email">
+                                  <input ng-model="recipient.recipientEmail" type="email">
                                   <div class="hint">Ví dụ: example@abc.df</div>
                                 </md-input-container>
                             </div>
@@ -74,8 +74,8 @@
                             <div layout-gt-sm="row">
                               <md-input-container class="md-block" flex-gt-sm>
                                 <label>Tỉnh/Thành phố</label>
-                                <md-select ng-model="cityId" name="city" required>
-                                  <md-option ng-repeat="city in lstCities()" value="{{cities.cityId}}">
+                                <md-select ng-model="recipient.cityId" name="city" required>
+                                  <md-option ng-repeat="city in cities" ng-click="getDistrict(city.cityId)" value="{{city.cityId}}">
                                     {{city.cityName}}
                                   </md-option>
                                 </md-select>
@@ -85,7 +85,7 @@
                               </md-input-container>
                               <md-input-container class="md-block" flex-gt-sm>
                                 <label>Quận/Huyện</label>
-                                <md-select ng-model="reciepient.districtId"  name="district" required>
+                                <md-select ng-model="recipient.districtId"  name="district" required>
                                   <md-option ng-repeat="district in districts" value="{{district.districtId}}">
                                     {{district.districtName}}
                                   </md-option>

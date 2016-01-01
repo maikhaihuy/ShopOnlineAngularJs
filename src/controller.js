@@ -116,6 +116,15 @@ appController.controller('GlobalController', GlobalController);
         };
 
         $scope.cart = angular.fromJson($window.localStorage['cart']);
+        $scope.recipient =  {
+            recipientName:"",
+            recipientEmail: "",
+            recipientPhoneNumber: "",
+            recipientAddress: "",
+            districtId: 0,
+            cityId: 0
+        };
+
         $scope.Total = function() {
             var total = 0;
             for (var key in $scope.cart) {

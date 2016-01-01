@@ -95,11 +95,17 @@ productController.controller('ProductsByCategoryController', ['$scope', '$routeP
 
 productController.controller('DetailProductController', ['$scope', '$routeParams', 'CallBackend', function ($scope, $routeParams, CallBackend) {
     $scope.detailProduct = null;
+    $scope.mainImage = null;
     CallBackend.getBackend("/product/" + $routeParams.productId).then(function(dataResponse){
         $scope.detailProduct = dataResponse.data;
         $scope.selected.color = $scope.detailProduct.listColor[0];
-        $scope.selected.size = $scope.detailProduct.listSize[0]
+        $scope.selected.size = $scope.detailProduct.listSize[0];
+        $scope.mainImage = $scope.detailProduct.listImages[0];
     });
+
+    $scope.changeImage = function (image) {
+        $scope.mainImage = image;
+    }
 
     $scope.lstProductRelated = null;
     CallBackend.getBackend("/product/newproducts").then(function(dataResponse){

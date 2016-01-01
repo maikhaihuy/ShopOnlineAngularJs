@@ -33,11 +33,11 @@
                 <div class="span5">
                     <div class="product-preview">
                         <div class="picture">
-                            <img src="../../{{detailProduct.product.productImage}}" alt="" width="940" height="940" id="mainPreviewImg" />
+                            <img src="../../{{mainImage}}" alt="" width="240" height="240" id="mainPreviewImg" />
                         </div>
                         <div class="thumbs clearfix">
                             <div class="thumb active" ng-repeat="image in detailProduct.listImages">
-                                <a href="#mainPreviewImg"><img src="../../{{image}}" alt="" width="940" height="940" /></a>
+                                <a href="" ng-click="changeImage(image)"><img src="../../{{image}}" alt="" width="240" height="240" /></a>
                             </div>
                         </div>
                     </div>
@@ -48,11 +48,6 @@
                         <h1 class="name">{{detailProduct.product.productName}}</h1>
                         <div class="meta">
                             <span class="tag">$ {{detailProduct.product.productPrice  | number:0}}</span>
-                            <span class="stock">
-                                <span class="btn btn-success">In Stock</span>
-                                <span class="btn btn-danger">Out of Stock</span>
-                                <span class="btn btn-warning">Ask for availability</span>
-                            </span>
                         </div>
                     </div>
                     <div class="product-description">
@@ -67,15 +62,13 @@
                             </div>
                             &nbsp;
                             <select name="color" class="span2" ng-model="selected.color">
-                                <option value="-1">Select Color</option>
                                 <option ng-repeat="color in detailProduct.listColor"  value="{{color}}">{{color.colorName}}</option>
                             </select>
                             &nbsp;
                             <select name="size" class="span2" ng-model="selected.size">
-                                <option value="-1">Select Size</option>
                                 <option ng-repeat="size in detailProduct.listSize"  value="{{size}}">{{size.sizeName}}</option>
                             </select>
-                            <button class="btn btn-danger pull-right" ng-click="AddCartDetail(detailProduct.product.productId,selected.size, selected.color, qty)"><i class="icon-shopping-cart"></i> &nbsp; Add To Cart</button>
+                            <button class="btn btn-danger pull-right" ng-click="AddCartDetail(detailProduct.product.productId,selected.size, selected.color, qty)"><i class="icon-shopping-cart"></i> &nbsp; Thêm vào giỏ</button>
                         </form>
                         <hr/>
                     </div>
@@ -86,7 +79,7 @@
                 <div class="span12">
                     <ul id="myTab" class="nav nav-tabs" ng-cloak>
                         <li>
-                            <a href="#tab-3" data-toggle="tab">COMMENTS</a>
+                            <a href="#" data-toggle="tab">COMMENTS</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -106,7 +99,7 @@
             <div class="row">
                 <div class="span12">
                     <div class="main-titles lined">
-                        <h2 class="title"><span class="light">Related</span> Products</h2>
+                        <h2 class="title"><span class="light">Sản phẩm</span> liên quan</h2>
                     </div>
                 </div>
             </div>
@@ -121,13 +114,13 @@
                                 <div class="picture">
                                     <a href="#"><img src="../../{{product.product.productImage}}" alt="" width="540" height="374" /></a>
                                     <div class="img-overlay">
-                                        <a class="btn more btn-primary" href="#">More</a>
+                                        <a class="btn more btn-primary" href="#/ShopOnline/products/{{product.product.productId}}">Chi tiết</a>
                                         <a href="#" class="btn buy btn-danger">Add to Cart</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="main-titles no-margin">
-                                <h4 class="title"><span class="striked">${{product.product.productPrice}}</span> <span class="red-clr">$29</span></h4>
+                                <h4 class="title"><span >${{product.product.productPrice | number : 0}}</span> </h4>
                                 <h5 class="no-margin">{{product.product.productName}}</h5>
                             </div>
                             

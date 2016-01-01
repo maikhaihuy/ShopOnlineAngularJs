@@ -5,56 +5,54 @@
 var orderController = angular.module('orderController', []);
 
 orderController.controller('Checkout1Controller', function ($scope, $window, CallBackend){
-	$scope.recipient = {
-		recipientName: "",
-		recipientEmail: "",
-		recipientPhoneNumber: "",
-		recipientAddress: "",
-		districtId: 0
-	};
-
-
-	
-	$scope.cityId = 1;
-
 	$scope.nexStep = function(){
 		CallBackend.getBackend("/").then(function(dataResponse){
             $scope.a = dataResponse.data;
         });
 	};
+});
 
-	function lstCities (){
-		CallBackend.getBackend("/address/cities").then(function(dataResponse){
-            $scope.cities = dataResponse.data;
-    	});
-	}
+orderController.controller('Checkout2Controller', function ($scope, $window, CallBackend){
+	/*$scope.recipient = {
+		recipientName: $window.localStorage.recipient.recipientName == null ? "" : $window.localStorage.recipient.recipientName,
+		recipientEmail: $window.localStorage.recipient.recipientEmail == null "" : $window.localStorage.recipient.recipientEmail,
+		recipientPhoneNumber: $window.localStorage.recipient.recipientPhoneNumber == null ? "" : $window.localStorage.recipient.recipientPhoneNumber,
+		recipientAddress: $window.localStorage.recipient.recipientAddress == null ? "" : $window.localStorage.recipient.recipientAddress,
+		districtId: $window.localStorage.recipient.districtId == null ? "" : $window.localStorage.recipient.districtId,
+	};*/
+
+	$scope.cities = null;
+	CallBackend.getBackend("/address/cities").then(function(dataResponse){
+        $scope.cities = dataResponse.data;
+    });
 	
-	function lstDistrict() {
-		CallBackend.getBackend("/address/districts/" + $scope.cityId).then(function(dataResponse){
+	$scope.recipient = angular.fromJson($window.localStorage['recipient']);
+
+	$scope.districts = null;
+	$scope.getDistrict = function (cityId) {
+		CallBackend.getBackend("/address/districts/" + cityId).then(function(dataResponse){
+            alert(cityId);
             $scope.districts = dataResponse.data;
         });
 	};
 
-	function CheckStep2() {
+	$scope.CheckStep2 = function () {
 		if($scope.recipient.recipientPhoneNumber == "" || $scope.recipient.recipientAddress == "")
-			//return false;
+			return false;
+		$window.localStorage.recipient = JSON.stringify($scope.recipient);
 		return true;
 	};
 });
 
-/*orderController.controller('Checkout2Controller', ['', function(){
+orderController.controller('Checkout3Controller', function(){
 	
-}]);
+});
 
-orderController.controller('Checkout3Controller', ['', function(){
-	
-}]);
+orderController.controller('Checkout4Controller', function ($scope, $window){
 
-orderController.controller('Checkout4Controller', ['', function(){
-	
-	
-}]);
-
-orderController.controller('CheckoutController', ['', function(){
-	
-}]);*/
+	$scope.CheckStep4 = function() {
+		if ($window.localStorage.cart == null || $window.localStorage.cart.length == 0) 
+			return false;
+		return true;
+	};
+});

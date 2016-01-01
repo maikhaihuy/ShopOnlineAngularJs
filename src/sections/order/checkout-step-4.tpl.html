@@ -25,7 +25,7 @@
                             </div>
                             <div class="step done">
                                 <div class="step-badge"><i class="icon-ok"></i></div>
-                                <a href="" ng-click="goTo('ShopOnline/order/checkout-step-1')">Phương thức thanh toán</a>
+                                <a href="" ng-click="goTo('ShopOnline/order/checkout-step-3')">Phương thức thanh toán</a>
                             </div>
                             <div class="step active">
                                 <div class="step-badge">4</div>
@@ -39,80 +39,44 @@
                     <table class="table table-items">
                         <thead>
                             <tr>
-                                <th colspan="2">Item</th>
+                                <th colspan="2">Sản phẩm</th>
                                 <th>
-                                    <div class="align-center">Quantity</div>
+                                    <div> Màu </div>
                                 </th>
                                 <th>
-                                    <div class="align-right">Price</div>
+                                    <div > Kích cỡ </div>
+                                </th>
+                                <th>
+                                    <div class="align-center">Số lượng</div>
+                                </th>
+                                <th>
+                                    <div class="align-right">Giá</div>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="image"><img src="images/dummy/cart-items/cart-item-1.jpg" alt="" width="124" height="124" /></td>
-                                <td class="desc">Adidas Converse Lorem Ipsum Dolor sit</td>
-                                <td class="qty">
-                                    2 </td>
+                            <tr ng-repeat="product in cart">
+                                    <td class="image"><img src="../../{{product.product.productImage}}" alt="" width="124" height="124" /></td>
+                                    <td class="desc">{{product.product.productName}} &nbsp;
+                                        <a title="Remove Item" class="icon-remove-sign" ng-click="EditCart(product.product.productId)"></a>
+                                    </td>
+                                    <td >
+                                        <span>{{product.listColor.colorName}}</span>
+                                    </td>
+                                    <td >
+                                        <span>{{product.listSize.sizeName}}</span>
+                                    </td>
+                                    <td class="qty">
+                                        <span >{{product.qty}}</span>
+                                    </td>
                                     <td class="price">
-                                        $59
+                                        <span >${{product.product.productPrice * product.qty}}</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="image"><img src="images/dummy/cart-items/cart-item-2.jpg" alt="" width="124" height="124" /></td>
-                                    <td class="desc">Adidas Converse Lorem Ipsum Dolor sit</td>
-                                    <td class="qty">
-                                        4 </td>
-                                        <td class="price">
-                                            $59
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="image"><img src="images/dummy/cart-items/cart-item-3.jpg" alt="" width="124" height="124" /></td>
-                                        <td class="desc">Adidas Converse Lorem Ipsum Dolor sit</td>
-                                        <td class="qty">
-                                            2 </td>
-                                            <td class="price">
-                                                $59
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="image"><img src="images/dummy/cart-items/cart-item-4.jpg" alt="" width="124" height="124" /></td>
-                                            <td class="desc">Adidas Converse Lorem Ipsum Dolor sit</td>
-                                            <td class="qty">
-                                                1 </td>
-                                                <td class="price">
-                                                    $59
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="image"><img src="images/dummy/cart-items/cart-item-5.jpg" alt="" width="124" height="124" /></td>
-                                                <td class="desc">Adidas Converse Lorem Ipsum Dolor sit</td>
-                                                <td class="qty">
-                                                    4 </td>
-                                                    <td class="price">
-                                                        $59
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" rowspan="2">
-                                                        &nbsp;
-                                                    </td>
-                                                    <td class="stronger">Shipping:</td>
-                                                    <td class="stronger">
-                                                        <div class="align-right">$4.99</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="stronger">Subtotal:</td>
-                                                    <td class="stronger">
-                                                        <div class="size-16 align-right">$357.81</div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                        </tbody>
+                    </table>
                                         <p class="right-align">
-                                            <a href="index-2.html" class="btn btn-primary higher bold">CONFIRM &amp; PAY</a>
+                                            <a ng-click="goTo('ShopOnline/')" ng-show="CheckStep4()" class="btn btn-primary higher bold">Xác nhận</a>
                                         </p>
                                     </div>
                                 </div>

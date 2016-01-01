@@ -14,7 +14,8 @@ var shopOnl = angular.module('appShopOnline', [
     'productController',
     'authenticationController',
     'accountController',
-    'orderController'
+    'orderController',
+    'bw.paging'
 ]);
 
 
@@ -63,15 +64,15 @@ shopOnl.config(['$routeProvider',
             })
             .when('/ShopOnline/order/checkout-step-2', {
                 templateUrl: 'sections/order/checkout-step-2.tpl.html',
-                controller: 'Checkout1Controller'
+                controller: 'Checkout2Controller'
             })
             .when('/ShopOnline/order/checkout-step-3', {
                 templateUrl: 'sections/order/checkout-step-3.tpl.html',
-                controller: 'Checkout1Controller'
+                controller: 'Checkout3Controller'
             })
             .when('/ShopOnline/order/checkout-step-4', {
                 templateUrl: 'sections/order/checkout-step-4.tpl.html',
-                controller: 'Checkout1Controller'
+                controller: 'Checkout4Controller'
             })
             .when('/ShopOnline/token/:tokenStr/registration/:username', {
                 templateUrl: 'sections/authentication/registration.tpl.html',

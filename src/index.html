@@ -51,6 +51,7 @@
   <script src="node_modules/angular-cookies/angular-cookies.js"></script>
   <script src="node_modules/angular-material/angular-material.js"></script>
   <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script>
+  <script src="node_modules/angular-paging/dist/paging.js"></script>
 
   <script src="app.js"></script>
   <script src="controller.js"></script>
@@ -63,7 +64,16 @@
   <!-- <script src="sections/home/product.services.js"></script> -->
   <script src="sections/authentication/authentication.ctrl.js"></script>
 
+  <style>
+    .sort-icon {
+    font-size: 9px;
+    margin-left: 5px;
+    }
 
+    th {
+        cursor:pointer;
+    }
+  </style>
 </head>
 <body >
   <div ng-controller="GlobalController">

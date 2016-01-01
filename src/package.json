@@ -27,7 +27,8 @@
     "angular-messages": "~1.4.7",
     "angular-route": "~1.4.7",
     "angular-resource": "~1.4.7",
-    "angular-material-icons": "0.6.0"
+    "angular-material-icons": "0.6.0",
+    "angular-paging": "2.1.0"
   },
   "bugs": {
     "url": "https://github.com/maikhaihuy/ShopOnlineAngularJs/issues"

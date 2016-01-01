@@ -25,7 +25,7 @@
                                     <a href="" ng-click="goTo('ShopOnline/order/checkout-step-2')">Thông tin người nhận</a>
                                 </div>
                                 <div class="step active">
-                                    <div class="step-badge">2</div>
+                                    <div class="step-badge">3</div>
                                     Phương thức thanh toán
                                 </div>
                                 <div class="step">
@@ -38,73 +38,36 @@
                         <span class="btn btn-danger circle pull-left"><i class="icon-chevron-down"></i></span>
                         <div class="shifted-left-45 clearfix">
                             <h3 class="no-margin"><span class="light">Credit</span> Card</h3>
-                            <p class="push-down-30">We accept MasterCard, Visa and American Express</p>
-                            <form action="#" method="post" class="form-horizontal form-checkout">
-                                <div class="control-group">
-                                    <label class="control-label" for="firstName">First Name<span class="red-clr bold">*</span></label>
-                                    <div class="controls">
-                                        <input type="text" id="firstName" class="span4" required>
-                                    </div>
+                            <p class="push-down-30">Thanh toán qua thẻ tín dụng</p>
+                         
+                            <form name="userForm">
+                                <div layout-gt-sm="row">
+                                  <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Tên chủ thẻ</label>
+                                    <input >
+                                  </md-input-container>
+                                  <md-input-container class="md-block" flex-gt-sm>
+                                    <label>Họ chủ thẻ</label>
+                                    <input >
+                                  </md-input-container>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="lastName">Last Name<span class="red-clr bold">*</span></label>
-                                    <div class="controls">
-                                        <input type="text" id="lastName" class="span4" required>
-                                    </div>
+                                <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                  <label>Mã số thẻ</label>
+                                  <input >
+                                </md-input-container>
+                                 
+                                <md-datepicker ng-model="user.submissionDate" md-placeholder="Ngày hết hạn" >
+                                    </md-datepicker>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="cardNum">Card Number<span class="red-clr bold">*</span></label>
-                                    <div class="controls">
-                                        <input type="text" id="cardNum" class="span1 card-num-input center-align" maxlength="4">
-                                        <input type="text" class="span1 card-num-input center-align" maxlength="4">
-                                        <input type="text" class="span1 card-num-input center-align" maxlength="4">
-                                        <input type="text" class="span1 card-num-input center-align add-tooltip" maxlength="4" data-title="The 16 digits on the front of the card">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="cvc">CVC or CVS<span class="red-clr bold">*</span></label>
-                                    <div class="controls">
-                                        <input id="cvc" type="text" class="span1 center-align add-tooltip" maxlength="3" data-title="Last 3 digits on back of card" required>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="exp">Expiration Date<span class="red-clr bold">*</span></label>
-                                    <div class="controls">
-                                        <select id="exp" class="input-small month-push-right">
-                                            <option value="-1">Month</option>
-                                            <option value="1">01</option>
-                                            <option value="2">02</option>
-                                            <option value="3">03</option>
-                                            <option value="4">04</option>
-                                            <option value="5">05</option>
-                                            <option value="6">06</option>
-                                            <option value="7">07</option>
-                                            <option value="8">08</option>
-                                            <option value="9">09</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                        </select>
-                                        <select id="exp" class="input-small">
-                                            <option value="-1">Year</option>
-                                            <option value="2013">2013</option>
-                                            <option value="2014">2014</option>
-                                            <option value="2015">2015</option>
-                                            <option value="2016">2016</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2019">2019</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
+                              </form>
                         </div>
                         <hr/>
                         <span class="btn btn-danger circle pull-left"><i class="icon-chevron-right"></i></span>
                         <div class="shifted-left-45 clearfix">
                             <h3 class="no-margin">
                                 <span class="light">PayPal</span> &nbsp; &nbsp; &nbsp;
-                                <a href="#"><img src="images/buttons/paypal.gif" alt="PayPal" width="145" height="42"/></a>
+                                <a href="#"><img src="../../resources/images/buttons/paypal.gif" alt="PayPal" width="145" height="42"/></a>
                             </h3>
                         </div>
                         <hr/>
